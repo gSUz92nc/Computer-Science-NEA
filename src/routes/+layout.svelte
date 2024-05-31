@@ -1,20 +1,121 @@
-<script>
+<script lang="ts">
   import "../app.css";
+  import { goto, invalidate } from "$app/navigation";
+  import { browser } from "$app/environment";
+  import { onMount } from "svelte";
+
+  export let data;
+  $: ({ session, supabase } = data);
+
+  // Used for opening/closing the dictionary modal
+  const dictionaryModal = browser
+    ? (document?.getElementById("dictionary") as HTMLDialogElement)
+    : null;
+
+  let multiplePages = false;
+
+  async function createAnonUser() {
+    const { error } = await supabase.auth.signInAnonymously();
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+  }
+
+  onMount(() => {
+    const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
+      if (!newSession) {
+        // Create an anonymous user
+        createAnonUser();
+
+        setTimeout(() => {
+          goto("/", { invalidateAll: true });
+        });
+      }
+      if (newSession?.expires_at !== session?.expires_at) {
+        invalidate("supabase:auth");
+      }
+    });
+
+    return () => data.subscription.unsubscribe();
+  });
 </script>
 
+<!-- Dictionary Modal -->
+<dialog id="dictionary" class="modal modal-bottom lg:modal-middle w-full">
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-x-lg"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+          />
+        </svg></button
+      >
+    </form>
+    <h1 class="text-lg font-bold">Dictionary</h1>
+    <div class="join w-full">
+      <select class="select select-bordered join-item">
+        <option selected>All</option>
+        <option>Kanji</option>
+        <option>Words</option>
+      </select>
+      <div class="w-full">
+        <div class="w-full">
+          <input
+            class="input input-bordered join-item w-full"
+            placeholder="Search"
+          />
+        </div>
+      </div>
+      <button class="btn join-item">Search</button>
+    </div>
+    <!-- Shows past searches -->
+    <div></div>
+    <!-- For scrolling through pages -->
+    {#if multiplePages}
+      <div class="join flex w-full justify-center mt-2">
+        <button class="join-item btn btn-outline w-[5rem]">Previous page</button
+        >
+        <button class="join-item btn btn-outline w-[5rem]">Next</button>
+      </div>
+    {/if}
+  </div>
+</dialog>
+<!-- Sidebar -->
 <div class="drawer lg:drawer-open">
   <input id="main-menu-drawer" type="checkbox" class="drawer-toggle" />
   <div
     class="drawer-content flex flex-col items-center justify-center h-screen"
   >
     <!-- Page content here -->
-    <div class="mb-auto h-full flex shrink">
-      <slot />
-    </div>
-    <div class=" flex justify-center w-full lg:hidden bg-base-200">
+    <slot />
+    <div class="flex justify-center h-18 w-full lg:hidden bg-base-200">
       <ul
         class="menu min-h-full text-base-content w-full flex flex-row justify-around"
       >
+        <li class="flex grow">
+          <a class="h-11 text-lg font-semibold flex justify-center" href="/"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              class="bi bi-house w-7 h-7"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+              />
+            </svg><span class="max-sm:hidden">Home</span></a
+          >
+        </li>
         <li class="flex grow">
           <a class="h-11 text-lg font-semibold flex justify-center" href="/"
             ><svg
@@ -32,6 +133,23 @@
             </svg><span class="max-sm:hidden">Map</span></a
           >
         </li>
+        <li class="flex grow">
+          <button
+            class="h-11 text-lg font-semibold"
+            on:click={() => dictionaryModal && dictionaryModal.showModal()}
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              class="bi bi-book-half w-7 h-7"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"
+              />
+            </svg>Dictionary</button
+          >
+        </li>
+
         <li class="flex grow">
           <a class="h-11 text-lg font-semibold justify-center" href="/"
             ><svg
@@ -58,42 +176,45 @@
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
-              class="bi bi-chat-left-dots-fill  w-7 h-7"
+              class="bi bi-list w-8 h-8"
               viewBox="0 0 16 16"
             >
               <path
-                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
               />
-            </svg><span class="max-sm:hidden">Practice</span></a
-          >
-        </li>
-        <li class="flex grow">
-          <a class="h-11 text-lg font-semibold justify-center" href="/"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              class="bi bi-gear w-7 h-7"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"
-              />
-              <path
-                d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"
-              />
-            </svg><span class="max-sm:hidden">Settings</span></a
+            </svg><span class="max-sm:hidden">More</span></a
           >
         </li>
       </ul>
     </div>
   </div>
   <div class="drawer-side">
-    <label for="main-menu-drawer" aria-label="close sidebar" class="drawer-overlay"
+    <label
+      for="main-menu-drawer"
+      aria-label="close sidebar"
+      class="drawer-overlay"
     ></label>
     <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       <!-- Sidebar content here -->
       <img src="/Logo.svg" class="w-28" alt="Narau Logo" />
       <li class="mt-4">
+        <a class="h-11 text-lg font-semibold" href="/"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-house"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"
+            />
+          </svg>Home</a
+        >
+      </li>
+      <li>
         <a class="h-11 text-lg font-semibold" href="/"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -110,6 +231,24 @@
               d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1.612 10.867l.756-1.288a1 1 0 0 1 1.545-.225l1.074 1.005a.986.986 0 0 0 1.36-.011l.038-.037a.88.88 0 0 0 .26-.755c-.075-.548.37-1.033.92-1.099.728-.086 1.587-.324 1.728-.957.086-.386-.114-.83-.361-1.2-.207-.312 0-.8.374-.8.123 0 .24-.055.318-.15l.393-.474c.196-.237.491-.368.797-.403.554-.064 1.407-.277 1.583-.973.098-.391-.192-.634-.484-.88-.254-.212-.51-.426-.515-.741a7 7 0 0 1 3.425 7.692 1 1 0 0 0-.087-.063l-.316-.204a1 1 0 0 0-.977-.06l-.169.082a1 1 0 0 1-.741.051l-1.021-.329A1 1 0 0 0 11.205 9h-.165a1 1 0 0 0-.945.674l-.172.499a1 1 0 0 1-.404.514l-.802.518a1 1 0 0 0-.458.84v.455a1 1 0 0 0 1 1h.257a1 1 0 0 1 .542.16l.762.49a1 1 0 0 0 .283.126 7 7 0 0 1-9.49-3.409Z"
             />
           </svg>Map</a
+        >
+      </li>
+      <li>
+        <button
+          class="h-11 text-lg font-semibold"
+          on:click={() => dictionaryModal && dictionaryModal.showModal()}
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-book-half"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"
+            />
+          </svg>Dictionary</button
         >
       </li>
       <li>
