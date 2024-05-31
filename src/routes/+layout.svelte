@@ -1,11 +1,6 @@
 <script lang="ts">
   import "../app.css";
-  import { goto, invalidate } from "$app/navigation";
   import { browser } from "$app/environment";
-  import { onMount } from "svelte";
-
-  export let data;
-  $: ({ session, supabase } = data);
 
   // Used for opening/closing the dictionary modal
   const dictionaryModal = browser
@@ -13,38 +8,11 @@
     : null;
 
   let multiplePages = false;
-
-  async function createAnonUser() {
-    const { error } = await supabase.auth.signInAnonymously();
-
-    if (error) {
-      console.error(error);
-      return;
-    }
-  }
-
-  onMount(() => {
-    const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
-      if (!newSession) {
-        // Create an anonymous user
-        createAnonUser();
-
-        setTimeout(() => {
-          goto("/", { invalidateAll: true });
-        });
-      }
-      if (newSession?.expires_at !== session?.expires_at) {
-        invalidate("supabase:auth");
-      }
-    });
-
-    return () => data.subscription.unsubscribe();
-  });
 </script>
 
 <!-- Dictionary Modal -->
 <dialog id="dictionary" class="modal modal-bottom lg:modal-middle w-full">
-  <div class="modal-box">
+  <div class="modal-box min-h-[90vh] lg:min-h-[60vh]">
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
         ><svg
@@ -90,7 +58,7 @@
     {/if}
   </div>
 </dialog>
-<!-- Sidebar -->
+
 <div class="drawer lg:drawer-open">
   <input id="main-menu-drawer" type="checkbox" class="drawer-toggle" />
   <div
@@ -135,7 +103,7 @@
         </li>
         <li class="flex grow">
           <button
-            class="h-11 text-lg font-semibold"
+            class="h-11 text-lg font-semibold justify-center"
             on:click={() => dictionaryModal && dictionaryModal.showModal()}
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +114,7 @@
               <path
                 d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"
               />
-            </svg>Dictionary</button
+            </svg><span class="max-sm:hidden">Dictionary</span></button
           >
         </li>
 
@@ -189,6 +157,7 @@
       </ul>
     </div>
   </div>
+  <!-- Sidebar -->
   <div class="drawer-side">
     <label
       for="main-menu-drawer"
@@ -307,6 +276,14 @@
               d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"
             />
           </svg>Settings</a
+        >
+      </li>
+      <li class="mt-auto">
+        <a class="h-11 text-lg font-semibold" href="/"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+          </svg>Account</a
         >
       </li>
     </ul>
