@@ -1,6 +1,25 @@
 <script lang="ts">
   import "../app.css";
   import { browser } from "$app/environment";
+  export let data;
+  const { supabase } = data;
+
+  let dictionaryEntries = [] as any[];
+  let dictionarySearchValue = "読む";
+
+  // Fetches the dictionary entries
+  const fetchDictionary = async () => {
+    const { data, error } = await supabase
+      .from("dictionary")
+      .select("html, kanji, reading")
+      .textSearch("kanji", dictionarySearchValue);
+    if (error) {
+      console.error("Error fetching dictionary entries", error);
+    } else {
+      dictionaryEntries = data;
+      console.log(dictionaryEntries);
+    }
+  };
 
   // Used for opening/closing the dictionary modal
   const dictionaryModal = browser
@@ -41,13 +60,24 @@
           <input
             class="input input-bordered join-item w-full"
             placeholder="Search"
+						bind:value={dictionarySearchValue}
           />
         </div>
       </div>
-      <button class="btn join-item">Search</button>
+      <button class="btn join-item" on:click={fetchDictionary}>Search</button>
     </div>
     <!-- Shows past searches -->
-    <div></div>
+    {#if dictionaryEntries.length == 0}
+      <div></div>
+    {:else}
+      {#each dictionaryEntries as entry}
+        <div class="mt-2">
+          <h2 class="font-bold text-2xl">{entry.kanji}</h2>
+          <p class="text-lg font-semibold">{entry.reading}</p>
+          {@html entry.html}
+        </div>
+      {/each}
+    {/if}
     <!-- For scrolling through pages -->
     {#if multiplePages}
       <div class="join flex w-full justify-center mt-2">
@@ -280,9 +310,19 @@
       </li>
       <li class="mt-auto">
         <a class="h-11 text-lg font-semibold" href="/"
-          ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-person-circle"
+            viewBox="0 0 16 16"
+          >
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+            <path
+              fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+            />
           </svg>Account</a
         >
       </li>
