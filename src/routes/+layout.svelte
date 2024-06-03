@@ -5,14 +5,21 @@
   const { supabase } = data;
 
   let dictionaryEntries = [] as any[];
-  let dictionarySearchValue = "読む";
+  let dictionarySearchValue = "よむ";
+
+  $: fetchDictionary(dictionarySearchValue);
 
   // Fetches the dictionary entries
-  const fetchDictionary = async () => {
+  const fetchDictionary = async (searchTerm: string) => {
+    if (searchTerm == "") return;
+
+    console.log("searching for new term: ", searchTerm);
     const { data, error } = await supabase
       .from("dictionary")
-      .select("html, kanji, reading")
-      .textSearch("kanji", dictionarySearchValue);
+      .select("html, kanji, reading, index")
+      .or(`kanji.eq.${searchTerm}, reading.eq.${searchTerm}`)
+      .order("index", { ascending: true });
+
     if (error) {
       console.error("Error fetching dictionary entries", error);
     } else {
@@ -30,8 +37,8 @@
 </script>
 
 <!-- Dictionary Modal -->
-<dialog id="dictionary" class="modal modal-bottom lg:modal-middle w-full">
-  <div class="modal-box min-h-[90vh] lg:min-h-[60vh]">
+<dialog id="dictionary" class="modal modal-bottom lg:modal-middle max-h-[80vh]">
+  <div class="modal-box min-h-[80vh] lg:min-h-[60vh]">
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
         ><svg
@@ -60,14 +67,23 @@
           <input
             class="input input-bordered join-item w-full"
             placeholder="Search"
-						bind:value={dictionarySearchValue}
+            bind:value={dictionarySearchValue}
           />
         </div>
       </div>
-      <button class="btn join-item" on:click={fetchDictionary}>Search</button>
+      <button
+        class="btn join-item"
+        on:click={() => fetchDictionary(dictionarySearchValue)}>Search</button
+      >
     </div>
     <!-- Shows past searches -->
     {#if dictionaryEntries.length == 0}
+      {#if dictionarySearchValue.length > 0}
+        <div class="mt-2">
+          <h2 class="font-bold text-2xl">No results found</h2>
+          <p class="text-lg font-semibold">Try searching for something else</p>
+        </div>
+      {/if}
       <div></div>
     {:else}
       {#each dictionaryEntries as entry}
@@ -76,6 +92,7 @@
           <p class="text-lg font-semibold">{entry.reading}</p>
           {@html entry.html}
         </div>
+        <div class="divider"></div>
       {/each}
     {/if}
     <!-- For scrolling through pages -->
@@ -89,13 +106,13 @@
   </div>
 </dialog>
 
-<div class="drawer lg:drawer-open">
+<div class="drawer lg:drawer-open h-screen">
   <input id="main-menu-drawer" type="checkbox" class="drawer-toggle" />
-  <div
-    class="drawer-content flex flex-col items-center justify-center h-screen"
-  >
+  <div class="drawer-content flex grow flex-col">
     <!-- Page content here -->
-    <slot />
+    <div class="h-full">
+      <slot />
+    </div>
     <div class="flex justify-center h-18 w-full lg:hidden bg-base-200">
       <ul
         class="menu min-h-full text-base-content w-full flex flex-row justify-around"
