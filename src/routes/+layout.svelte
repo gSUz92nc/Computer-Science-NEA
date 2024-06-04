@@ -1,31 +1,83 @@
 <script lang="ts">
   import "../app.css";
   import { browser } from "$app/environment";
+  import { toKatakana, toHiragana } from "wanakana";
+
   export let data;
   const { supabase } = data;
 
-  let dictionaryEntries = [] as any[];
+  let dictionaryEntries: any[] = [];
   let dictionarySearchValue = "よむ";
 
-  $: fetchDictionary(dictionarySearchValue);
+  let searching = false;
+  let skipNextSearch = false;
+
+  $: fetchDictionary(dictionarySearchValue, false);
 
   // Fetches the dictionary entries
-  const fetchDictionary = async (searchTerm: string) => {
-    if (searchTerm == "") return;
+  const fetchDictionary = async (searchTerm: string, final: boolean) => {
+    if (skipNextSearch) {
+      skipNextSearch = false;
+      return;
+    }
 
-    console.log("searching for new term: ", searchTerm);
+    if (searchTerm === "") {
+      dictionaryEntries = [];
+      return;
+    }
+
+    if (final && dictionaryEntries.length > 0) {
+      skipNextSearch = true;
+      // Set the search value to the first result
+      dictionarySearchValue = dictionaryEntries[0].reading;
+      return;
+    }
+    searching = true;
+
+    // Convert to kana then search again
+    const kata = toKatakana(searchTerm);
+    const hira = toHiragana(searchTerm);
+
     const { data, error } = await supabase
       .from("dictionary")
       .select("html, kanji, reading, index")
       .or(`kanji.eq.${searchTerm}, reading.eq.${searchTerm}`)
       .order("index", { ascending: true });
 
-    if (error) {
-      console.error("Error fetching dictionary entries", error);
+    const { data: kataData, error: kataError } = await supabase
+      .from("dictionary")
+      .select("html, kanji, reading, index")
+      .or(`kanji.eq.${kata}, reading.eq.${kata}`)
+      .order("index", { ascending: true });
+
+    const { data: hiraData, error: hiraError } = await supabase
+      .from("dictionary")
+      .select("html, kanji, reading, index")
+      .or(`kanji.eq.${hira}, reading.eq.${hira}`)
+      .order("index", { ascending: true });
+
+    if (error || kataError || hiraError) {
+      console.error(
+        "Error fetching dictionary entries",
+        error || kataError || hiraError
+      );
     } else {
-      dictionaryEntries = data;
-      console.log(dictionaryEntries);
+      // Check for duplicates
+      const tempData = [...data, ...kataData, ...hiraData];
+      const dictionaryEntriesSet = new Set();
+      dictionaryEntries = tempData.filter((entry) => {
+        if (dictionaryEntriesSet.has(entry.kanji)) {
+          return false;
+        }
+        dictionaryEntriesSet.add(entry.kanji);
+        return true;
+      });
+
+      // Sort by index
+      dictionaryEntries.sort((a, b) => a.index - b.index);
     }
+
+    searching = false;
   };
 
   // Used for opening/closing the dictionary modal
@@ -37,7 +89,7 @@
 </script>
 
 <!-- Dictionary Modal -->
-<dialog id="dictionary" class="modal modal-bottom lg:modal-middle max-h-[80vh]">
+<dialog id="dictionary" class="modal modal-bottom lg:modal-middle w-full">
   <div class="modal-box min-h-[80vh] lg:min-h-[60vh]">
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -67,17 +119,23 @@
           <input
             class="input input-bordered join-item w-full"
             placeholder="Search"
+            on:change={() => fetchDictionary(dictionarySearchValue, true)}
             bind:value={dictionarySearchValue}
           />
         </div>
       </div>
       <button
         class="btn join-item"
-        on:click={() => fetchDictionary(dictionarySearchValue)}>Search</button
+        on:click={() => fetchDictionary(dictionarySearchValue, true)}
+        >Search</button
       >
     </div>
     <!-- Shows past searches -->
-    {#if dictionaryEntries.length == 0}
+    {#if searching}
+      <div class="mt-2">
+        <h2 class="font-bold text-2xl">Searching...</h2>
+      </div>
+    {:else if dictionaryEntries.length == 0}
       {#if dictionarySearchValue.length > 0}
         <div class="mt-2">
           <h2 class="font-bold text-2xl">No results found</h2>
@@ -95,6 +153,7 @@
         <div class="divider"></div>
       {/each}
     {/if}
+
     <!-- For scrolling through pages -->
     {#if multiplePages}
       <div class="join flex w-full justify-center mt-2">
