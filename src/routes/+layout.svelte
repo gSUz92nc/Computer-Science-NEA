@@ -7,7 +7,7 @@
   const { supabase } = data;
 
   let dictionaryEntries: any[] = [];
-  let dictionarySearchValue = "よむ";
+  let dictionarySearchValue = "";
 
   let searching = false;
   let skipNextSearch = false;
@@ -107,7 +107,7 @@
         </svg></button
       >
     </form>
-    <h1 class="text-lg font-bold">Dictionary</h1>
+    <h1 class="text-lg font-bold">Dictionary (Only works when searching Japanese Currently)</h1>
     <div class="join w-full">
       <select class="select select-bordered join-item">
         <option selected>All</option>
@@ -341,7 +341,7 @@
         >
       </li>
       <li>
-        <a class="h-11 text-lg font-semibold" href="/"
+        <a class="h-11 text-lg font-semibold" href="/practice"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
