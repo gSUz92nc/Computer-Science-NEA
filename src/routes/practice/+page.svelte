@@ -1,7 +1,8 @@
-<script lang="ts">
+  <script lang="ts">
     import { writable } from 'svelte/store';
   
     // State to manage chat messages
+    //const sceneSelect = document.getElementById("sceneSelect")
     const messages = writable<{ text: string, isUser: boolean }[]>([]);
   
     let inputMessage: string = '';
@@ -33,6 +34,20 @@
     };
   </script>
   
+  <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" on:click={() => sceneSelect?.showModal()}>open modal</button> -->
+<dialog id="sceneSelect" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Hello!</h3>
+    <p class="py-4">Press ESC key or click the button below to close</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
   <div class="flex flex-col h-full p-4">
     <div class="flex-grow overflow-y-auto">
       {#each $messages as message (message.text)}
