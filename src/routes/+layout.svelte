@@ -107,7 +107,9 @@
         </svg></button
       >
     </form>
-    <h1 class="text-lg font-bold">Dictionary (Only works when searching Japanese Currently)</h1>
+    <h1 class="text-lg font-bold">
+      Dictionary (Only works when searching Japanese Currently)
+    </h1>
     <div class="join w-full">
       <select class="select select-bordered join-item">
         <option selected>All</option>
@@ -167,13 +169,13 @@
 
 <div class="drawer lg:drawer-open h-screen">
   <input id="main-menu-drawer" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content flex grow flex-col">
+  <div class="drawer-content flex flex-col">
     <!-- Page content here -->
-    <div class="h-full">
+    <div class="flex-grow">
       <slot />
     </div>
 
-    <div class="flex justify-center h-18 w-full lg:hidden bg-base-200">
+    <div class="flex-none h-[4rem] w-full lg:hidden bg-base-200">
       <div class="btm-nav">
         <button class="active">
           <svg
