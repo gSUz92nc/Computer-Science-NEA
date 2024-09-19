@@ -1,3 +1,8 @@
+
+// Data source: https://github.com/scriptin/jmdict-simplified/releases/
+
+
+
 // Import the Supabase client
 import type { Database } from "../../src/lib/database.types";
 import { createClient } from "@supabase/supabase-js";
