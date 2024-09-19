@@ -1,16 +1,15 @@
 
 // Data source: https://github.com/scriptin/jmdict-simplified/releases/
 
-
-
 // Import the Supabase client
 import type { Database } from "../../src/lib/database.types";
 import { createClient } from "@supabase/supabase-js";
 
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY || "";
+
 // Initialize the Supabase client
 const supabaseUrl = "https://yrykfurvxgrvavxgbvbr.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlyeWtmdXJ2eGdydmF2eGdidmJyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNjMwMjQ3OCwiZXhwIjoyMDMxODc4NDc4fQ.9IlFKXgM6QkN32xLsrHNcfyH63Ku3k9slL3gmZxp1Is";
+const supabaseKey = SUPABASE_SERVICE_KEY;
 const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
 // Example JSON data
