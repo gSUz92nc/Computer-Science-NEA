@@ -42,11 +42,18 @@ export type Database = {
             referencedRelation: "jmdict_sense"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "jmdict_gloss_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "mv_jmdict"
+            referencedColumns: ["sense_id"]
+          },
         ]
       }
       jmdict_kana: {
         Row: {
-          applies_to_kanji: string[]
+          applies_to_kanji: string[] | null
           common: boolean
           id: string
           tags: string[]
@@ -54,7 +61,7 @@ export type Database = {
           word_id: number
         }
         Insert: {
-          applies_to_kanji: string[]
+          applies_to_kanji?: string[] | null
           common: boolean
           id?: string
           tags: string[]
@@ -62,7 +69,7 @@ export type Database = {
           word_id?: number
         }
         Update: {
-          applies_to_kanji?: string[]
+          applies_to_kanji?: string[] | null
           common?: boolean
           id?: string
           tags?: string[]
@@ -76,6 +83,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "jmdict_word"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "jmdict_kana_word_id_fkey"
+            columns: ["word_id"]
+            isOneToOne: false
+            referencedRelation: "mv_jmdict"
+            referencedColumns: ["word_id"]
           },
         ]
       }
@@ -109,48 +123,55 @@ export type Database = {
             referencedRelation: "jmdict_word"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "jmdict_kanji_word_id_fkey"
+            columns: ["word_id"]
+            isOneToOne: false
+            referencedRelation: "mv_jmdict"
+            referencedColumns: ["word_id"]
+          },
         ]
       }
       jmdict_sense: {
         Row: {
           antonym: Json
-          applies_to_kana: string[]
-          applies_to_kanji: string[]
+          applies_to_kana: string[] | null
+          applies_to_kanji: string[] | null
           dialect: string[]
           field: string[]
           id: string
           info: string[]
-          language_source: Json
+          language_source: Json | null
           misc: string[]
-          part_of_speech: string[]
+          part_of_speech: string[] | null
           related: Json
           word_id: number
         }
         Insert: {
           antonym: Json
-          applies_to_kana: string[]
-          applies_to_kanji: string[]
+          applies_to_kana?: string[] | null
+          applies_to_kanji?: string[] | null
           dialect: string[]
           field: string[]
           id?: string
           info: string[]
-          language_source: Json
+          language_source?: Json | null
           misc: string[]
-          part_of_speech: string[]
+          part_of_speech?: string[] | null
           related: Json
           word_id?: number
         }
         Update: {
           antonym?: Json
-          applies_to_kana?: string[]
-          applies_to_kanji?: string[]
+          applies_to_kana?: string[] | null
+          applies_to_kanji?: string[] | null
           dialect?: string[]
           field?: string[]
           id?: string
           info?: string[]
-          language_source?: Json
+          language_source?: Json | null
           misc?: string[]
-          part_of_speech?: string[]
+          part_of_speech?: string[] | null
           related?: Json
           word_id?: number
         }
@@ -161,6 +182,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "jmdict_word"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "jmdict_sense_word_id_fkey"
+            columns: ["word_id"]
+            isOneToOne: false
+            referencedRelation: "mv_jmdict"
+            referencedColumns: ["word_id"]
           },
         ]
       }
@@ -178,26 +206,57 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      mv_jmdict: {
+        Row: {
+          gloss_gender: string | null
+          gloss_lang: string | null
+          gloss_text: string | null
+          gloss_type: string | null
+          kana_common: boolean | null
+          kana_tags: string[] | null
+          kana_text: string | null
+          kanji_common: boolean | null
+          kanji_tags: string[] | null
+          kanji_text: string | null
+          sense_antonym: Json | null
+          sense_applies_to_kana: string[] | null
+          sense_applies_to_kanji: string[] | null
+          sense_dialect: string[] | null
+          sense_field: string[] | null
+          sense_id: string | null
+          sense_info: string[] | null
+          sense_misc: string[] | null
+          sense_part_of_speech: string[] | null
+          sense_related: Json | null
+          word_id: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
-      jsonb_text_concat: {
+      search_jmdict: {
         Args: {
-          "": Json
-        }
-        Returns: string
-      }
-      search_dictionary: {
-        Args: {
-          search_term_kata: string
-          search_term_hira?: string
+          search_term: string
         }
         Returns: {
-          id: number
-          kanji: Json
-          kana: Json
-          sense: Json
-          gloss: Json
+          word_id: number
+          kana_text: string
+          kana_common: boolean
+          kana_tags: string[]
+          sense_id: string
+          sense_part_of_speech: string[]
+          sense_applies_to_kanji: string[]
+          sense_applies_to_kana: string[]
+          sense_related: Json
+          sense_antonym: Json
+          sense_field: string[]
+          sense_dialect: string[]
+          sense_misc: string[]
+          sense_info: string[]
+          gloss_lang: string
+          gloss_gender: string
+          gloss_type: string
+          gloss_text: string
         }[]
       }
     }
