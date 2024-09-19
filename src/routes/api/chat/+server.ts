@@ -21,5 +21,5 @@ export const POST = (async ({ request: req }) => {
   });
 
   // Respond with a streaming response
-  return result.toAIStreamResponse();
+  return result.toDataStreamResponse();
 }) satisfies RequestHandler;
