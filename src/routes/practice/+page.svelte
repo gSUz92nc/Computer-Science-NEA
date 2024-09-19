@@ -38,8 +38,8 @@
     });
 </script>
 
-<div class="flex flex-col h-full">
-    <div class="navbar bg-base-100">
+<div class="flex flex-col h-screen">
+    <div class="flex-1 navbar bg-base-100">
         <div class="btn btn-ghost text-xl">Practice</div>
     </div>
     <dialog id="my_modal_1" class="modal">
@@ -55,16 +55,16 @@
         </div>
     </dialog>
     <div class="flex-grow overflow-y-auto p-4">
-        {#each $messages as message (message.content)}
+        {#each $messages as message (message.id)}
             {#if message.role !== "system"}
                 <div
                     class={`chat ${
-                        message.role == "user" ? "chat-end" : "chat-start"
+                        message.role === "user" ? "chat-end" : "chat-start"
                     }`}
                 >
                     <div class="chat-bubble whitespace-pre-line">
                         {message.content}
-                        {#if message.role == "assistant"}
+                        {#if message.role === "assistant"}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="16"

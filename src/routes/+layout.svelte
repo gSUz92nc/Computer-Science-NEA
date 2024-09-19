@@ -1,7 +1,9 @@
 <script lang="ts">
   import "../app.css";
+  import pkg from "lodash";
+  const { debounce } = pkg;
   import { browser } from "$app/environment";
-  import { toKatakana, toHiragana } from "wanakana";
+  import { toKatakana, toHiragana, isJapanese } from "wanakana";
 
   export let data;
   const { supabase } = data;
@@ -10,75 +12,62 @@
   let dictionarySearchValue = "";
 
   let searching = false;
-  let skipNextSearch = false;
 
-  $: fetchDictionary(dictionarySearchValue, false);
+  $: fetchDictionary(dictionarySearchValue);
 
   // Fetches the dictionary entries
-  const fetchDictionary = async (searchTerm: string, final: boolean) => {
-    if (skipNextSearch) {
-      skipNextSearch = false;
-      return;
-    }
-
+  const fetchDictionary = async (searchTerm: string) => {
     if (searchTerm === "") {
       dictionaryEntries = [];
       return;
     }
 
-    if (final && dictionaryEntries.length > 0) {
-      skipNextSearch = true;
-      // Set the search value to the first result
-      dictionarySearchValue = dictionaryEntries[0].reading;
-      return;
-    }
-    searching = true;
-
     // Convert to kana then search again
     const kata = toKatakana(searchTerm);
     const hira = toHiragana(searchTerm);
 
-    const { data, error } = await supabase
-      .from("dictionary")
-      .select("html, kanji, reading, index")
-      .or(`kanji.eq.${searchTerm}, reading.eq.${searchTerm}`)
-      .order("index", { ascending: true });
+    let english: boolean = true;
 
-    const { data: kataData, error: kataError } = await supabase
-      .from("dictionary")
-      .select("html, kanji, reading, index")
-      .or(`kanji.eq.${kata}, reading.eq.${kata}`)
-      .order("index", { ascending: true });
-
-    const { data: hiraData, error: hiraError } = await supabase
-      .from("dictionary")
-      .select("html, kanji, reading, index")
-      .or(`kanji.eq.${hira}, reading.eq.${hira}`)
-      .order("index", { ascending: true });
-
-    if (error || kataError || hiraError) {
-      console.error(
-        "Error fetching dictionary entries",
-        error || kataError || hiraError
-      );
-    } else {
-      // Check for duplicates
-      const tempData = [...data, ...kataData, ...hiraData];
-      const dictionaryEntriesSet = new Set();
-      dictionaryEntries = tempData.filter((entry) => {
-        if (dictionaryEntriesSet.has(entry.kanji)) {
-          return false;
-        }
-        dictionaryEntriesSet.add(entry.kanji);
-        return true;
-      });
-
-      // Sort by index
-      dictionaryEntries.sort((a, b) => a.index - b.index);
+    if (isJapanese(searchTerm)) {
+      english = false;
     }
 
+    searching = true;
+
+    console.log(kata, hira, english);
+
+    // Fetch the dictionary entries using the database function
+    const { data, error } = await supabase.rpc(
+      "search_dictionary",
+      english
+        ? {
+            search_term_kata: searchTerm,
+            search_term_hira: searchTerm,
+          }
+        : {
+            search_term_kata: kata,
+            search_term_hira: hira,
+          }
+    );
+
+    console.log(data);
+
+    if (error) {
+      console.error("Error fetching dictionary entries", error);
+    } else {
+      // Sort by index
+      console.log(data);
+    }
     searching = false;
   };
+
+  // Debounced version of fetchDictionary
+  const debouncedFetchDictionary = debounce(fetchDictionary, 500, {
+    leading: true,
+    trailing: true,
+  });
+
+  $: debouncedFetchDictionary(dictionarySearchValue);
 
   // Used for opening/closing the dictionary modal
   const dictionaryModal = browser
@@ -121,15 +110,14 @@
           <input
             class="input input-bordered join-item w-full"
             placeholder="Search"
-            on:change={() => fetchDictionary(dictionarySearchValue, true)}
+            on:change={() => fetchDictionary(dictionarySearchValue)}
             bind:value={dictionarySearchValue}
           />
         </div>
       </div>
       <button
         class="btn join-item"
-        on:click={() => fetchDictionary(dictionarySearchValue, true)}
-        >Search</button
+        on:click={() => fetchDictionary(dictionarySearchValue)}>Search</button
       >
     </div>
     <!-- Shows past searches -->
