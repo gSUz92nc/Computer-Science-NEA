@@ -6,6 +6,10 @@
 
     export let data;
     const { supabase } = data;
+    // Used for opening/closing the dictionary modal
+    const dictionaryModal = browser
+        ? (document?.getElementById("dictionary") as HTMLDialogElement)
+        : null;
 
     let dictionaryEntries: any[] = [];
     let dictionarySearchValue = "nuclear deterrent force";
@@ -15,7 +19,7 @@
     $: fetchDictionary(dictionarySearchValue);
 
     // Fetches the dictionary entries
-    const fetchDictionary = async (searchTerm: string) => {
+    async function fetchDictionary (searchTerm: string) {
         if (searchTerm === "") {
             dictionaryEntries = [];
             return;
@@ -29,8 +33,13 @@
 
         searching = true;
 
-        console.log(kata, hira, english);
-
+        console.log({
+            gloss_input: searchTerm,
+            kanji_input: searchTerm,
+            hiragana_input: hira,
+            katakana_input: kata,
+        })
+        
         // Fetch the dictionary entries using the database function
         const { data, error } = await supabase.rpc("get_jmdict_entries", {
             gloss_input: searchTerm,
@@ -49,16 +58,60 @@
         searching = false;
     };
 
-    // Used for opening/closing the dictionary modal
-    const dictionaryModal = browser
-        ? (document?.getElementById("dictionary") as HTMLDialogElement)
-        : null;
+    function formatKanjiReadings (kanjiEntries: [{ common: boolean, text: string }]): string {
+      // sort by common
+      kanjiEntries.sort((a, b) => {
+        if (a.common && !b.common) {
+            return -1;
+        } else if (!a.common && b.common) {
+            return 1;
+        } else {
+            return 0;
+        }
+      });
+
+      return kanjiEntries.map((entry) => {
+        return entry.text;
+      }).join(", ");
+    }
+
+    function formatKanaReadings (kanaEntries: [{ common: boolean, text: string }]): string {
+      // sort by common
+      kanaEntries.sort((a, b) => {
+        if (a.common && !b.common) {
+            return -1;
+        } else if (!a.common && b.common) {
+            return 1;
+        } else {
+            return 0;
+        }
+      });
+
+      return kanaEntries.map((entry) => {
+        return entry.text;
+      }).join(", ");
+    }
+
+    function formatSenses (glossEntries: [{ common: boolean, text: string }]): string {
+      // sort by common
+      glossEntries.sort((a, b) => {
+        if (a.common && !b.common) {
+            return -1;
+        } else if (!a.common && b.common) {
+            return 1;
+        } else {
+            return 0;
+        }
+      });
+
+      return glossEntries.map((entry, index) => {
+          return `${index + 1}. "${entry.text}"`;
+      }).join(" ");
+    }
 
     onMount(() => {
         dictionaryModal?.showModal();
     });
-
-    let multiplePages = false;
 </script>
 
 <!-- Dictionary Modal -->
@@ -121,26 +174,17 @@
         {:else}
             {#each dictionaryEntries as entry}
                 <div class="mt-2">
-                    {#if entry.kanji.text}
-                        <h2 class="font-bold text-2xl">{entry.kanji}</h2>
+                    {#if entry.kanji}
+                        <h2 class="font-bold text-2xl">{formatKanjiReadings(entry.kanji)}</h2>
+                        <p>{formatKanaReadings(entry.kana)}</p>
                     {:else}
-                        <h2 class="font-bold text-2xl">{entry.kana.text}</h2>
+                        <h2 class="font-bold text-2xl">{formatKanaReadings(entry.kana)}</h2>
                     {/if}
-                    <p class="text-lg font-semibold">{entry.reading}</p>
-                    {@html entry.html}
+                    
+                    <p class="text-lg font-semibold">{formatSenses(entry.senses)}</p>
                 </div>
                 <div class="divider"></div>
             {/each}
-        {/if}
-
-        <!-- For scrolling through pages -->
-        {#if multiplePages}
-            <div class="join flex w-full justify-center mt-2">
-                <button class="join-item btn btn-outline w-[5rem]"
-                    >Previous page</button
-                >
-                <button class="join-item btn btn-outline w-[5rem]">Next</button>
-            </div>
         {/if}
     </div>
 </dialog>
