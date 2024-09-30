@@ -4,205 +4,205 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json | undefined }
-  | Json[]
+  | Json[];
 
 export type Database = {
   public: {
     Tables: {
       jmdict_gloss: {
         Row: {
-          fts: unknown | null
-          id: string
-          sense_id: string
-          text: string
-          type: string | null
-        }
+          fts: unknown | null;
+          id: string;
+          sense_id: string;
+          text: string;
+          type: string | null;
+        };
         Insert: {
-          fts?: unknown | null
-          id?: string
-          sense_id: string
-          text: string
-          type?: string | null
-        }
+          fts?: unknown | null;
+          id?: string;
+          sense_id: string;
+          text: string;
+          type?: string | null;
+        };
         Update: {
-          fts?: unknown | null
-          id?: string
-          sense_id?: string
-          text?: string
-          type?: string | null
-        }
+          fts?: unknown | null;
+          id?: string;
+          sense_id?: string;
+          text?: string;
+          type?: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "jmdict_gloss_sense_id_fkey"
-            columns: ["sense_id"]
-            isOneToOne: false
-            referencedRelation: "jmdict_sense"
-            referencedColumns: ["id"]
+            foreignKeyName: "jmdict_gloss_sense_id_fkey";
+            columns: ["sense_id"];
+            isOneToOne: false;
+            referencedRelation: "jmdict_sense";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       jmdict_kana: {
         Row: {
-          applies_to_kanji: string[] | null
-          common: boolean
-          id: string
-          tags: string[]
-          text: string
-          word_id: number
-        }
+          applies_to_kanji: string[] | null;
+          common: boolean;
+          id: string;
+          tags: string[];
+          text: string;
+          word_id: number;
+        };
         Insert: {
-          applies_to_kanji?: string[] | null
-          common: boolean
-          id?: string
-          tags: string[]
-          text: string
-          word_id?: number
-        }
+          applies_to_kanji?: string[] | null;
+          common: boolean;
+          id?: string;
+          tags: string[];
+          text: string;
+          word_id?: number;
+        };
         Update: {
-          applies_to_kanji?: string[] | null
-          common?: boolean
-          id?: string
-          tags?: string[]
-          text?: string
-          word_id?: number
-        }
+          applies_to_kanji?: string[] | null;
+          common?: boolean;
+          id?: string;
+          tags?: string[];
+          text?: string;
+          word_id?: number;
+        };
         Relationships: [
           {
-            foreignKeyName: "jmdict_kana_word_id_fkey"
-            columns: ["word_id"]
-            isOneToOne: false
-            referencedRelation: "jmdict_word"
-            referencedColumns: ["id"]
+            foreignKeyName: "jmdict_kana_word_id_fkey";
+            columns: ["word_id"];
+            isOneToOne: false;
+            referencedRelation: "jmdict_word";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       jmdict_kanji: {
         Row: {
-          common: boolean
-          id: string
-          tags: string[]
-          text: string
-          word_id: number
-        }
+          common: boolean;
+          id: string;
+          tags: string[];
+          text: string;
+          word_id: number;
+        };
         Insert: {
-          common: boolean
-          id?: string
-          tags: string[]
-          text: string
-          word_id?: number
-        }
+          common: boolean;
+          id?: string;
+          tags: string[];
+          text: string;
+          word_id?: number;
+        };
         Update: {
-          common?: boolean
-          id?: string
-          tags?: string[]
-          text?: string
-          word_id?: number
-        }
+          common?: boolean;
+          id?: string;
+          tags?: string[];
+          text?: string;
+          word_id?: number;
+        };
         Relationships: [
           {
-            foreignKeyName: "jmdict_kanji_word_id_fkey"
-            columns: ["word_id"]
-            isOneToOne: false
-            referencedRelation: "jmdict_word"
-            referencedColumns: ["id"]
+            foreignKeyName: "jmdict_kanji_word_id_fkey";
+            columns: ["word_id"];
+            isOneToOne: false;
+            referencedRelation: "jmdict_word";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       jmdict_sense: {
         Row: {
-          antonym: Json
-          applies_to_kana: string[] | null
-          applies_to_kanji: string[] | null
-          dialect: string[]
-          field: string[]
-          id: string
-          info: string[]
-          language_source: Json | null
-          misc: string[]
-          part_of_speech: string[] | null
-          related: Json
-          word_id: number
-        }
+          antonym: Json;
+          applies_to_kana: string[] | null;
+          applies_to_kanji: string[] | null;
+          dialect: string[];
+          field: string[];
+          id: string;
+          info: string[];
+          language_source: Json | null;
+          misc: string[];
+          part_of_speech: string[] | null;
+          related: Json;
+          word_id: number;
+        };
         Insert: {
-          antonym: Json
-          applies_to_kana?: string[] | null
-          applies_to_kanji?: string[] | null
-          dialect: string[]
-          field: string[]
-          id?: string
-          info: string[]
-          language_source?: Json | null
-          misc: string[]
-          part_of_speech?: string[] | null
-          related: Json
-          word_id?: number
-        }
+          antonym: Json;
+          applies_to_kana?: string[] | null;
+          applies_to_kanji?: string[] | null;
+          dialect: string[];
+          field: string[];
+          id?: string;
+          info: string[];
+          language_source?: Json | null;
+          misc: string[];
+          part_of_speech?: string[] | null;
+          related: Json;
+          word_id?: number;
+        };
         Update: {
-          antonym?: Json
-          applies_to_kana?: string[] | null
-          applies_to_kanji?: string[] | null
-          dialect?: string[]
-          field?: string[]
-          id?: string
-          info?: string[]
-          language_source?: Json | null
-          misc?: string[]
-          part_of_speech?: string[] | null
-          related?: Json
-          word_id?: number
-        }
+          antonym?: Json;
+          applies_to_kana?: string[] | null;
+          applies_to_kanji?: string[] | null;
+          dialect?: string[];
+          field?: string[];
+          id?: string;
+          info?: string[];
+          language_source?: Json | null;
+          misc?: string[];
+          part_of_speech?: string[] | null;
+          related?: Json;
+          word_id?: number;
+        };
         Relationships: [
           {
-            foreignKeyName: "jmdict_sense_word_id_fkey"
-            columns: ["word_id"]
-            isOneToOne: false
-            referencedRelation: "jmdict_word"
-            referencedColumns: ["id"]
+            foreignKeyName: "jmdict_sense_word_id_fkey";
+            columns: ["word_id"];
+            isOneToOne: false;
+            referencedRelation: "jmdict_word";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       jmdict_word: {
         Row: {
-          id: number
-        }
+          id: number;
+        };
         Insert: {
-          id: number
-        }
+          id: number;
+        };
         Update: {
-          id?: number
-        }
-        Relationships: []
-      }
-    }
+          id?: number;
+        };
+        Relationships: [];
+      };
+    };
     Views: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Functions: {
       get_jmdict_entries: {
         Args: {
-          gloss_input?: string
-          kanji_input?: string
-          hiragana_input?: string
-          katakana_input?: string
-        }
+          gloss_input?: string;
+          kanji_input?: string;
+          hiragana_input?: string;
+          katakana_input?: string;
+        };
         Returns: {
-          id: number
-          senses: Json
-          kana: Json
-          kanji: Json
-        }[]
-      }
-    }
+          id: number;
+          senses: Json;
+          kana: Json;
+          kanji: Json;
+        }[];
+      };
+    };
     Enums: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     CompositeTypes: {
-      [_ in never]: never
-    }
-  }
-}
+      [_ in never]: never;
+    };
+  };
+};
 
-type PublicSchema = Database[Extract<keyof Database, "public">]
+type PublicSchema = Database[Extract<keyof Database, "public">];
 
 export type Tables<
   PublicTableNameOrOptions extends
@@ -215,7 +215,7 @@ export type Tables<
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
       Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
-      Row: infer R
+      Row: infer R;
     }
     ? R
     : never
@@ -223,11 +223,11 @@ export type Tables<
         PublicSchema["Views"])
     ? (PublicSchema["Tables"] &
         PublicSchema["Views"])[PublicTableNameOrOptions] extends {
-        Row: infer R
+        Row: infer R;
       }
       ? R
       : never
-    : never
+    : never;
 
 export type TablesInsert<
   PublicTableNameOrOptions extends
@@ -238,17 +238,17 @@ export type TablesInsert<
     : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Insert: infer I
+      Insert: infer I;
     }
     ? I
     : never
   : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
     ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
-        Insert: infer I
+        Insert: infer I;
       }
       ? I
       : never
-    : never
+    : never;
 
 export type TablesUpdate<
   PublicTableNameOrOptions extends
@@ -259,17 +259,17 @@ export type TablesUpdate<
     : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Update: infer U
+      Update: infer U;
     }
     ? U
     : never
   : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
     ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
-        Update: infer U
+        Update: infer U;
       }
       ? U
       : never
-    : never
+    : never;
 
 export type Enums<
   PublicEnumNameOrOptions extends
@@ -282,4 +282,4 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
-    : never
+    : never;

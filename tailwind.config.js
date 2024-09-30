@@ -1,39 +1,38 @@
 /** @type {import('tailwindcss').Config} */
-import daisyui from "daisyui"
+import daisyui from "daisyui";
 
 export default {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
+  content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
     extend: {},
   },
   plugins: [daisyui],
   colors: {
-    'text': 'var(--text)',
-    'background': 'var(--background)',
-    'primary': 'var(--primary)',
-    'secondary': 'var(--secondary)',
-    'accent': 'var(--accent)',
-   },
+    text: "var(--text)",
+    background: "var(--background)",
+    primary: "var(--primary)",
+    secondary: "var(--secondary)",
+    accent: "var(--accent)",
+  },
 
-   daisyui: {
+  daisyui: {
     themes: [
       {
         light: {
-          "primary": "#cd3232",
-          "secondary": "#e84a67",
-          "accent": "#f25945",
-          "neutral": "#2c2020",
+          primary: "#cd3232",
+          secondary: "#e84a67",
+          accent: "#f25945",
+          neutral: "#2c2020",
           "base-100": "#DDD0D0",
         },
         dark: {
-          "primary": "#cd3232",
-          "secondary": "#b51734",
-          "accent": "#ba210d",
-          "neutral": "#2c2020",
+          primary: "#cd3232",
+          secondary: "#b51734",
+          accent: "#ba210d",
+          neutral: "#2c2020",
           "base-100": "#2f2222",
         },
       },
     ],
   },
-}
-
+};

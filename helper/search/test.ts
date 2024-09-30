@@ -24,7 +24,7 @@ async function loadData() {
   }
 
   // Pretty print to console
-  
+
   console.log(JSON.stringify(data, null, 2));
 
   const endTime = Date.now();

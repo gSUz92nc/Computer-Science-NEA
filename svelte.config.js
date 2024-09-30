@@ -22,7 +22,7 @@ const config = {
       },
     }),
   },
-  preprocess: vitePreprocess()
+  preprocess: vitePreprocess(),
 };
 
 export default config;

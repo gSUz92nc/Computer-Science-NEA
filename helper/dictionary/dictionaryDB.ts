@@ -1,4 +1,3 @@
-
 // Data source: https://github.com/scriptin/jmdict-simplified/releases/
 
 // Import the Supabase client
@@ -49,7 +48,7 @@ async function insertData() {
           tags: kana.tags,
           applies_to_kanji: kana.applies_to_kanji,
           text: kana.text,
-        }))
+        })),
       );
 
       const { error: kana_error } = await supabase
@@ -67,7 +66,7 @@ async function insertData() {
           common: kanji.common,
           text: kanji.text,
           tags: kanji.tags,
-        }))
+        })),
       );
 
       const { error: kanji_error } = await supabase
@@ -92,7 +91,7 @@ async function insertData() {
           misc: currentSense.misc,
           info: currentSense.info,
           language_source: currentSense.language_source,
-        }))
+        })),
       );
 
       const { data: sense_data, error: sense_error } = await supabase
@@ -113,8 +112,8 @@ async function insertData() {
       const glossInserts: any[] = [];
 
       sense_data.forEach((sense) => {
-        const word = batchWords.find((word) =>
-          word.id == sense.word_id.toString()
+        const word = batchWords.find(
+          (word) => word.id == sense.word_id.toString(),
         );
         if (!word) {
           console.error(`Word not found for word_id: ${sense.word_id}`);
@@ -150,7 +149,7 @@ async function insertData() {
 
       console.log(`Elapsed Time: ${elapsedTime.toFixed(2)} seconds`);
       console.log(
-        `Estimated Remaining Time: ${(remainingTime / 60).toFixed(2)} minutes`
+        `Estimated Remaining Time: ${(remainingTime / 60).toFixed(2)} minutes`,
       );
     }
   } catch (error) {
