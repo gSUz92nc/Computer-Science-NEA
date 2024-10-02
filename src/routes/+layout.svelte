@@ -1,20 +1,9 @@
 <script lang="ts">
 	import '../app.css';
 	import Dictionary from '$lib/dictionary.svelte';
-	import { onMount } from 'svelte';
 
 	export let data;
 	const { supabase } = data;
-
-	let isDictionaryOpen = false;
-
-	function openDictionary() {
-		isDictionaryOpen = true;
-	}
-
-	function closeDictionary() {
-		isDictionaryOpen = false;
-	}
 </script>
 
 <Dictionary {supabase} />
@@ -58,7 +47,12 @@
 					</svg>
 					<span class="btm-nav-label">Map</span>
 				</button>
-				<button on:click={openDictionary}>
+				<button
+					on:click={() => {
+						// @ts-ignore
+						document.getElementById('dictionary').showModal();
+					}}
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="currentColor"
@@ -156,7 +150,10 @@
 			<li>
 				<button
 					class="h-11 text-lg font-semibold"
-					on:click={openDictionary}
+					on:click={() => {
+						// @ts-ignore
+						document.getElementById('dictionary').showModal();
+					}}
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="16"

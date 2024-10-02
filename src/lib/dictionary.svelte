@@ -1,23 +1,40 @@
 <!-- src/components/Dictionary.svelte -->
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import { toKatakana, toHiragana, isJapanese } from 'wanakana';
-	import { onMount } from 'svelte';
+	import { toKatakana, toHiragana } from 'wanakana';
 	import type { SupabaseClient } from '@supabase/supabase-js';
+	import { onMount } from 'svelte';
+	import pkg from 'lodash';
+	const { debounce } = pkg;
 
 	export let supabase: SupabaseClient;
-	export let isOpen = false;
 
 	let dictionaryEntries: any[] = [];
 	let dictionarySearchValue = 'nuclear deterrent force';
 	let searching = false;
-	const dictionaryModal = browser
-		? (document?.getElementById('dictionary') as HTMLDialogElement)
-		: null;
 
 	$: fetchDictionary(dictionarySearchValue);
 
-	async function fetchDictionary(searchTerm: string) {
+	let counter = 0;
+
+	$: console.log(counter);
+
+	let lastRequestTimestamp = 0;
+	let pendingRequest: AbortController | null = null;
+
+	const fetchDictionaryDebounced = debounce(async (searchTerm: string) => {
+		const currentTimestamp = Date.now();
+		if (currentTimestamp - lastRequestTimestamp < 200) {
+			if (pendingRequest) {
+				pendingRequest.abort();
+			}
+		}
+		lastRequestTimestamp = currentTimestamp;
+
+		const controller = new AbortController();
+		pendingRequest = controller;
+
+		counter++;
+
 		if (searchTerm === '') {
 			dictionaryEntries = [];
 			return;
@@ -25,22 +42,83 @@
 
 		const kata = toKatakana(searchTerm);
 		const hira = toHiragana(searchTerm);
-		let english: boolean = isJapanese(searchTerm);
 		searching = true;
 
-		const { data, error } = await supabase.rpc('get_jmdict_entries', {
-			gloss_input: searchTerm,
-			kanji_input: searchTerm,
-			hiragana_input: hira,
-			katakana_input: kata,
+		try {
+			const { data, error } = await supabase.rpc('get_jmdict_entries', {
+				gloss_input: searchTerm,
+				kanji_input: searchTerm,
+				hiragana_input: hira,
+				katakana_input: kata,
+			});
+
+			if (error) {
+				console.error('Error fetching dictionary entries', error);
+			} else {
+				dictionaryEntries = reorderDictionaryEntries(data);
+				console.log(dictionaryEntries);
+			}
+		} catch (err) {
+			if ((err as Error).name === 'AbortError') {
+				console.log('Request aborted');
+			} else {
+				console.error('Error fetching dictionary entries', err);
+			}
+		} finally {
+			searching = false;
+			pendingRequest = null;
+		}
+	}, 200);
+
+	function reorderDictionaryEntries(entriesToBeReordered: any[]) {
+		// Sort dictionary by whether their one of their entry.kana[].common = true and then by whether one of their rentry.senses.glosses[].text is equal to the search term
+
+		entriesToBeReordered.sort((a, b) => {
+			const aCommon: boolean = a.kana.some(
+				(k: { common: boolean }) => k.common,
+			);
+			const bCommon: boolean = b.kana.some(
+				(k: { common: boolean }) => k.common,
+			);
+
+			if (aCommon && !bCommon) {
+				return -1;
+			} else if (!aCommon && bCommon) {
+				return 1;
+			} else {
+				const aGlosses: string[] = a.senses
+					.map((s: { glosses: { gloss: string }[] }) =>
+						s.glosses.map((g: { gloss: string }) => g.gloss),
+					)
+					.flat();
+				const bGlosses: string[] = b.senses
+					.map((s: { glosses: { gloss: string }[] }) =>
+						s.glosses.map((g: { gloss: string }) => g.gloss),
+					)
+					.flat();
+
+				const aGlossMatch: boolean = aGlosses.some((g: string) =>
+					g.includes(dictionarySearchValue),
+				);
+				const bGlossMatch: boolean = bGlosses.some((g: string) =>
+					g.includes(dictionarySearchValue),
+				);
+
+				if (aGlossMatch && !bGlossMatch) {
+					return -1;
+				} else if (!aGlossMatch && bGlossMatch) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
 		});
 
-		if (error) {
-			console.error('Error fetching dictionary entries', error);
-		} else {
-			dictionaryEntries = data;
-		}
-		searching = false;
+		return entriesToBeReordered;
+	}
+
+	async function fetchDictionary(searchTerm: string) {
+		fetchDictionaryDebounced(searchTerm);
 	}
 
 	function formatKanjiReadings(
@@ -62,53 +140,38 @@
 	}
 
 	function formatSenses(
-		glossEntries: [{ common: boolean; text: string }],
+		glossEntries: [{ common: boolean; glosses: { gloss: string }[] }],
 	): string {
 		glossEntries.sort((a, b) =>
 			a.common && !b.common ? -1 : !a.common && b.common ? 1 : 0,
 		);
+
 		return glossEntries
-			.map((entry, index) => `${index + 1}. "${entry.text}"`)
+			.map(
+				(entry, index) =>
+					`${index + 1}. "${entry.glosses.map((g) => g.gloss).join(', ')}"`,
+			)
 			.join(' ');
 	}
 
+	// onMount open the dicitonary dialog
 	onMount(() => {
-		if (isOpen) {
-			dictionaryModal?.showModal();
+		const dictionaryDialog = document.getElementById(
+			'dictionary',
+		) as HTMLDialogElement;
+		if (dictionaryDialog) {
+			dictionaryDialog.showModal();
+		} else {
+			console.error('Dictionary dialog element not found');
 		}
 	});
-
-	$: if (isOpen && dictionaryModal) {
-		dictionaryModal.showModal();
-	} else if (!isOpen && dictionaryModal) {
-		dictionaryModal.close();
-	}
 </script>
 
 <dialog id="dictionary" class="modal modal-bottom lg:modal-middle w-full">
 	<div class="modal-box min-h-[80vh] lg:min-h-[60vh]">
-		<form method="dialog">
-			<button
-				class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="16"
-					height="16"
-					fill="currentColor"
-					class="bi bi-x-lg"
-					viewBox="0 0 16 16"
-				>
-					<path
-						d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
-					/>
-				</svg>
-			</button>
-		</form>
 		<div class="join w-full">
 			<select class="select select-bordered join-item">
 				<option selected>All</option>
-				<option>Kanji</option>
 				<option>Words</option>
 			</select>
 			<div class="w-full">
@@ -122,10 +185,26 @@
 				</div>
 			</div>
 			<button
-				class="btn join-item"
+				class="btn rounded-l-none rounded-r-md mr-2"
 				on:click={() => fetchDictionary(dictionarySearchValue)}
 				>Search</button
 			>
+			<form method="dialog">
+				<button class="btn btn-md btn-circle btn-ghost">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						fill="currentColor"
+						class="bi bi-x-lg"
+						viewBox="0 0 16 16"
+					>
+						<path
+							d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+						/>
+					</svg>
+				</button>
+			</form>
 		</div>
 		{#if searching}
 			<div class="mt-2">
