@@ -1,43 +1,43 @@
 {
-	"name": "nea",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"format": "prettier --write .",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"gen-types": "npx supabase gen types --lang=typescript --project-id \"yrykfurvxgrvavxgbvbr\" --schema public > ./src/lib/database.types.ts"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.2.5",
-		"@sveltejs/adapter-cloudflare": "^4.7.2",
-		"@sveltejs/kit": "^2.6.1",
-		"@sveltejs/vite-plugin-svelte": "^3.1.2",
-		"@types/lodash": "^4.17.9",
-		"autoprefixer": "^10.4.20",
-		"daisyui": "^4.12.10",
-		"postcss": "^8.4.47",
-		"prettier": "^3.3.3",
-		"svelte": "^4.2.19",
-		"svelte-check": "^4.0.4",
-		"tailwindcss": "^3.4.13",
-		"tslib": "^2.7.0",
-		"typescript": "^5.6.2",
-		"vite": "^5.4.8"
-	},
-	"type": "module",
-	"dependencies": {
-		"@ai-sdk/anthropic": "0.0.50",
-		"@supabase/ssr": "0.5.1",
-		"@supabase/supabase-js": "^2.45.4",
-		"@types/bun": "^1.1.10",
-		"ai": "^3.4.7",
-		"lodash": "^4.17.21",
-		"prettier-plugin-svelte": "^3.2.7",
-		"supabase": "^1.200.3",
-		"wanakana": "^5.3.1"
-	}
+  "name": "nea",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "gen-types": "npx supabase gen types --lang=typescript --project-id \"yrykfurvxgrvavxgbvbr\" --schema public > ./src/lib/database.types.ts"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^3.2.5",
+    "@sveltejs/adapter-cloudflare": "^4.7.2",
+    "@sveltejs/kit": "^2.6.1",
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "@types/lodash": "^4.17.9",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.10",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "svelte": "^4.2.19",
+    "svelte-check": "^4.0.4",
+    "tailwindcss": "^3.4.13",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  },
+  "type": "module",
+  "dependencies": {
+    "@ai-sdk/anthropic": "0.0.50",
+    "@supabase/ssr": "0.5.1",
+    "@supabase/supabase-js": "^2.45.4",
+    "@types/bun": "^1.1.10",
+    "ai": "^3.4.7",
+    "lodash": "^4.17.21",
+    "prettier-plugin-svelte": "^3.2.7",
+    "supabase": "^1.200.3",
+    "wanakana": "^5.3.1"
+  }
 }
