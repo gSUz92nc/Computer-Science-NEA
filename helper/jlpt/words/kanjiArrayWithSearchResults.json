@@ -1,0 +1,3838 @@
+[
+  ["ああ", []],
+  ["会う", null],
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "秋",
+    [
+      {
+        "word_id": 1315840,
+        "common": false,
+        "text": "秋",
+        "tags": [],
+        "id": "f541bac5-1cf0-410d-b016-e05adc4e199f"
+      },
+      {
+        "word_id": 1332650,
+        "common": true,
+        "text": "秋",
+        "tags": [],
+        "id": "2867531f-4c95-43b3-9443-d51ea685fb2d"
+      }
+    ]
+  ],
+  [
+    "開く",
+    [
+      {
+        "word_id": 1202440,
+        "common": true,
+        "text": "開く",
+        "tags": [],
+        "id": "4ed558a9-c339-45c5-808f-2d6e11c8f88e"
+      },
+      {
+        "word_id": 1586270,
+        "common": true,
+        "text": "開く",
+        "tags": [],
+        "id": "a7edcd7e-cf3d-4c50-a1a3-bc24c93007b0"
+      }
+    ]
+  ],
+  [
+    "開ける",
+    [
+      {
+        "word_id": 1202450,
+        "common": true,
+        "text": "開ける",
+        "tags": [],
+        "id": "01d45bc8-9c9d-4501-96fc-33afa9ab7e3d"
+      },
+      {
+        "word_id": 1202460,
+        "common": true,
+        "text": "開ける",
+        "tags": [],
+        "id": "7a69170d-8009-4d8b-9d28-4ea39d3f8cd9"
+      },
+      {
+        "word_id": 2413170,
+        "common": false,
+        "text": "開ける",
+        "tags": [],
+        "id": "1a479ed5-8821-46eb-9dc6-12aa73598750"
+      }
+    ]
+  ],
+  null,
+  [
+    "朝",
+    [
+      {
+        "word_id": 1428280,
+        "common": true,
+        "text": "朝",
+        "tags": [],
+        "id": "eadb5c67-c4c3-4596-911c-bbcf62d40b8c"
+      },
+      {
+        "word_id": 1428285,
+        "common": false,
+        "text": "朝",
+        "tags": [],
+        "id": "d3ac3214-a4aa-471f-b984-2877e79e000c"
+      },
+      {
+        "word_id": 2857350,
+        "common": false,
+        "text": "朝",
+        "tags": [],
+        "id": "d4bcb840-5992-4a3a-a9f0-77caf3ca51d3"
+      }
+    ]
+  ],
+  null,
+  null,
+  ["足; 脚", []],
+  null,
+  null,
+  [
+    "遊ぶ",
+    [
+      {
+        "word_id": 1542160,
+        "common": true,
+        "text": "遊ぶ",
+        "tags": [],
+        "id": "efb213f8-cec6-48c2-a440-d30667e05aa0"
+      },
+      {
+        "word_id": 2476100,
+        "common": false,
+        "text": "遊ぶ",
+        "tags": [],
+        "id": "40d9368c-18c1-41ef-acb8-339bc644868d"
+      }
+    ]
+  ],
+  null,
+  [
+    "頭",
+    [
+      {
+        "word_id": 1450690,
+        "common": true,
+        "text": "頭",
+        "tags": [],
+        "id": "36f64e84-0701-4cd6-9775-7078cd386e13"
+      },
+      {
+        "word_id": 1582310,
+        "common": true,
+        "text": "頭",
+        "tags": [],
+        "id": "b452ccf5-e2fc-494a-bd9c-2b8839588860"
+      },
+      {
+        "word_id": 2252670,
+        "common": false,
+        "text": "頭",
+        "tags": [],
+        "id": "8f3fe8ab-1732-47ec-b6be-76759a72ea56"
+      },
+      {
+        "word_id": 2252700,
+        "common": false,
+        "text": "頭",
+        "tags": [],
+        "id": "dac4839f-31b0-4f36-8be1-4d50ecc2ab2f"
+      },
+      {
+        "word_id": 2791490,
+        "common": false,
+        "text": "頭",
+        "tags": [],
+        "id": "17a69aa0-da97-4fac-b2ca-77b4ff3b06c6"
+      },
+      {
+        "word_id": 2791510,
+        "common": false,
+        "text": "頭",
+        "tags": [],
+        "id": "6af4eb11-4914-41e8-abf0-b9c2629e7706"
+      },
+      {
+        "word_id": 2843246,
+        "common": false,
+        "text": "頭",
+        "tags": [],
+        "id": "798233f2-c129-4a3c-88fc-f2eae56ed9a9"
+      },
+      {
+        "word_id": 2856438,
+        "common": false,
+        "text": "頭",
+        "tags": [],
+        "id": "ddd66d24-278f-498a-9e72-df70bc53fbac"
+      },
+      {
+        "word_id": 2856439,
+        "common": false,
+        "text": "頭",
+        "tags": [],
+        "id": "f32f2417-5671-45ba-acd0-9d6ee913124a"
+      },
+      {
+        "word_id": 2856440,
+        "common": false,
+        "text": "頭",
+        "tags": [],
+        "id": "39c79b45-716b-49e6-8d07-3f86bcf32729"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "後",
+    [
+      {
+        "word_id": 1269320,
+        "common": true,
+        "text": "後",
+        "tags": [],
+        "id": "2b696797-907c-437b-b4b6-566ca1484aec"
+      },
+      {
+        "word_id": 1269330,
+        "common": true,
+        "text": "後",
+        "tags": [],
+        "id": "dec95429-e148-456b-893c-53df0d17069f"
+      },
+      {
+        "word_id": 1269410,
+        "common": false,
+        "text": "後",
+        "tags": ["io"],
+        "id": "62dd541b-4779-4e04-9111-99fce13fd4b1"
+      },
+      {
+        "word_id": 1358760,
+        "common": false,
+        "text": "後",
+        "tags": [],
+        "id": "ac798883-bec1-47fc-920d-2eec1ef07ddd"
+      },
+      {
+        "word_id": 2147630,
+        "common": true,
+        "text": "後",
+        "tags": [],
+        "id": "0942bac7-fc34-4125-9773-132d62efcb70"
+      },
+      {
+        "word_id": 2862495,
+        "common": false,
+        "text": "後",
+        "tags": [],
+        "id": "4ad80832-3109-4039-b1fd-8f576dffefdf"
+      }
+    ]
+  ],
+  ["あなた", []],
+  [
+    "兄",
+    [
+      {
+        "word_id": 1249900,
+        "common": true,
+        "text": "兄",
+        "tags": [],
+        "id": "378b073f-d179-40e3-a66e-7663f17c1e99"
+      },
+      {
+        "word_id": 2200990,
+        "common": false,
+        "text": "兄",
+        "tags": [],
+        "id": "fb2b2a37-7d24-4f1b-91e8-00beccb4979c"
+      },
+      {
+        "word_id": 2254970,
+        "common": false,
+        "text": "兄",
+        "tags": [],
+        "id": "b538d1eb-753e-4c83-a435-2c9cfde8185b"
+      },
+      {
+        "word_id": 2712010,
+        "common": false,
+        "text": "兄",
+        "tags": [],
+        "id": "b39a331d-6ffb-4a61-97b0-8e269ed575ef"
+      }
+    ]
+  ],
+  [
+    "姉",
+    [
+      {
+        "word_id": 1307630,
+        "common": true,
+        "text": "姉",
+        "tags": [],
+        "id": "4e29531b-0ec0-4c5c-a33a-0869c408fe5c"
+      },
+      {
+        "word_id": 2252800,
+        "common": false,
+        "text": "姉",
+        "tags": [],
+        "id": "b04f9cf8-30b7-455b-abb9-b56a90cbc1fc"
+      },
+      {
+        "word_id": 2266990,
+        "common": false,
+        "text": "姉",
+        "tags": [],
+        "id": "12339470-01f4-4404-97de-36dd75b31715"
+      }
+    ]
+  ],
+  null,
+  ["あの", []],
+  null,
+  null,
+  [
+    "甘い",
+    [
+      {
+        "word_id": 1213400,
+        "common": true,
+        "text": "甘い",
+        "tags": [],
+        "id": "121fa55c-0079-4e23-84b9-507e58b326f7"
+      },
+      {
+        "word_id": 1310460,
+        "common": false,
+        "text": "甘い",
+        "tags": [],
+        "id": "be93141a-3c1b-4638-991e-2d32fc0fbac2"
+      }
+    ]
+  ],
+  null,
+  null,
+  [
+    "飴",
+    [
+      {
+        "word_id": 1153520,
+        "common": true,
+        "text": "飴",
+        "tags": [],
+        "id": "ec03390c-8af8-4054-b036-4cf7da21d1e9"
+      },
+      {
+        "word_id": 2703280,
+        "common": false,
+        "text": "飴",
+        "tags": [],
+        "id": "4e4d5b0e-82d9-4eaa-a219-67975879084b"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  ["歩く", null],
+  ["あれ", []],
+  ["いい; よい", []],
+  null,
+  null,
+  [
+    "家",
+    [
+      {
+        "word_id": 1191730,
+        "common": true,
+        "text": "家",
+        "tags": [],
+        "id": "18198d71-1a6f-42a8-94d3-685f80f5beeb"
+      },
+      {
+        "word_id": 1191740,
+        "common": true,
+        "text": "家",
+        "tags": [],
+        "id": "eff72808-bd14-40d9-960e-453e6aa4ca84"
+      },
+      {
+        "word_id": 1191750,
+        "common": true,
+        "text": "家",
+        "tags": [],
+        "id": "7ac249c6-3690-4a10-892a-aa7278f28755"
+      },
+      {
+        "word_id": 1457730,
+        "common": false,
+        "text": "家",
+        "tags": ["sK"],
+        "id": "79ef3ba0-e720-4775-8177-08887ef2cf8b"
+      },
+      {
+        "word_id": 2082160,
+        "common": false,
+        "text": "家",
+        "tags": [],
+        "id": "aec68dec-b5f7-4194-8da5-1838bb6f6c0f"
+      },
+      {
+        "word_id": 2220280,
+        "common": false,
+        "text": "家",
+        "tags": [],
+        "id": "4c8aaad4-1875-42cb-97ae-282e938d218a"
+      },
+      {
+        "word_id": 2220300,
+        "common": false,
+        "text": "家",
+        "tags": [],
+        "id": "fc8aec05-2b95-41de-a6d6-dde3374e0354"
+      },
+      {
+        "word_id": 2858378,
+        "common": false,
+        "text": "家",
+        "tags": [],
+        "id": "8d3184e5-6235-4c77-93f7-9605f44dd193"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  ["池", null],
+  null,
+  [
+    "椅子",
+    [
+      {
+        "word_id": 1157070,
+        "common": true,
+        "text": "椅子",
+        "tags": [],
+        "id": "e83ccceb-9cdf-443f-b654-0826f7043735"
+      },
+      {
+        "word_id": 1563470,
+        "common": false,
+        "text": "椅子",
+        "tags": [],
+        "id": "b7874992-2e2e-4bce-93db-07567032e5b4"
+      }
+    ]
+  ],
+  [
+    "忙しい",
+    [
+      {
+        "word_id": 1519290,
+        "common": true,
+        "text": "忙しい",
+        "tags": [],
+        "id": "068744ba-689c-4139-87c0-bda26e0b08d9"
+      },
+      {
+        "word_id": 2835296,
+        "common": false,
+        "text": "忙しい",
+        "tags": [],
+        "id": "27bdc8f3-f91e-4764-b20b-c139a8b2149a"
+      }
+    ]
+  ],
+  null,
+  [
+    "一",
+    [
+      {
+        "word_id": 1160790,
+        "common": true,
+        "text": "一",
+        "tags": [],
+        "id": "7874e169-14e9-46b2-bc15-f7132d677136"
+      },
+      {
+        "word_id": 1160820,
+        "common": false,
+        "text": "一",
+        "tags": ["io"],
+        "id": "591cafbe-f2f1-4d4c-8ac1-2d5d55950664"
+      },
+      {
+        "word_id": 2747940,
+        "common": false,
+        "text": "一",
+        "tags": [],
+        "id": "1f24e4d7-7271-47a0-a2ac-fb1e3bf8ca3d"
+      },
+      {
+        "word_id": 2821440,
+        "common": false,
+        "text": "一",
+        "tags": [],
+        "id": "e0af409c-c37c-4688-b92a-c8045d105ce8"
+      },
+      {
+        "word_id": 2821500,
+        "common": true,
+        "text": "一",
+        "tags": [],
+        "id": "a8985474-d372-4255-aeb2-b307d7bedd71"
+      },
+      {
+        "word_id": 2843147,
+        "common": false,
+        "text": "一",
+        "tags": [],
+        "id": "a76b9e4e-be58-4844-89e7-65cd8eb4ac78"
+      }
+    ]
+  ],
+  [
+    "一日",
+    [
+      {
+        "word_id": 1576260,
+        "common": true,
+        "text": "一日",
+        "tags": [],
+        "id": "0893c36a-424a-4c1b-a596-9dde2d6a7fcd"
+      },
+      {
+        "word_id": 2225030,
+        "common": false,
+        "text": "一日",
+        "tags": [],
+        "id": "cca79e2b-850f-4728-bf0f-7d077352dfee"
+      },
+      {
+        "word_id": 2225040,
+        "common": true,
+        "text": "一日",
+        "tags": [],
+        "id": "b10f62d5-2c25-4418-9227-743c8342d6b6"
+      },
+      {
+        "word_id": 2852123,
+        "common": false,
+        "text": "一日",
+        "tags": [],
+        "id": "f693102c-4fae-4f8e-847c-e1783f6b3d3f"
+      }
+    ]
+  ],
+  [
+    "一番",
+    [
+      {
+        "word_id": 1165970,
+        "common": true,
+        "text": "一番",
+        "tags": [],
+        "id": "ce0dc934-df7d-4519-8df5-fd9fcd94b1cc"
+      },
+      {
+        "word_id": 1165980,
+        "common": false,
+        "text": "一番",
+        "tags": [],
+        "id": "22ea1c8f-2b03-4045-a192-103f9c9baa75"
+      }
+    ]
+  ],
+  ["いつ", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "今",
+    [
+      {
+        "word_id": 1288850,
+        "common": true,
+        "text": "今",
+        "tags": [],
+        "id": "fbe653b4-aba3-4049-8e74-fb97d1d9535a"
+      },
+      {
+        "word_id": 1288860,
+        "common": false,
+        "text": "今",
+        "tags": [],
+        "id": "cadcfdf7-8c1b-49bb-90ac-180d24032ac7"
+      }
+    ]
+  ],
+  null,
+  [
+    "妹",
+    [
+      {
+        "word_id": 1524590,
+        "common": true,
+        "text": "妹",
+        "tags": [],
+        "id": "27d5c6c3-ee13-4b14-a145-947717a85d43"
+      },
+      {
+        "word_id": 2752050,
+        "common": false,
+        "text": "妹",
+        "tags": [],
+        "id": "4837dfba-f8e4-46fe-a617-8c1b814ce4a2"
+      }
+    ]
+  ],
+  null,
+  null,
+  [
+    "居る",
+    [
+      {
+        "word_id": 1577980,
+        "common": true,
+        "text": "居る",
+        "tags": [],
+        "id": "321e3697-91a2-4c8b-bd6f-834f3d81bbcd"
+      },
+      {
+        "word_id": 1577985,
+        "common": true,
+        "text": "居る",
+        "tags": [],
+        "id": "2f8e18a0-2ee2-484d-9c55-b70b89becb58"
+      }
+    ]
+  ],
+  null,
+  ["入れる", null],
+  [
+    "色",
+    [
+      {
+        "word_id": 1357600,
+        "common": true,
+        "text": "色",
+        "tags": [],
+        "id": "7612cfdd-8dd2-47f8-865e-b7b3c107bb6e"
+      },
+      {
+        "word_id": 2097830,
+        "common": false,
+        "text": "色",
+        "tags": [],
+        "id": "3faa92f8-ed4a-4e13-9dbb-ec20dfaea521"
+      },
+      {
+        "word_id": 2270420,
+        "common": false,
+        "text": "色",
+        "tags": [],
+        "id": "ff6fc828-54f3-4d8c-b301-4d8a8dd73cbb"
+      }
+    ]
+  ],
+  null,
+  [
+    "上",
+    [
+      {
+        "word_id": 1352130,
+        "common": true,
+        "text": "上",
+        "tags": [],
+        "id": "06894120-c952-4778-a005-e73f275f6987"
+      },
+      {
+        "word_id": 1352140,
+        "common": false,
+        "text": "上",
+        "tags": [],
+        "id": "321fdd5f-87ee-442f-a02f-d0b839602e1a"
+      },
+      {
+        "word_id": 1352150,
+        "common": true,
+        "text": "上",
+        "tags": [],
+        "id": "d434f2bd-49c6-4aec-bb45-f57ef11501ab"
+      },
+      {
+        "word_id": 1352170,
+        "common": true,
+        "text": "上",
+        "tags": [],
+        "id": "9ae7d2eb-12e5-4c8a-996c-b746ee1867cb"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  ["うち", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["～円", []],
+  null,
+  ["お～", []],
+  null,
+  null,
+  null,
+  null,
+  [
+    "大勢",
+    [
+      {
+        "word_id": 1414220,
+        "common": true,
+        "text": "大勢",
+        "tags": [],
+        "id": "567a0e90-8c6e-402d-b5c3-35df04db8b08"
+      },
+      {
+        "word_id": 1414230,
+        "common": true,
+        "text": "大勢",
+        "tags": [],
+        "id": "9a501de3-56f2-4442-a955-e8102a77ac9f"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["伯父; 叔父さん", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "弟",
+    [
+      {
+        "word_id": 1581930,
+        "common": true,
+        "text": "弟",
+        "tags": [],
+        "id": "4a18ab77-c8e3-4c5a-ad93-41f38f78f20f"
+      },
+      {
+        "word_id": 2837086,
+        "common": false,
+        "text": "弟",
+        "tags": [],
+        "id": "acdb2dab-d2de-4b85-83c4-6fe9742c91f8"
+      },
+      {
+        "word_id": 2837087,
+        "common": false,
+        "text": "弟",
+        "tags": [],
+        "id": "4cac323b-3e11-40d8-80dc-fab866d261cb"
+      }
+    ]
+  ],
+  [
+    "男",
+    [
+      {
+        "word_id": 1419990,
+        "common": true,
+        "text": "男",
+        "tags": [],
+        "id": "02fb9c57-ab1d-4fe3-8fe2-27b94e082862"
+      },
+      {
+        "word_id": 2742850,
+        "common": false,
+        "text": "男",
+        "tags": [],
+        "id": "eb19a1e1-b6d3-4c7e-9468-d66b070eb9ca"
+      },
+      {
+        "word_id": 2742870,
+        "common": false,
+        "text": "男",
+        "tags": [],
+        "id": "0a4f8ca7-bd4a-4034-8e11-610d876798ff"
+      },
+      {
+        "word_id": 2742890,
+        "common": false,
+        "text": "男",
+        "tags": [],
+        "id": "ffc173b8-b991-4428-9a70-94fa9fc2e500"
+      },
+      {
+        "word_id": 2843485,
+        "common": false,
+        "text": "男",
+        "tags": [],
+        "id": "4bcb9021-c494-4f0b-b4b0-8060d876bce5"
+      }
+    ]
+  ],
+  [
+    "男の子",
+    [
+      {
+        "word_id": 1420010,
+        "common": true,
+        "text": "男の子",
+        "tags": [],
+        "id": "373b38b7-c30c-46ea-ba5c-2c7b7dd9d1da"
+      },
+      {
+        "word_id": 2742850,
+        "common": false,
+        "text": "男の子",
+        "tags": [],
+        "id": "f648d946-a280-45c3-90a1-9fd108b8c828"
+      }
+    ]
+  ],
+  ["一昨日", null],
+  null,
+  [
+    "大人",
+    [
+      {
+        "word_id": 1414170,
+        "common": true,
+        "text": "大人",
+        "tags": [],
+        "id": "31b85722-29c8-489b-b2a3-65c39bc10add"
+      },
+      {
+        "word_id": 1785170,
+        "common": false,
+        "text": "大人",
+        "tags": [],
+        "id": "b004db11-4729-4a85-8c9b-18096f8d3a2f"
+      },
+      {
+        "word_id": 2860067,
+        "common": false,
+        "text": "大人",
+        "tags": [],
+        "id": "4c27b54e-31c2-4656-b401-f0479c436eb2"
+      }
+    ]
+  ],
+  null,
+  ["同じ", null],
+  null,
+  ["お姉さん", null],
+  ["伯母さん; 叔母さん", null],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["降りる", null],
+  ["終る", null],
+  null,
+  [
+    "女",
+    [
+      {
+        "word_id": 1344930,
+        "common": true,
+        "text": "女",
+        "tags": [],
+        "id": "814a2817-af8f-4c32-800e-40f31182f250"
+      },
+      {
+        "word_id": 1344940,
+        "common": false,
+        "text": "女",
+        "tags": [],
+        "id": "4f8eff46-c4e6-4d8f-8caf-34321eda8c88"
+      },
+      {
+        "word_id": 2742880,
+        "common": false,
+        "text": "女",
+        "tags": [],
+        "id": "41f1bdc0-cb43-428b-81a5-31820fd1aa44"
+      },
+      {
+        "word_id": 2860163,
+        "common": false,
+        "text": "女",
+        "tags": [],
+        "id": "e6bf4888-187b-45d9-beec-b4e1c145b519"
+      }
+    ]
+  ],
+  [
+    "女の子",
+    [
+      {
+        "word_id": 1344970,
+        "common": true,
+        "text": "女の子",
+        "tags": [],
+        "id": "9cb0b239-81a5-4f5a-a5cf-fd53dbf5f9d9"
+      },
+      {
+        "word_id": 2742860,
+        "common": false,
+        "text": "女の子",
+        "tags": [],
+        "id": "7aae89c6-4ddf-4019-84af-edb8b0812ad6"
+      }
+    ]
+  ],
+  ["～回", []],
+  ["～階", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "顔",
+    [
+      {
+        "word_id": 1217730,
+        "common": true,
+        "text": "顔",
+        "tags": [],
+        "id": "536ca1be-3b73-4442-b097-fa3a74c6330b"
+      },
+      {
+        "word_id": 2221310,
+        "common": false,
+        "text": "顔",
+        "tags": [],
+        "id": "11e090ca-ff9d-4e61-b022-c46a49c0450c"
+      }
+    ]
+  ],
+  ["かかる", []],
+  [
+    "鍵",
+    [
+      {
+        "word_id": 1260490,
+        "common": true,
+        "text": "鍵",
+        "tags": [],
+        "id": "b841a798-294d-4960-b944-3f9ca0487a20"
+      },
+      {
+        "word_id": 2247650,
+        "common": false,
+        "text": "鍵",
+        "tags": [],
+        "id": "db495b16-44d0-4dd1-a3c8-a8108ceb1bf6"
+      }
+    ]
+  ],
+  null,
+  [
+    "学生",
+    [
+      {
+        "word_id": 1206900,
+        "common": true,
+        "text": "学生",
+        "tags": [],
+        "id": "b97ee390-56a7-40fe-a63e-13623bc479e4"
+      },
+      {
+        "word_id": 2586260,
+        "common": false,
+        "text": "学生",
+        "tags": [],
+        "id": "4d6b71b2-52c3-4aa1-9e33-8922647dc8ba"
+      }
+    ]
+  ],
+  ["～か月", []],
+  null,
+  ["かける", []],
+  [
+    "傘",
+    [
+      {
+        "word_id": 1301940,
+        "common": true,
+        "text": "傘",
+        "tags": [],
+        "id": "2d202b79-3716-4b44-b85e-69c56664042a"
+      },
+      {
+        "word_id": 1774770,
+        "common": false,
+        "text": "傘",
+        "tags": [],
+        "id": "58378680-12a2-481d-8d14-3162067a83bc"
+      }
+    ]
+  ],
+  null,
+  [
+    "風",
+    [
+      {
+        "word_id": 1361130,
+        "common": false,
+        "text": "風",
+        "tags": [],
+        "id": "c6e93d9c-5369-4491-a14a-01635e0a4da1"
+      },
+      {
+        "word_id": 1499720,
+        "common": true,
+        "text": "風",
+        "tags": [],
+        "id": "c0f007df-0010-431c-89e7-9a307c09d4c1"
+      },
+      {
+        "word_id": 1499730,
+        "common": true,
+        "text": "風",
+        "tags": [],
+        "id": "affd1b7d-57d5-462c-8a81-89dc3b1867fd"
+      }
+    ]
+  ],
+  null,
+  [
+    "方",
+    [
+      {
+        "word_id": 1516925,
+        "common": true,
+        "text": "方",
+        "tags": [],
+        "id": "d74f9ea0-9ebc-4388-a62d-23c23d706d87"
+      },
+      {
+        "word_id": 1516930,
+        "common": true,
+        "text": "方",
+        "tags": [],
+        "id": "85cf4926-ffd4-4688-b3ee-a7b6ec2bfbd4"
+      },
+      {
+        "word_id": 1545790,
+        "common": false,
+        "text": "方",
+        "tags": ["rK"],
+        "id": "3dcfb257-45e1-460f-b1a8-7fd7c8b905ca"
+      },
+      {
+        "word_id": 2253290,
+        "common": false,
+        "text": "方",
+        "tags": [],
+        "id": "317bca21-6ff6-457e-82ce-3265af0fb0d3"
+      },
+      {
+        "word_id": 2254960,
+        "common": false,
+        "text": "方",
+        "tags": [],
+        "id": "78a9a9a7-9714-48a1-9ce9-cb8e093dddd8"
+      }
+    ]
+  ],
+  null,
+  null,
+  ["～月", []],
+  null,
+  null,
+  null,
+  [
+    "角",
+    [
+      {
+        "word_id": 1206100,
+        "common": true,
+        "text": "角",
+        "tags": [],
+        "id": "49af53db-c98b-46f4-bb68-8887ce7e6c50"
+      },
+      {
+        "word_id": 1206110,
+        "common": true,
+        "text": "角",
+        "tags": [],
+        "id": "6c807fbb-2182-40b8-a110-e2143d82fc90"
+      },
+      {
+        "word_id": 1206120,
+        "common": true,
+        "text": "角",
+        "tags": [],
+        "id": "95f6e4bd-a571-4b97-8770-f214a65ae31c"
+      },
+      {
+        "word_id": 1246440,
+        "common": false,
+        "text": "角",
+        "tags": [],
+        "id": "3db8cfac-937c-4ad8-8220-017ffa618e2b"
+      }
+    ]
+  ],
+  ["かばん", []],
+  [
+    "花瓶",
+    [
+      {
+        "word_id": 1194870,
+        "common": true,
+        "text": "花瓶",
+        "tags": [],
+        "id": "6ac4ba6d-d4d7-43df-9da8-8ff991d6c649"
+      },
+      {
+        "word_id": 2597850,
+        "common": false,
+        "text": "花瓶",
+        "tags": [],
+        "id": "71b5a3ba-d585-42d9-8ace-9dbc3f6aaa56"
+      }
+    ]
+  ],
+  null,
+  [
+    "紙",
+    [
+      {
+        "word_id": 1311530,
+        "common": true,
+        "text": "紙",
+        "tags": [],
+        "id": "fc47d8ef-1c6e-474f-9be7-4ebd3bc973fa"
+      },
+      {
+        "word_id": 2787310,
+        "common": false,
+        "text": "紙",
+        "tags": [],
+        "id": "94a366a1-bf9b-45c6-98a1-a9b56862bd0a"
+      }
+    ]
+  ],
+  null,
+  null,
+  [
+    "辛い",
+    [
+      {
+        "word_id": 1365850,
+        "common": true,
+        "text": "辛い",
+        "tags": [],
+        "id": "06b3bcef-eaec-4df1-a84c-20324a0ff673"
+      },
+      {
+        "word_id": 1365860,
+        "common": true,
+        "text": "辛い",
+        "tags": [],
+        "id": "92b0e575-8050-4e0c-bf9f-3f84e3b8ebbd"
+      },
+      {
+        "word_id": 2096480,
+        "common": false,
+        "text": "辛い",
+        "tags": [],
+        "id": "e261207f-2a3c-4a69-89cf-c1bbef16c324"
+      }
+    ]
+  ],
+  [
+    "体",
+    [
+      {
+        "word_id": 1409140,
+        "common": true,
+        "text": "体",
+        "tags": [],
+        "id": "eb216d99-b059-4682-9e7b-f901cec748d9"
+      },
+      {
+        "word_id": 1409150,
+        "common": false,
+        "text": "体",
+        "tags": [],
+        "id": "07ca6d3e-5a41-408c-ab70-773e86bbf50f"
+      },
+      {
+        "word_id": 1409160,
+        "common": false,
+        "text": "体",
+        "tags": [],
+        "id": "79d89a53-f38e-4917-bfa8-62d22ae4179c"
+      }
+    ]
+  ],
+  null,
+  ["～がる", []],
+  null,
+  null,
+  null,
+  ["川; 河", []],
+  ["～側", []],
+  null,
+  null,
+  [
+    "木",
+    [
+      {
+        "word_id": 1534520,
+        "common": true,
+        "text": "木",
+        "tags": [],
+        "id": "cb061395-1ea0-4ec4-871b-c5bdeb50c909"
+      },
+      {
+        "word_id": 2248570,
+        "common": false,
+        "text": "木",
+        "tags": [],
+        "id": "7d1eb7b9-c905-41be-a3b3-d14ac753178d"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  [
+    "北",
+    [
+      {
+        "word_id": 1520670,
+        "common": true,
+        "text": "北",
+        "tags": [],
+        "id": "6ebf6e89-2541-45fb-afc1-7d5946490958"
+      },
+      {
+        "word_id": 2833070,
+        "common": false,
+        "text": "北",
+        "tags": [],
+        "id": "42e773a0-4b14-4068-9da3-7ce884a43826"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  [
+    "切手",
+    [
+      {
+        "word_id": 1385070,
+        "common": true,
+        "text": "切手",
+        "tags": [],
+        "id": "99ae7b49-9fc0-42e2-93f4-fab89c4d2ef9"
+      },
+      {
+        "word_id": 1591920,
+        "common": false,
+        "text": "切手",
+        "tags": [],
+        "id": "65cb8e1f-22f0-4c25-83e3-12a59593d6a1"
+      }
+    ]
+  ],
+  null,
+  null,
+  [
+    "九",
+    [
+      {
+        "word_id": 1578150,
+        "common": true,
+        "text": "九",
+        "tags": [],
+        "id": "c7d7844a-d184-47f0-b427-9404f86e51e1"
+      },
+      {
+        "word_id": 2748010,
+        "common": false,
+        "text": "九",
+        "tags": [],
+        "id": "d8522844-b287-4415-a143-2b39899a17e7"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "嫌い",
+    [
+      {
+        "word_id": 1257240,
+        "common": true,
+        "text": "嫌い",
+        "tags": [],
+        "id": "28018460-d0a0-452b-8656-0aa2abc7ab84"
+      },
+      {
+        "word_id": 2796330,
+        "common": false,
+        "text": "嫌い",
+        "tags": [],
+        "id": "9f76ad23-1e19-4169-8591-7a96b6eaf19f"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  ["キロ; キログラム", []],
+  ["キロ; キロメートル", []],
+  null,
+  null,
+  [
+    "九",
+    [
+      {
+        "word_id": 1578150,
+        "common": true,
+        "text": "九",
+        "tags": [],
+        "id": "c7d7844a-d184-47f0-b427-9404f86e51e1"
+      },
+      {
+        "word_id": 2748010,
+        "common": false,
+        "text": "九",
+        "tags": [],
+        "id": "d8522844-b287-4415-a143-2b39899a17e7"
+      }
+    ]
+  ],
+  [
+    "薬",
+    [
+      {
+        "word_id": 1538160,
+        "common": true,
+        "text": "薬",
+        "tags": [],
+        "id": "965a2c5f-a7b2-4fc3-bd8b-b5190a28b999"
+      },
+      {
+        "word_id": 2220820,
+        "common": false,
+        "text": "薬",
+        "tags": [],
+        "id": "0810c372-7aea-4ac5-842a-d74a364eba00"
+      }
+    ]
+  ],
+  null,
+  null,
+  [
+    "口",
+    [
+      {
+        "word_id": 1275640,
+        "common": true,
+        "text": "口",
+        "tags": [],
+        "id": "266dc7aa-efeb-4136-bd8a-65b91300117e"
+      },
+      {
+        "word_id": 2271620,
+        "common": false,
+        "text": "口",
+        "tags": [],
+        "id": "f1af1c2e-abc4-494c-baa7-db37b0339d70"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["～くらい; ぐらい", []],
+  null,
+  null,
+  [
+    "来る",
+    [
+      {
+        "word_id": 1547720,
+        "common": true,
+        "text": "来る",
+        "tags": [],
+        "id": "0bb2df4b-f007-407f-a25b-a34dd2dcf962"
+      },
+      {
+        "word_id": 1591270,
+        "common": false,
+        "text": "来る",
+        "tags": [],
+        "id": "b4edf40c-5cb0-47f6-ac60-2bbb92a819de"
+      }
+    ]
+  ],
+  [
+    "車",
+    [
+      {
+        "word_id": 1323080,
+        "common": true,
+        "text": "車",
+        "tags": [],
+        "id": "c76ec571-941d-4b8b-86ca-4565e9005322"
+      },
+      {
+        "word_id": 2773260,
+        "common": false,
+        "text": "車",
+        "tags": [],
+        "id": "2b5a716d-a1bc-4984-8a48-31499df59e04"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["～個", []],
+  [
+    "五",
+    [
+      {
+        "word_id": 1268060,
+        "common": true,
+        "text": "五",
+        "tags": [],
+        "id": "32a03e6c-c61d-4b6e-99dc-51031af22aac"
+      },
+      {
+        "word_id": 2747970,
+        "common": false,
+        "text": "五",
+        "tags": [],
+        "id": "6d274d63-9afd-455a-aab5-539fcabf1313"
+      }
+    ]
+  ],
+  ["～語", []],
+  null,
+  null,
+  null,
+  null,
+  [
+    "声",
+    [
+      {
+        "word_id": 1380440,
+        "common": true,
+        "text": "声",
+        "tags": [],
+        "id": "f0fba0c2-b840-4c16-bf87-c2ff869ca427"
+      },
+      {
+        "word_id": 2843115,
+        "common": false,
+        "text": "声",
+        "tags": [],
+        "id": "11e7c7b1-d7c7-45a4-a452-2b21cf613f90"
+      }
+    ]
+  ],
+  ["コート", []],
+  null,
+  ["ここ", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["こっち", []],
+  ["コップ", []],
+  null,
+  null,
+  null,
+  ["この", []],
+  [
+    "御飯",
+    [
+      {
+        "word_id": 1270590,
+        "common": true,
+        "text": "御飯",
+        "tags": [],
+        "id": "793371cc-c868-4bfe-924b-c2f8363b5cdb"
+      },
+      {
+        "word_id": 2709060,
+        "common": false,
+        "text": "御飯",
+        "tags": [],
+        "id": "8fb85d66-040e-422c-8764-73a3044c2122"
+      },
+      {
+        "word_id": 2809540,
+        "common": false,
+        "text": "御飯",
+        "tags": [],
+        "id": "97604e1a-2cab-40c9-a2b2-a086e211e508"
+      }
+    ]
+  ],
+  ["コピーする", []],
+  null,
+  ["これ", []],
+  ["～ころ; ～ごろ", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["～歳", []],
+  null,
+  null,
+  [
+    "先",
+    [
+      {
+        "word_id": 1005180,
+        "common": false,
+        "text": "先",
+        "tags": ["rK"],
+        "id": "50b0a6db-71d2-45f9-87dd-b1de48d8afe9"
+      },
+      {
+        "word_id": 1387210,
+        "common": true,
+        "text": "先",
+        "tags": [],
+        "id": "2e2f82e4-7e2d-48fc-b331-47c35aff82aa"
+      },
+      {
+        "word_id": 1387220,
+        "common": false,
+        "text": "先",
+        "tags": [],
+        "id": "ee3ab50b-12bc-4c9b-88d4-4aa36e851b44"
+      }
+    ]
+  ],
+  null,
+  [
+    "作文",
+    [
+      {
+        "word_id": 1297960,
+        "common": true,
+        "text": "作文",
+        "tags": [],
+        "id": "3b5f29a2-4666-45ba-b3f3-954f1ed12eac"
+      },
+      {
+        "word_id": 2525510,
+        "common": false,
+        "text": "作文",
+        "tags": [],
+        "id": "36608a42-ebb9-4745-9b95-130f731a0643"
+      }
+    ]
+  ],
+  null,
+  ["～冊", []],
+  null,
+  null,
+  null,
+  null,
+  ["～さん", []],
+  [
+    "三",
+    [
+      {
+        "word_id": 1579350,
+        "common": true,
+        "text": "三",
+        "tags": [],
+        "id": "704bb758-820c-4934-b4fd-d675d786a9a8"
+      },
+      {
+        "word_id": 2747950,
+        "common": false,
+        "text": "三",
+        "tags": [],
+        "id": "6f9b28dd-af7a-4f10-8db4-5965d9fb75ca"
+      }
+    ]
+  ],
+  null,
+  [
+    "四",
+    [
+      {
+        "word_id": 1579470,
+        "common": true,
+        "text": "四",
+        "tags": [],
+        "id": "f30435bb-056c-4407-bdd0-2ef818541663"
+      },
+      {
+        "word_id": 2747960,
+        "common": false,
+        "text": "四",
+        "tags": [],
+        "id": "e41f36ef-5d6b-4e60-a3c5-23e0c9ceb11c"
+      }
+    ]
+  ],
+  ["～時", []],
+  [
+    "塩",
+    [
+      {
+        "word_id": 1576630,
+        "common": true,
+        "text": "塩",
+        "tags": [],
+        "id": "2809cecc-8b86-469a-86be-45138175f9fc"
+      },
+      {
+        "word_id": 2847901,
+        "common": false,
+        "text": "塩",
+        "tags": [],
+        "id": "ed4c3247-52de-41e2-8953-fe4e5c4258d5"
+      }
+    ]
+  ],
+  ["しかし", []],
+  null,
+  ["～時間", []],
+  null,
+  null,
+  null,
+  [
+    "下",
+    [
+      {
+        "word_id": 1184140,
+        "common": true,
+        "text": "下",
+        "tags": [],
+        "id": "84326fa0-1c07-48df-a26f-3450c9bc7a59"
+      },
+      {
+        "word_id": 2004390,
+        "common": true,
+        "text": "下",
+        "tags": [],
+        "id": "ba9ea468-6d88-456e-93e6-ce4b5d2187b4"
+      },
+      {
+        "word_id": 2080200,
+        "common": false,
+        "text": "下",
+        "tags": [],
+        "id": "626d6087-f3e3-45bd-a726-c771911b4525"
+      },
+      {
+        "word_id": 2080210,
+        "common": false,
+        "text": "下",
+        "tags": [],
+        "id": "d026ff65-25c6-4d49-818e-556591bb7ae9"
+      },
+      {
+        "word_id": 2159100,
+        "common": false,
+        "text": "下",
+        "tags": [],
+        "id": "4c6d3c08-e714-4698-b0ad-dad43aef41b9"
+      }
+    ]
+  ],
+  [
+    "七",
+    [
+      {
+        "word_id": 1319210,
+        "common": true,
+        "text": "七",
+        "tags": [],
+        "id": "be7e6d6e-aca1-4280-844d-1b36a3436925"
+      },
+      {
+        "word_id": 2747990,
+        "common": false,
+        "text": "七",
+        "tags": [],
+        "id": "d4b41211-3893-4759-9473-fd712d3d44b0"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["じゃ; じゃあ", []],
+  null,
+  null,
+  null,
+  [
+    "十",
+    [
+      {
+        "word_id": 1579840,
+        "common": true,
+        "text": "十",
+        "tags": [],
+        "id": "78325d15-58d9-4ade-9825-47b853441813"
+      },
+      {
+        "word_id": 2748020,
+        "common": false,
+        "text": "十",
+        "tags": [],
+        "id": "99737d7c-f7c0-4b65-863e-5cc6d55318e3"
+      }
+    ]
+  ],
+  ["～中", []],
+  ["～週間", []],
+  null,
+  null,
+  [
+    "上手",
+    [
+      {
+        "word_id": 1353320,
+        "common": true,
+        "text": "上手",
+        "tags": [],
+        "id": "bff95094-73c6-482b-b99c-02e9cb168c57"
+      },
+      {
+        "word_id": 1580400,
+        "common": false,
+        "text": "上手",
+        "tags": [],
+        "id": "c937391b-edce-46df-9716-b487d8c58cbb"
+      }
+    ]
+  ],
+  [
+    "丈夫",
+    [
+      {
+        "word_id": 1580480,
+        "common": true,
+        "text": "丈夫",
+        "tags": [],
+        "id": "0a943323-4dc9-4bd1-a035-9700db2d872f"
+      },
+      {
+        "word_id": 1580485,
+        "common": false,
+        "text": "丈夫",
+        "tags": [],
+        "id": "36ad9cfd-0052-420d-aeb5-0f96d275988e"
+      }
+    ]
+  ],
+  null,
+  [
+    "食堂",
+    [
+      {
+        "word_id": 1358550,
+        "common": true,
+        "text": "食堂",
+        "tags": [],
+        "id": "ebfcdc64-5c41-4688-92e9-43801a79e33c"
+      },
+      {
+        "word_id": 2253570,
+        "common": false,
+        "text": "食堂",
+        "tags": [],
+        "id": "0e19854b-a060-4536-85bb-346ddd260d7a"
+      }
+    ]
+  ],
+  null,
+  [
+    "白",
+    [
+      {
+        "word_id": 1474900,
+        "common": true,
+        "text": "白",
+        "tags": [],
+        "id": "d5b484f2-6b66-43b0-b70e-6ac147355fed"
+      },
+      {
+        "word_id": 2751410,
+        "common": false,
+        "text": "白",
+        "tags": [],
+        "id": "a438bdbd-2ffc-43fb-94a9-b176d179e788"
+      },
+      {
+        "word_id": 2751420,
+        "common": false,
+        "text": "白",
+        "tags": [],
+        "id": "f7b468cd-4776-4408-95a7-dab098a0c60a"
+      }
+    ]
+  ],
+  null,
+  ["～人", []],
+  null,
+  null,
+  null,
+  null,
+  [
+    "好き",
+    [
+      {
+        "word_id": 1277450,
+        "common": true,
+        "text": "好き",
+        "tags": [],
+        "id": "29476277-2b9d-4399-9a7e-47fdcf60febc"
+      },
+      {
+        "word_id": 2146440,
+        "common": false,
+        "text": "好き",
+        "tags": [],
+        "id": "76e96273-b183-4f40-8362-a146cf84771c"
+      }
+    ]
+  ],
+  ["～すぎ", []],
+  null,
+  null,
+  null,
+  null,
+  ["～ずつ", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["する", []],
+  null,
+  [
+    "背",
+    [
+      {
+        "word_id": 1472650,
+        "common": true,
+        "text": "背",
+        "tags": [],
+        "id": "66b6428d-361a-4bc6-8008-4c9368240fc1"
+      },
+      {
+        "word_id": 2147990,
+        "common": true,
+        "text": "背",
+        "tags": [],
+        "id": "6baf5187-34c1-4a80-88e8-073deffc1245"
+      },
+      {
+        "word_id": 2854021,
+        "common": false,
+        "text": "背",
+        "tags": [],
+        "id": "a8219c18-d0a7-478d-9e58-a692c07efd52"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "先生",
+    [
+      {
+        "word_id": 1387990,
+        "common": true,
+        "text": "先生",
+        "tags": [],
+        "id": "0a7eee06-3828-4d02-9c14-567692e0e542"
+      },
+      {
+        "word_id": 2727400,
+        "common": false,
+        "text": "先生",
+        "tags": [],
+        "id": "0f8627fe-bdba-43ea-8966-e348933bd018"
+      },
+      {
+        "word_id": 2841735,
+        "common": false,
+        "text": "先生",
+        "tags": [],
+        "id": "f4612124-415c-4caa-bf6b-5a3f91f4ed4f"
+      }
+    ]
+  ],
+  null,
+  null,
+  ["そう; そうです", []],
+  null,
+  ["そうして; そして", []],
+  ["そこ", []],
+  null,
+  null,
+  [
+    "外",
+    [
+      {
+        "word_id": 1203250,
+        "common": true,
+        "text": "外",
+        "tags": [],
+        "id": "8dfbddbc-59e6-4090-ac4d-317279c59bac"
+      },
+      {
+        "word_id": 1203260,
+        "common": false,
+        "text": "外",
+        "tags": [],
+        "id": "86a3a935-56e7-4951-82b4-a9b5b898e969"
+      },
+      {
+        "word_id": 1605940,
+        "common": false,
+        "text": "外",
+        "tags": [],
+        "id": "dc9faf10-9fc0-49f0-a4a9-1cf475508cac"
+      },
+      {
+        "word_id": 2227930,
+        "common": true,
+        "text": "外",
+        "tags": [],
+        "id": "1bbdc648-0caa-49e7-8662-49dbc569a5e5"
+      }
+    ]
+  ],
+  ["その", []],
+  ["そば", []],
+  [
+    "空",
+    [
+      {
+        "word_id": 1245280,
+        "common": true,
+        "text": "空",
+        "tags": [],
+        "id": "f9a4edfc-dff5-4133-98fd-51ee7bd3dc41"
+      },
+      {
+        "word_id": 1245290,
+        "common": true,
+        "text": "空",
+        "tags": [],
+        "id": "d5ceaf36-bd94-4851-85b0-6b11cf770fc3"
+      },
+      {
+        "word_id": 2036320,
+        "common": false,
+        "text": "空",
+        "tags": [],
+        "id": "331d698c-2741-4394-bea2-563590318d58"
+      },
+      {
+        "word_id": 2074820,
+        "common": false,
+        "text": "空",
+        "tags": [],
+        "id": "42000dd8-e569-4a9e-ab52-637a5b0a0ff2"
+      }
+    ]
+  ],
+  ["それ", []],
+  null,
+  null,
+  ["～台", []],
+  null,
+  null,
+  [
+    "大丈夫",
+    [
+      {
+        "word_id": 1414150,
+        "common": true,
+        "text": "大丈夫",
+        "tags": [],
+        "id": "dee23b83-5b5c-46e1-a688-d18c4e7a30dd"
+      },
+      {
+        "word_id": 2825470,
+        "common": false,
+        "text": "大丈夫",
+        "tags": [],
+        "id": "5df340d2-5812-427e-9b6c-3041e7b0b1c8"
+      }
+    ]
+  ],
+  null,
+  [
+    "大切",
+    [
+      {
+        "word_id": 1414340,
+        "common": true,
+        "text": "大切",
+        "tags": [],
+        "id": "f2cb1c61-7f54-4cb2-844d-9d7e8c57825e"
+      },
+      {
+        "word_id": 1643470,
+        "common": false,
+        "text": "大切",
+        "tags": ["io"],
+        "id": "82b34194-af4f-4c28-b5ab-66c6c640495b"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  ["～だけ", []],
+  [
+    "沢山",
+    [
+      {
+        "word_id": 1415870,
+        "common": true,
+        "text": "沢山",
+        "tags": [],
+        "id": "1bacb997-30e5-4b4d-a982-f91b23f60af4"
+      },
+      {
+        "word_id": 2823210,
+        "common": false,
+        "text": "沢山",
+        "tags": [],
+        "id": "51e3346e-7d6b-49e4-b0df-b2a156157a20"
+      }
+    ]
+  ],
+  null,
+  null,
+  ["～たち", []],
+  null,
+  ["たて", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "卵",
+    [
+      {
+        "word_id": 1549140,
+        "common": true,
+        "text": "卵",
+        "tags": [],
+        "id": "7c6bb0b7-f2a4-4c22-a654-9833af8cb1f9"
+      },
+      {
+        "word_id": 2647520,
+        "common": false,
+        "text": "卵",
+        "tags": [],
+        "id": "54ef6cd5-37f2-434d-9be5-ae7055aceccf"
+      },
+      {
+        "word_id": 2647530,
+        "common": false,
+        "text": "卵",
+        "tags": [],
+        "id": "80aebf73-14c2-4275-a96e-3e5d55af1d00"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  [
+    "段々",
+    [
+      {
+        "word_id": 1003560,
+        "common": false,
+        "text": "段々",
+        "tags": ["rK"],
+        "id": "8cb7b38d-d8af-477f-93d7-23961a3c8fe4"
+      },
+      {
+        "word_id": 1597350,
+        "common": true,
+        "text": "段々",
+        "tags": [],
+        "id": "8c07989a-a468-4af3-959a-7e1c28e01924"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  [
+    "違う",
+    [
+      {
+        "word_id": 1158880,
+        "common": true,
+        "text": "違う",
+        "tags": [],
+        "id": "91abc9fd-cf29-4a57-b39b-c9b9b53dbbb4"
+      },
+      {
+        "word_id": 2109290,
+        "common": false,
+        "text": "違う",
+        "tags": [],
+        "id": "4e1e1746-7224-42b7-bd48-4ef4c1e5344a"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["～中", []],
+  null,
+  null,
+  [
+    "一日",
+    [
+      {
+        "word_id": 1576260,
+        "common": true,
+        "text": "一日",
+        "tags": [],
+        "id": "0893c36a-424a-4c1b-a596-9dde2d6a7fcd"
+      },
+      {
+        "word_id": 2225030,
+        "common": false,
+        "text": "一日",
+        "tags": [],
+        "id": "cca79e2b-850f-4728-bf0f-7d077352dfee"
+      },
+      {
+        "word_id": 2225040,
+        "common": true,
+        "text": "一日",
+        "tags": [],
+        "id": "b10f62d5-2c25-4418-9227-743c8342d6b6"
+      },
+      {
+        "word_id": 2852123,
+        "common": false,
+        "text": "一日",
+        "tags": [],
+        "id": "f693102c-4fae-4f8e-847c-e1783f6b3d3f"
+      }
+    ]
+  ],
+  null,
+  null,
+  [
+    "次",
+    [
+      {
+        "word_id": 1316380,
+        "common": true,
+        "text": "次",
+        "tags": [],
+        "id": "21bbaa14-b23f-415e-8865-55817e9f2698"
+      },
+      {
+        "word_id": 1579580,
+        "common": false,
+        "text": "次",
+        "tags": [],
+        "id": "c0c0510c-76ce-4f08-9fa6-f36c23cb1210"
+      }
+    ]
+  ],
+  [
+    "着く",
+    [
+      {
+        "word_id": 1422970,
+        "common": true,
+        "text": "着く",
+        "tags": [],
+        "id": "14ef7b47-fee6-4e6c-8e7c-ae2273da7b3c"
+      },
+      {
+        "word_id": 1607260,
+        "common": false,
+        "text": "着く",
+        "tags": ["rK"],
+        "id": "fcc34515-676f-4155-af25-ae6681471514"
+      }
+    ]
+  ],
+  null,
+  null,
+  ["つける", []],
+  null,
+  null,
+  null,
+  [
+    "強い",
+    [
+      {
+        "word_id": 1236070,
+        "common": true,
+        "text": "強い",
+        "tags": [],
+        "id": "ebfb6ab6-2163-4422-a9be-498541105d1f"
+      },
+      {
+        "word_id": 2087680,
+        "common": false,
+        "text": "強い",
+        "tags": [],
+        "id": "54aba9e0-78af-4d9d-8cf6-f849c941792c"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["できる", []],
+  null,
+  null,
+  ["では", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "戸",
+    [
+      {
+        "word_id": 1266970,
+        "common": true,
+        "text": "戸",
+        "tags": [],
+        "id": "b4ec71a2-11cc-44fb-84d3-d6fde555801f"
+      },
+      {
+        "word_id": 1659920,
+        "common": false,
+        "text": "戸",
+        "tags": [],
+        "id": "bcf2bca9-3b7d-4af3-b189-de0943839943"
+      }
+    ]
+  ],
+  ["～度", []],
+  null,
+  null,
+  ["どう", []],
+  null,
+  null,
+  null,
+  null,
+  [
+    "十",
+    [
+      {
+        "word_id": 1579840,
+        "common": true,
+        "text": "十",
+        "tags": [],
+        "id": "78325d15-58d9-4ade-9825-47b853441813"
+      },
+      {
+        "word_id": 2748020,
+        "common": false,
+        "text": "十",
+        "tags": [],
+        "id": "99737d7c-f7c0-4b65-863e-5cc6d55318e3"
+      }
+    ]
+  ],
+  null,
+  null,
+  ["～時", []],
+  null,
+  null,
+  null,
+  [
+    "所",
+    [
+      {
+        "word_id": 1343100,
+        "common": true,
+        "text": "所",
+        "tags": [],
+        "id": "fda305dd-a1fd-4c51-887d-59b5ef90a3f4"
+      },
+      {
+        "word_id": 2273780,
+        "common": false,
+        "text": "所",
+        "tags": [],
+        "id": "e3cc2a62-f914-4d59-816f-c6783a4bbd78"
+      }
+    ]
+  ],
+  [
+    "年",
+    [
+      {
+        "word_id": 1468060,
+        "common": true,
+        "text": "年",
+        "tags": [],
+        "id": "88699997-b35f-4234-9ea4-3a0eb67112ae"
+      },
+      {
+        "word_id": 2084840,
+        "common": true,
+        "text": "年",
+        "tags": [],
+        "id": "01254751-be53-4eac-8a5e-0ec640a9d806"
+      },
+      {
+        "word_id": 2220370,
+        "common": false,
+        "text": "年",
+        "tags": [],
+        "id": "61741db8-ad2b-401d-9098-2a458158ff3a"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["どの", []],
+  null,
+  [
+    "止まる",
+    [
+      {
+        "word_id": 1310620,
+        "common": true,
+        "text": "止まる",
+        "tags": [],
+        "id": "b71aa807-f43d-413d-b076-bf42cb8e049a"
+      },
+      {
+        "word_id": 2657130,
+        "common": true,
+        "text": "止まる",
+        "tags": [],
+        "id": "5e9ecfb4-1e68-4778-8316-d52403df2cc4"
+      },
+      {
+        "word_id": 2657250,
+        "common": false,
+        "text": "止まる",
+        "tags": [],
+        "id": "0682aab8-c91e-4187-af1d-a83bc320d0c5"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["ない", []],
+  null,
+  [
+    "中",
+    [
+      {
+        "word_id": 1423310,
+        "common": true,
+        "text": "中",
+        "tags": [],
+        "id": "0f8d4953-1e23-4214-a23f-ae8e217d8d1a"
+      },
+      {
+        "word_id": 1457730,
+        "common": false,
+        "text": "中",
+        "tags": [],
+        "id": "3c420269-5db9-43c7-bd53-0515d9d345a6"
+      },
+      {
+        "word_id": 1620400,
+        "common": true,
+        "text": "中",
+        "tags": [],
+        "id": "60253ac4-6328-4399-9f95-94d2443f87e5"
+      },
+      {
+        "word_id": 2083570,
+        "common": true,
+        "text": "中",
+        "tags": [],
+        "id": "f923ca3f-6b02-4983-aeed-8fcfcafdacad"
+      },
+      {
+        "word_id": 2754230,
+        "common": false,
+        "text": "中",
+        "tags": [],
+        "id": "a0816ef1-379c-45fa-8049-35fce703c30d"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  [
+    "夏",
+    [
+      {
+        "word_id": 1191320,
+        "common": true,
+        "text": "夏",
+        "tags": [],
+        "id": "102717bc-e293-4eef-8bfa-17f199174f0d"
+      },
+      {
+        "word_id": 2253330,
+        "common": false,
+        "text": "夏",
+        "tags": [],
+        "id": "5765a16b-98f6-4619-a7a8-793e3753728a"
+      },
+      {
+        "word_id": 2457950,
+        "common": false,
+        "text": "夏",
+        "tags": [],
+        "id": "101a7f86-ce99-4a92-bfcb-f4d7ec88ee6b"
+      }
+    ]
+  ],
+  null,
+  ["～など", []],
+  null,
+  [
+    "何",
+    [
+      {
+        "word_id": 1577100,
+        "common": true,
+        "text": "何",
+        "tags": [],
+        "id": "91bedddb-e3ea-4583-83b3-478fae70aca3"
+      },
+      {
+        "word_id": 2846738,
+        "common": true,
+        "text": "何",
+        "tags": [],
+        "id": "dd91f293-b2c1-40d3-b2db-4009986b85dc"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["なる", []],
+  ["何～", []],
+  [
+    "二",
+    [
+      {
+        "word_id": 1461140,
+        "common": true,
+        "text": "二",
+        "tags": [],
+        "id": "b8125d0c-50fc-4fad-9702-e72fb22569bb"
+      },
+      {
+        "word_id": 2728160,
+        "common": false,
+        "text": "二",
+        "tags": [],
+        "id": "bd9c6741-5522-4128-97dc-012db92aa968"
+      },
+      {
+        "word_id": 2858788,
+        "common": false,
+        "text": "二",
+        "tags": [],
+        "id": "374d7f93-8b62-4968-ae97-022859211e3e"
+      }
+    ]
+  ],
+  null,
+  [
+    "肉",
+    [
+      {
+        "word_id": 1463520,
+        "common": true,
+        "text": "肉",
+        "tags": [],
+        "id": "5537c2dd-d234-4b5e-8ec5-92066c3d5d3f"
+      },
+      {
+        "word_id": 2849347,
+        "common": false,
+        "text": "肉",
+        "tags": [],
+        "id": "205d9536-7483-4dc9-8a5e-8a311ce41c91"
+      }
+    ]
+  ],
+  [
+    "西",
+    [
+      {
+        "word_id": 1380840,
+        "common": true,
+        "text": "西",
+        "tags": [],
+        "id": "c144abc4-657d-4925-8d80-849406293a24"
+      },
+      {
+        "word_id": 2394070,
+        "common": false,
+        "text": "西",
+        "tags": [],
+        "id": "33f267e8-1c43-4971-8e45-81e6a6e3567e"
+      },
+      {
+        "word_id": 2833069,
+        "common": false,
+        "text": "西",
+        "tags": [],
+        "id": "8a361410-c667-45d3-bb66-2e48e82b64f5"
+      }
+    ]
+  ],
+  ["～日", []],
+  null,
+  null,
+  null,
+  null,
+  ["～人", []],
+  null,
+  null,
+  null,
+  [
+    "猫",
+    [
+      {
+        "word_id": 1467640,
+        "common": true,
+        "text": "猫",
+        "tags": [],
+        "id": "2185c09b-50f8-40b6-a6b3-83dd86848b73"
+      },
+      {
+        "word_id": 2698030,
+        "common": false,
+        "text": "猫",
+        "tags": [],
+        "id": "484d9c01-0316-44fc-b5b1-3458d3c9b554"
+      }
+    ]
+  ],
+  null,
+  ["～年", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "歯",
+    [
+      {
+        "word_id": 1313000,
+        "common": true,
+        "text": "歯",
+        "tags": [],
+        "id": "4e8b1097-6082-416c-9d1d-252a379b1920"
+      },
+      {
+        "word_id": 1557940,
+        "common": false,
+        "text": "歯",
+        "tags": [],
+        "id": "8391ec3a-f1a7-40af-887e-34b782e9631b"
+      },
+      {
+        "word_id": 2842986,
+        "common": false,
+        "text": "歯",
+        "tags": [],
+        "id": "8dd9cb2a-6eda-416a-9cef-3ee75ba3be8b"
+      }
+    ]
+  ],
+  null,
+  ["はい", []],
+  ["～杯", []],
+  null,
+  [
+    "入る",
+    [
+      {
+        "word_id": 1465580,
+        "common": true,
+        "text": "入る",
+        "tags": [],
+        "id": "83c202b4-4fa6-4c78-8f4e-bfb88ea185e6"
+      },
+      {
+        "word_id": 1465590,
+        "common": true,
+        "text": "入る",
+        "tags": [],
+        "id": "14b36d23-58f9-4542-a53c-f40bba5b7591"
+      }
+    ]
+  ],
+  null,
+  ["はく", []],
+  null,
+  [
+    "橋",
+    [
+      {
+        "word_id": 1237410,
+        "common": true,
+        "text": "橋",
+        "tags": [],
+        "id": "4cce228a-3aeb-4d13-8b06-3ab836b8bf07"
+      },
+      {
+        "word_id": 2151440,
+        "common": false,
+        "text": "橋",
+        "tags": [],
+        "id": "53715275-5ec2-408a-8512-dc3e59f6398b"
+      }
+    ]
+  ],
+  null,
+  null,
+  ["初め; 始め", []],
+  null,
+  null,
+  ["バス", []],
+  null,
+  [
+    "二十歳",
+    [
+      {
+        "word_id": 1600790,
+        "common": true,
+        "text": "二十歳",
+        "tags": [],
+        "id": "1f4bbff7-718a-4fd7-aa17-36d349d8e233"
+      },
+      {
+        "word_id": 2220380,
+        "common": false,
+        "text": "二十歳",
+        "tags": [],
+        "id": "5629ade8-1d5d-4b9a-abb4-9ac8d03be37f"
+      }
+    ]
+  ],
+  null,
+  [
+    "八",
+    [
+      {
+        "word_id": 1583090,
+        "common": true,
+        "text": "八",
+        "tags": [],
+        "id": "edd1408d-f414-499a-b25f-7933fd562c8a"
+      },
+      {
+        "word_id": 2748000,
+        "common": false,
+        "text": "八",
+        "tags": [],
+        "id": "8f2243bf-4e17-4448-83c0-5f227503a91c"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  [
+    "話",
+    [
+      {
+        "word_id": 1600900,
+        "common": true,
+        "text": "話",
+        "tags": [],
+        "id": "a20de8c5-17b1-4521-80c3-5138f084e5c5"
+      },
+      {
+        "word_id": 2100460,
+        "common": false,
+        "text": "話",
+        "tags": [],
+        "id": "f4c0f6a5-689a-47b3-8cdb-ebf054380860"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["～番", []],
+  ["パン", []],
+  null,
+  null,
+  null,
+  [
+    "半分",
+    [
+      {
+        "word_id": 1479890,
+        "common": true,
+        "text": "半分",
+        "tags": [],
+        "id": "9edc395a-3993-45aa-9685-f0c236db3e1c"
+      },
+      {
+        "word_id": 1479900,
+        "common": false,
+        "text": "半分",
+        "tags": [],
+        "id": "0540fd3b-fbf8-4740-97d5-d0e189f2c1b1"
+      }
+    ]
+  ],
+  [
+    "東",
+    [
+      {
+        "word_id": 1447430,
+        "common": false,
+        "text": "東",
+        "tags": [],
+        "id": "3aae0edb-43de-4629-9813-fe44fe6eceab"
+      },
+      {
+        "word_id": 1447440,
+        "common": true,
+        "text": "東",
+        "tags": [],
+        "id": "fe08b659-20b9-47ca-95b0-f92ac8bf0b69"
+      },
+      {
+        "word_id": 2833067,
+        "common": false,
+        "text": "東",
+        "tags": [],
+        "id": "de8cab21-2bba-4df0-8d5f-2feacb6373ec"
+      }
+    ]
+  ],
+  ["～匹", []],
+  null,
+  [
+    "弾く",
+    [
+      {
+        "word_id": 1419360,
+        "common": true,
+        "text": "弾く",
+        "tags": [],
+        "id": "8dee86c4-a284-425c-b5f9-a824904e76bb"
+      },
+      {
+        "word_id": 1419370,
+        "common": true,
+        "text": "弾く",
+        "tags": [],
+        "id": "ddde87bf-247a-4571-8e93-f0c70820f0d5"
+      }
+    ]
+  ],
+  null,
+  null,
+  [
+    "左",
+    [
+      {
+        "word_id": 1290800,
+        "common": true,
+        "text": "左",
+        "tags": [],
+        "id": "5fd4dfc4-3785-40b7-b11e-b0b0e80ec64d"
+      },
+      {
+        "word_id": 2261470,
+        "common": false,
+        "text": "左",
+        "tags": [],
+        "id": "f97f8971-ec4a-4a1e-93b2-612c462a5f03"
+      }
+    ]
+  ],
+  [
+    "人",
+    [
+      {
+        "word_id": 1366410,
+        "common": true,
+        "text": "人",
+        "tags": [],
+        "id": "a2881bce-4f15-479f-8f98-37d4a900dbc2"
+      },
+      {
+        "word_id": 1366420,
+        "common": false,
+        "text": "人",
+        "tags": [],
+        "id": "1aa77f34-da09-442c-947c-d36a974fc6b6"
+      },
+      {
+        "word_id": 1580640,
+        "common": true,
+        "text": "人",
+        "tags": [],
+        "id": "753f8915-22a0-4c84-91c1-b6d9f15a0185"
+      },
+      {
+        "word_id": 2149890,
+        "common": true,
+        "text": "人",
+        "tags": [],
+        "id": "b5e07e37-e027-48ee-80d0-37e33e49cf69"
+      }
+    ]
+  ],
+  null,
+  [
+    "一月",
+    [
+      {
+        "word_id": 1162120,
+        "common": true,
+        "text": "一月",
+        "tags": [],
+        "id": "1742ad5b-6751-4e77-9fc1-027bb9d9c4b0"
+      },
+      {
+        "word_id": 1162130,
+        "common": true,
+        "text": "一月",
+        "tags": [],
+        "id": "4ba2d9ae-74b8-45a6-b9b6-80a605db7322"
+      }
+    ]
+  ],
+  null,
+  [
+    "暇",
+    [
+      {
+        "word_id": 1577280,
+        "common": true,
+        "text": "暇",
+        "tags": [],
+        "id": "8c4d68aa-cca3-4aeb-b181-a4c841a503ca"
+      },
+      {
+        "word_id": 2858986,
+        "common": false,
+        "text": "暇",
+        "tags": [],
+        "id": "2bd4a548-0bab-4f56-9145-97c9b6f80a72"
+      }
+    ]
+  ],
+  [
+    "百",
+    [
+      {
+        "word_id": 1488000,
+        "common": true,
+        "text": "百",
+        "tags": [],
+        "id": "59331e8f-4d4c-4f15-9bf3-d21a6be9ec38"
+      },
+      {
+        "word_id": 2850990,
+        "common": false,
+        "text": "百",
+        "tags": [],
+        "id": "b3e1546f-4741-4283-8b23-8f3423a6678d"
+      }
+    ]
+  ],
+  null,
+  [
+    "病気",
+    [
+      {
+        "word_id": 1490230,
+        "common": true,
+        "text": "病気",
+        "tags": [],
+        "id": "4794ccf2-d6f3-4020-83ac-e05605271064"
+      },
+      {
+        "word_id": 2839802,
+        "common": false,
+        "text": "病気",
+        "tags": [],
+        "id": "083a4701-c34c-483e-be08-420047317015"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["フォーク", []],
+  null,
+  [
+    "服",
+    [
+      {
+        "word_id": 1500940,
+        "common": true,
+        "text": "服",
+        "tags": [],
+        "id": "c17de707-449f-4c98-8674-962eda80fb11"
+      },
+      {
+        "word_id": 2245830,
+        "common": false,
+        "text": "服",
+        "tags": [],
+        "id": "53b2e607-143e-449a-b295-c5a8047d5048"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "降る",
+    [
+      {
+        "word_id": 1184450,
+        "common": false,
+        "text": "降る",
+        "tags": [],
+        "id": "a44c2a6a-cd46-4058-8e56-14ec0f3adde8"
+      },
+      {
+        "word_id": 1282790,
+        "common": true,
+        "text": "降る",
+        "tags": [],
+        "id": "e13afe79-d4b0-4499-a8d7-75a1e5c48ae1"
+      }
+    ]
+  ],
+  null,
+  ["～分", []],
+  null,
+  null,
+  [
+    "下手",
+    [
+      {
+        "word_id": 1185190,
+        "common": true,
+        "text": "下手",
+        "tags": [],
+        "id": "e5a78904-13d4-4261-a974-8d04621097c1"
+      },
+      {
+        "word_id": 1185195,
+        "common": false,
+        "text": "下手",
+        "tags": [],
+        "id": "cd96cc50-aa6d-420c-b8e3-05dbf12b02c8"
+      },
+      {
+        "word_id": 1185200,
+        "common": true,
+        "text": "下手",
+        "tags": [],
+        "id": "c9ba0c7e-5667-4f02-a445-eb12049b43ce"
+      }
+    ]
+  ],
+  null,
+  ["ペット", []],
+  null,
+  [
+    "辺",
+    [
+      {
+        "word_id": 1512070,
+        "common": true,
+        "text": "辺",
+        "tags": [],
+        "id": "a653324e-bbfa-47ff-b44f-e2e51e39f1c5"
+      },
+      {
+        "word_id": 2254960,
+        "common": false,
+        "text": "辺",
+        "tags": [],
+        "id": "f5877b29-60b1-4901-b4f5-1a9373b55089"
+      },
+      {
+        "word_id": 2842190,
+        "common": false,
+        "text": "辺",
+        "tags": [],
+        "id": "f2a57586-1b6c-4470-a6f7-b19f562de44f"
+      },
+      {
+        "word_id": 2842191,
+        "common": false,
+        "text": "辺",
+        "tags": ["io"],
+        "id": "1f39ae8d-cde6-4cf9-aaff-005d00a2e161"
+      }
+    ]
+  ],
+  ["ペン", []],
+  null,
+  null,
+  null,
+  null,
+  [
+    "外",
+    [
+      {
+        "word_id": 1203250,
+        "common": true,
+        "text": "外",
+        "tags": [],
+        "id": "8dfbddbc-59e6-4090-ac4d-317279c59bac"
+      },
+      {
+        "word_id": 1203260,
+        "common": false,
+        "text": "外",
+        "tags": [],
+        "id": "86a3a935-56e7-4951-82b4-a9b5b898e969"
+      },
+      {
+        "word_id": 1605940,
+        "common": false,
+        "text": "外",
+        "tags": [],
+        "id": "dc9faf10-9fc0-49f0-a4a9-1cf475508cac"
+      },
+      {
+        "word_id": 2227930,
+        "common": true,
+        "text": "外",
+        "tags": [],
+        "id": "1bbdc648-0caa-49e7-8662-49dbc569a5e5"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  [
+    "細い",
+    [
+      {
+        "word_id": 1295510,
+        "common": true,
+        "text": "細い",
+        "tags": [],
+        "id": "16431c48-6447-4c2f-bf9e-dd98e25c2c30"
+      },
+      {
+        "word_id": 2719870,
+        "common": false,
+        "text": "細い",
+        "tags": [],
+        "id": "2b43de08-e385-4d28-bd0b-bdee6d27c7be"
+      }
+    ]
+  ],
+  ["ボタン", []],
+  null,
+  [
+    "本",
+    [
+      {
+        "word_id": 1260670,
+        "common": true,
+        "text": "本",
+        "tags": [],
+        "id": "9f972c52-edc9-4bce-a58b-6c48fc0c74ec"
+      },
+      {
+        "word_id": 1522150,
+        "common": true,
+        "text": "本",
+        "tags": [],
+        "id": "34581594-c6ad-483a-873f-096616f91ee8"
+      }
+    ]
+  ],
+  ["～本", []],
+  null,
+  null,
+  ["～枚", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "前",
+    [
+      {
+        "word_id": 1387210,
+        "common": false,
+        "text": "前",
+        "tags": [],
+        "id": "a9c0be1b-8d00-4d27-a359-5557b9e26138"
+      },
+      {
+        "word_id": 1392570,
+        "common": true,
+        "text": "前",
+        "tags": [],
+        "id": "90e5676f-203e-41cb-bb0c-3e80b1ba1055"
+      },
+      {
+        "word_id": 1392580,
+        "common": true,
+        "text": "前",
+        "tags": [],
+        "id": "31d07f2a-ce78-4200-86ef-1ddb72a2a09d"
+      }
+    ]
+  ],
+  ["～前", []],
+  null,
+  ["まずい", []],
+  ["また", []],
+  null,
+  [
+    "町",
+    [
+      {
+        "word_id": 1603990,
+        "common": true,
+        "text": "町",
+        "tags": [],
+        "id": "2f887c52-5b5a-4341-8a04-78a7498854ef"
+      },
+      {
+        "word_id": 2853569,
+        "common": false,
+        "text": "町",
+        "tags": [],
+        "id": "9a1ea8a8-c697-4770-9f21-df11ddcf6388"
+      }
+    ]
+  ],
+  null,
+  null,
+  ["マッチ", []],
+  null,
+  ["丸い; 円い", []],
+  [
+    "万",
+    [
+      {
+        "word_id": 1525750,
+        "common": false,
+        "text": "万",
+        "tags": [],
+        "id": "cca4b630-9755-477e-844c-0eb836fcfd60"
+      },
+      {
+        "word_id": 1584460,
+        "common": true,
+        "text": "万",
+        "tags": [],
+        "id": "36c71417-df62-4a33-bc4d-f1f0ed0db1d2"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  [
+    "水",
+    [
+      {
+        "word_id": 1371260,
+        "common": true,
+        "text": "水",
+        "tags": [],
+        "id": "3421c425-71ca-45f0-9563-8724eec1203c"
+      },
+      {
+        "word_id": 2153780,
+        "common": false,
+        "text": "水",
+        "tags": [],
+        "id": "4a0cb8e2-4844-4b43-9062-0e1e66415d3a"
+      }
+    ]
+  ],
+  [
+    "店",
+    [
+      {
+        "word_id": 1582120,
+        "common": true,
+        "text": "店",
+        "tags": [],
+        "id": "5d23613a-39e0-47df-a183-2e90fc7e91a6"
+      },
+      {
+        "word_id": 1582125,
+        "common": true,
+        "text": "店",
+        "tags": [],
+        "id": "c2945a1d-8391-46cc-8f7e-0d3e8404e65d"
+      },
+      {
+        "word_id": 2409230,
+        "common": false,
+        "text": "店",
+        "tags": [],
+        "id": "ae19758b-cf7f-48cb-b83b-7717a5f1eb5d"
+      }
+    ]
+  ],
+  null,
+  [
+    "道",
+    [
+      {
+        "word_id": 1454080,
+        "common": true,
+        "text": "道",
+        "tags": [],
+        "id": "cc224479-71af-4c1b-9f25-760e2b1d25bf"
+      },
+      {
+        "word_id": 2158900,
+        "common": false,
+        "text": "道",
+        "tags": [],
+        "id": "fc51c519-0c4f-494a-957c-2a483a361f76"
+      },
+      {
+        "word_id": 2268290,
+        "common": false,
+        "text": "道",
+        "tags": [],
+        "id": "8e218593-944c-46c5-b5ef-b2dc377ead7f"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  [
+    "南",
+    [
+      {
+        "word_id": 1459870,
+        "common": true,
+        "text": "南",
+        "tags": [],
+        "id": "62e078ad-e93b-4c69-879b-377f630a5486"
+      },
+      {
+        "word_id": 2833068,
+        "common": false,
+        "text": "南",
+        "tags": [],
+        "id": "0612810b-a71b-4704-ad13-30e2b73cc4df"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "目",
+    [
+      {
+        "word_id": 1604890,
+        "common": true,
+        "text": "目",
+        "tags": [],
+        "id": "10ac2eab-2a5a-4511-bc2c-bc842c2b91ac"
+      },
+      {
+        "word_id": 2021500,
+        "common": false,
+        "text": "目",
+        "tags": [],
+        "id": "b962e07b-b0ba-4226-bccd-fe629695e747"
+      }
+    ]
+  ],
+  null,
+  [
+    "眼鏡",
+    [
+      {
+        "word_id": 1577670,
+        "common": true,
+        "text": "眼鏡",
+        "tags": [],
+        "id": "aa824ec0-739a-42be-87b1-efc77891cdad"
+      },
+      {
+        "word_id": 2862467,
+        "common": false,
+        "text": "眼鏡",
+        "tags": [],
+        "id": "86248525-9db8-440b-8cd8-a3842e1507c9"
+      }
+    ]
+  ],
+  ["もう", []],
+  null,
+  null,
+  null,
+  null,
+  [
+    "物",
+    [
+      {
+        "word_id": 1502390,
+        "common": true,
+        "text": "物",
+        "tags": [],
+        "id": "188f8f24-6f4b-42ae-a1c6-6d355ff7d2c6"
+      },
+      {
+        "word_id": 2095920,
+        "common": false,
+        "text": "物",
+        "tags": [],
+        "id": "2a8a9c64-b822-4623-8fa9-7689c277eebd"
+      }
+    ]
+  ],
+  [
+    "門",
+    [
+      {
+        "word_id": 1266970,
+        "common": false,
+        "text": "門",
+        "tags": [],
+        "id": "a3e20025-dea4-4b7c-b9da-942252561ebb"
+      },
+      {
+        "word_id": 1584800,
+        "common": true,
+        "text": "門",
+        "tags": [],
+        "id": "bc645a4a-f0a8-4215-a005-f17b9d2aacca"
+      }
+    ]
+  ],
+  null,
+  ["～屋", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "山",
+    [
+      {
+        "word_id": 1302680,
+        "common": true,
+        "text": "山",
+        "tags": [],
+        "id": "4bc2eb63-cc9e-449a-882d-d89de68d26ed"
+      },
+      {
+        "word_id": 2085690,
+        "common": false,
+        "text": "山",
+        "tags": [],
+        "id": "58094268-9df1-46d4-ae41-8e356fad98ae"
+      },
+      {
+        "word_id": 2647220,
+        "common": false,
+        "text": "山",
+        "tags": [],
+        "id": "2ea137a7-4a42-444a-b2b3-08a1ca21637c"
+      }
+    ]
+  ],
+  ["やる", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["ゆっくりと", []],
+  null,
+  null,
+  ["よく", []],
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "夜",
+    [
+      {
+        "word_id": 1536350,
+        "common": true,
+        "text": "夜",
+        "tags": [],
+        "id": "84c1d0f1-ce2c-49c2-bdd4-c71622ac8afc"
+      },
+      {
+        "word_id": 2827999,
+        "common": false,
+        "text": "夜",
+        "tags": [],
+        "id": "b9240da0-0f0e-4bb4-9b1e-f90150facb4f"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  ["ラジオカセ", []],
+  ["りっぱ", []],
+  null,
+  null,
+  null,
+  null,
+  [
+    "零",
+    [
+      {
+        "word_id": 1557630,
+        "common": true,
+        "text": "零",
+        "tags": [],
+        "id": "21a602b4-2f64-413e-b5bf-87f485ab1628"
+      },
+      {
+        "word_id": 2839962,
+        "common": false,
+        "text": "零",
+        "tags": [],
+        "id": "592e0088-c365-4a34-a85d-9a8aa4373a2f"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  null,
+  [
+    "六",
+    [
+      {
+        "word_id": 1585310,
+        "common": true,
+        "text": "六",
+        "tags": [],
+        "id": "9e1a08df-bfc0-4cc5-a910-0821687d907a"
+      },
+      {
+        "word_id": 2747980,
+        "common": false,
+        "text": "六",
+        "tags": [],
+        "id": "3528ac0c-c54a-4eff-b7a1-8a637a95da3e"
+      }
+    ]
+  ],
+  null,
+  null,
+  null,
+  null,
+  [
+    "私",
+    [
+      {
+        "word_id": 1311110,
+        "common": true,
+        "text": "私",
+        "tags": [],
+        "id": "10936056-7fd9-41ba-b675-31ef913119bf"
+      },
+      {
+        "word_id": 1311125,
+        "common": true,
+        "text": "私",
+        "tags": [],
+        "id": "09fbae10-8b4b-4527-bb3f-d7d665d536bc"
+      },
+      {
+        "word_id": 1347580,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "a984a600-fef5-4bcf-ada8-43f3aa137078"
+      },
+      {
+        "word_id": 2015370,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "b4eb1554-82f3-41e5-8658-8223c3fb7cc6"
+      },
+      {
+        "word_id": 2079310,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "95bb7273-5f71-4444-be8b-419a2a5b4d14"
+      },
+      {
+        "word_id": 2217330,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "63ddf45c-3895-4b4a-b947-464d147cd415"
+      },
+      {
+        "word_id": 2217340,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "4b0eaca3-8fb5-4b11-9b80-337f08636bbc"
+      },
+      {
+        "word_id": 2728300,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "ba4ac60c-daee-4d00-b4c7-f075a6ad9ac8"
+      },
+      {
+        "word_id": 2842390,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "fa5ebf57-b1a7-45b9-8297-df6418c7c996"
+      },
+      {
+        "word_id": 2845454,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "79839393-d790-49ad-a49c-b48532ea05f5"
+      },
+      {
+        "word_id": 2858221,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "80f2de7f-a4f3-44af-befc-07e23499cbd4"
+      },
+      {
+        "word_id": 2858384,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "91ba7395-942f-4f86-ab7d-cfe78a29a343"
+      },
+      {
+        "word_id": 2858397,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "a200c6bf-0417-48bb-b0d5-2ce2d27a45a4"
+      }
+    ]
+  ],
+  [
+    "私",
+    [
+      {
+        "word_id": 1311110,
+        "common": true,
+        "text": "私",
+        "tags": [],
+        "id": "10936056-7fd9-41ba-b675-31ef913119bf"
+      },
+      {
+        "word_id": 1311125,
+        "common": true,
+        "text": "私",
+        "tags": [],
+        "id": "09fbae10-8b4b-4527-bb3f-d7d665d536bc"
+      },
+      {
+        "word_id": 1347580,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "a984a600-fef5-4bcf-ada8-43f3aa137078"
+      },
+      {
+        "word_id": 2015370,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "b4eb1554-82f3-41e5-8658-8223c3fb7cc6"
+      },
+      {
+        "word_id": 2079310,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "95bb7273-5f71-4444-be8b-419a2a5b4d14"
+      },
+      {
+        "word_id": 2217330,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "63ddf45c-3895-4b4a-b947-464d147cd415"
+      },
+      {
+        "word_id": 2217340,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "4b0eaca3-8fb5-4b11-9b80-337f08636bbc"
+      },
+      {
+        "word_id": 2728300,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "ba4ac60c-daee-4d00-b4c7-f075a6ad9ac8"
+      },
+      {
+        "word_id": 2842390,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "fa5ebf57-b1a7-45b9-8297-df6418c7c996"
+      },
+      {
+        "word_id": 2845454,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "79839393-d790-49ad-a49c-b48532ea05f5"
+      },
+      {
+        "word_id": 2858221,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "80f2de7f-a4f3-44af-befc-07e23499cbd4"
+      },
+      {
+        "word_id": 2858384,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "91ba7395-942f-4f86-ab7d-cfe78a29a343"
+      },
+      {
+        "word_id": 2858397,
+        "common": false,
+        "text": "私",
+        "tags": [],
+        "id": "a200c6bf-0417-48bb-b0d5-2ce2d27a45a4"
+      }
+    ]
+  ],
+  null,
+  null,
+  [
+    "悪い",
+    [
+      {
+        "word_id": 1151260,
+        "common": true,
+        "text": "悪い",
+        "tags": [],
+        "id": "c79a7e3c-4efc-4bd9-9649-c622b53f9f55"
+      },
+      {
+        "word_id": 1403390,
+        "common": false,
+        "text": "悪い",
+        "tags": [],
+        "id": "f9b8fd49-6102-4716-9110-a94974ab0ef6"
+      },
+      {
+        "word_id": 2772730,
+        "common": false,
+        "text": "悪い",
+        "tags": [],
+        "id": "e9a103ec-735e-45a5-903e-cc1f98e75859"
+      }
+    ]
+  ]
+]

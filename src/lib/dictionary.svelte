@@ -7,9 +7,53 @@
   const { debounce } = pkg
 
   export let supabase: SupabaseClient
+  
+  type Sense = {
+    id: string
+    word_id: number
+    antonym: JSON
+    applies_to_kana: string[] | null
+    applies_to_kanji: string[] | null
+    dialect: string[]
+    field: string[]
+    info: string[]
+    language_source: JSON | null
+    misc: string[]
+    part_of_speech: string[] | null
+    related: JSON
+    glosses: Glosses[]
+  }
+  
+  // Define the Kanji type
+  type Kanji = {
+    id: string
+    word_id: number
+    common: boolean
+    tags: string[]
+    text: string
+  }
+  
+  // Define the Kana type
+  type Kana = {
+    id: string
+    word_id: number
+    common: boolean
+    applies_to_kanji: string[] | null
+    tags: string[]
+    text: string
+  }
+  
+  // Define the Glosses type
+  type Glosses = {
+    id: string
+    gloss: string
+    type: string | null
+  }
+  
+  
 
   let dictionaryEntries: any[] = []
-  let dictionarySearchValue = 'nuclear deterrent force'
+  let dictionarySearchValue = '開く'
   let searching = false
 
   $: fetchDictionary(dictionarySearchValue)
@@ -55,7 +99,7 @@
       if (error) {
         console.error('Error fetching dictionary entries', error)
       } else {
-        dictionaryEntries = reorderDictionaryEntries(data)
+        dictionaryEntries = reorderDictionaryEntries(data, searchTerm)
         console.log(dictionaryEntries)
       }
     } catch (err) {
@@ -70,44 +114,39 @@
     }
   }, 200)
 
-  function reorderDictionaryEntries(entriesToBeReordered: any[]) {
-    // Sort dictionary by whether their one of their entry.kana[].common = true and then by whether one of their rentry.senses.glosses[].text is equal to the search term
+  function reorderDictionaryEntries(
+    entriesToBeReordered: any[],
+    searchTerm: string,
+  ) {
+    // Sort dictionary by whether their one of their entry.kana[].common = true and then by whether one of their entry.senses.glosses[].text is equal to the search term
 
     entriesToBeReordered.sort((a, b) => {
       const aCommon: boolean = a.kana.some((k: { common: boolean }) => k.common)
       const bCommon: boolean = b.kana.some((k: { common: boolean }) => k.common)
 
-      if (aCommon && !bCommon) {
-        return -1
-      } else if (!aCommon && bCommon) {
-        return 1
-      } else {
-        const aGlosses: string[] = a.senses
-          .map((s: { glosses: { gloss: string }[] }) =>
-            s.glosses.map((g: { gloss: string }) => g.gloss),
-          )
-          .flat()
-        const bGlosses: string[] = b.senses
-          .map((s: { glosses: { gloss: string }[] }) =>
-            s.glosses.map((g: { gloss: string }) => g.gloss),
-          )
-          .flat()
-
-        const aGlossMatch: boolean = aGlosses.some((g: string) =>
-          g.includes(dictionarySearchValue),
+      const aGlosses: string[] = a.senses
+        .map((s: { glosses: { gloss: string }[] }) =>
+          s.glosses.map((g: { gloss: string }) => g.gloss),
         )
-        const bGlossMatch: boolean = bGlosses.some((g: string) =>
-          g.includes(dictionarySearchValue),
+        .flat()
+      const bGlosses: string[] = b.senses
+        .map((s: { glosses: { gloss: string }[] }) =>
+          s.glosses.map((g: { gloss: string }) => g.gloss),
         )
+        .flat()
 
-        if (aGlossMatch && !bGlossMatch) {
-          return -1
-        } else if (!aGlossMatch && bGlossMatch) {
-          return 1
-        } else {
-          return 0
-        }
-      }
+      const aGlossMatch: boolean = aGlosses.some((g: string) =>
+        g.includes(searchTerm),
+      )
+      const bGlossMatch: boolean = bGlosses.some((g: string) =>
+        g.includes(searchTerm),
+      )
+
+      // Combine commonality and relevance scores
+      const aScore = (aCommon ? 1 : 0) + (aGlossMatch ? 2 : 0)
+      const bScore = (bCommon ? 1 : 0) + (bGlossMatch ? 2 : 0)
+
+      return bScore - aScore
     })
 
     return entriesToBeReordered
@@ -150,7 +189,29 @@
       .join(' ')
   }
 
-  // onMount open the dicitonary dialog
+  function removeDuplicateGlossesFromSenses(sense: Sense[]) {
+    const glossMap = new Map<string, boolean>()
+    
+    const newSenses = sense.filter(s => {
+      s.glosses = s.glosses.filter(g => {
+        if (glossMap.has(g.gloss)) {
+          return false
+        } else {
+          console.log("I ran")
+          glossMap.set(g.gloss, true)
+          return true
+        }
+      })
+      return s.glosses.length > 0
+    })
+
+    console.log(glossMap)
+    
+    return newSenses
+    
+  }
+
+  // onMount open the dictionary dialog
   onMount(() => {
     const dictionaryDialog = document.getElementById(
       'dictionary',
@@ -228,12 +289,51 @@
               {formatKanaReadings(entry.kana)}
             </h2>
           {/if}
-          <p class="text-lg font-semibold">
-            {formatSenses(entry.senses)}
-          </p>
+            {#each removeDuplicateGlossesFromSenses(entry.senses) as sense}
+              <li>
+                <p class="text-lg font-semibold">
+                  {sense.glosses.map(g => g.gloss).join(', ')}
+                </p>    
+                {#if sense.info.length > 0}
+                  <p class="text-sm text-gray-500">
+                    Info: {sense.info.join(', ')}
+                  </p>
+                {/if}
+                {#if sense.misc.length > 0}
+                  <p class="text-sm text-gray-500">
+                    Misc: {sense.misc.join(', ')}
+                  </p>
+                {/if}
+                {#if sense.field.length > 0}
+                  <p class="text-sm text-gray-500">
+                    Field: {sense.field.join(', ')}
+                  </p>
+                {/if}
+                {#if sense.dialect.length > 0}
+                  <p class="text-sm text-gray-500">
+                    Dialect: {sense.dialect.join(', ')}
+                  </p>
+                {/if}
+              </li>
+            {/each}
         </div>
         <div class="divider"></div>
       {/each}
     {/if}
   </div>
 </dialog>
+
+<style>
+  .modal-box {
+    overflow-y: auto;
+  }
+  .list-disc {
+    list-style-type: disc;
+  }
+  .pl-5 {
+    padding-left: 1.25rem;
+  }
+  .text-gray-500 {
+    color: #6b7280;
+  }
+</style>
