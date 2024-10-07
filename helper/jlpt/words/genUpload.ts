@@ -13,14 +13,23 @@ const supabase = createClient<Database>(supabaseUrl, supabaseKey)
 // import N5.csv from the local filesystem
 import parse from 'csv-simple-parser'
 
-// read the file
-const csv = Bun.file('n5.csv').text()
+// read the files
+const n5csv = Bun.file('n5.csv').text()
+const n4csv = Bun.file('n4.csv').text()
+const n3csv = Bun.file('n3.csv').text()
+const n2csv = Bun.file('n2.csv').text()
+const n1csv = Bun.file('n1.csv').text()
 
 // save the first value of each row to an array, excluding the first row as it is a header
-const kanjiArray = parse(await csv).slice(1)
+const n5array = parse(await n5csv).slice(1)
+const n4array = parse(await n4csv).slice(1)
+const n3array = parse(await n3csv).slice(1)
+const n2array = parse(await n2csv).slice(1)
+const n1array = parse(await n1csv).slice(1)
 
 let emptyResults = []
 let kanjiCount = 0
+let completed = []
 
 // search the jmdict_kanji table for the first value of eaach row then return create a new 2d array which contains the first value of each row and the result of the search whether the returned data is empty or not
 async function processKanjiArray(csvItems: unknown[][] | Record<string, unknown>[], jlpt_level: number) {
@@ -62,7 +71,7 @@ async function processKanjiArray(csvItems: unknown[][] | Record<string, unknown>
       }
 
       if (commonWordId) {
-        return [kanji[0], commonWordId];
+        return [kanji[0], commonWordId, jlpt_level];
       }
       
       console.log(index)
@@ -76,7 +85,7 @@ async function processKanjiArray(csvItems: unknown[][] | Record<string, unknown>
       if (data == null) return
 
       if (data?.length == 1) {
-        return [kanji[0], data[0].word_id]
+        return [kanji[0], data[0].word_id, jlpt_level]
       }
 
       // If there are mutliple results check if there is one and only one with the common flag set to true
@@ -84,7 +93,7 @@ async function processKanjiArray(csvItems: unknown[][] | Record<string, unknown>
       const commonData = data.filter((x) => x.common)
       
       if (commonData.length == 1) {
-        return [kanji[0], commonData[0].word_id]
+        return [kanji[0], commonData[0].word_id, jlpt_level]
       }
       
       let highestText = ''
@@ -120,13 +129,13 @@ async function processKanjiArray(csvItems: unknown[][] | Record<string, unknown>
         .eq('text', kanji[0])
 
       if (kanaData?.length == 1) {
-        return [kanji[0], kanaData[0].word_id]
+        return [kanji[0], kanaData[0].word_id, jlpt_level]
       }
       
       const commonKanaData = kanaData?.filter((x) => x.common)
       
       if (commonKanaData?.length == 1) {
-        return [kanji[0], commonKanaData[0].word_id]
+        return [kanji[0], commonKanaData[0].word_id, jlpt_level]
       }
       
       if (kanaData?.length > 1) {
@@ -149,23 +158,30 @@ async function processKanjiArray(csvItems: unknown[][] | Record<string, unknown>
 
         console.log(kanji[0], highestText)
 
-        return [kanji[0], kanaData[highestSimilarityIndex].word_id]
+        return [kanji[0], kanaData[highestSimilarityIndex].word_id, jlpt_level]
       }
       
 
-      emptyResults.push(kanji as never)
+      emptyResults.push([...kanji, jlpt_level] as never)
     }),
   )
 
-  // Save the uploaded ones to a file
-
-  await Bun.write(
-    'kanjiArrayWithSearchResults.json',
-    JSON.stringify(kanjiArrayWithSearchResults.filter((x) => x != null)),
-  )
+  // Append to completed array
+  completed.push(kanjiArrayWithSearchResults.filter((x) => x != null))
 }
 
-await processKanjiArray()
+// Run for N5
+await processKanjiArray(n5array, 5)
+// Run for the rest
+await processKanjiArray(n4array, 4)
+await processKanjiArray(n3array, 3)
+await processKanjiArray(n2array, 2)
+await processKanjiArray(n1array, 1)
 
 console.log(emptyResults.length)
-await Bun.write('emptyResults.json', JSON.stringify(emptyResults))
+await Bun.write('empty.json', JSON.stringify(emptyResults))
+
+await Bun.write(
+  'uploads.json',
+  JSON.stringify(completed),
+)
