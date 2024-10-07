@@ -1,6 +1,7 @@
 // Import the Supabase client
 import { createClient } from '@supabase/supabase-js'
 import type { Database } from '../../../src/lib/database.types'
+import { stringSimilarity } from 'string-similarity-js'
 
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY || ''
 
@@ -18,7 +19,7 @@ const csv = Bun.file('n5.csv').text()
 // save the first value of each row to an array, excluding the first row as it is a header
 const kanjiArray = parse(await csv).slice(1)
 
-console.log(kanjiArray)
+let responsesToWrite = []
 
 // search the jmdict_kanji table for the first value of eaach row then return create a new 2d array which contains the first value of each row and the result of the search whether the returned data is empty or not
 async function processKanjiArray() {
@@ -32,17 +33,50 @@ async function processKanjiArray() {
 
       const { data } = await supabase
         .from('jmdict_kanji')
-        .select('*')
+        .select('*, jmdict_word ( jmdict_sense ( jmdict_gloss ( * ) ) )')
         .eq('text', kanji[0])
+        .eq('common', true)
+
+      if (data == null) return
 
       if (data?.length == 1) {
         return
       }
 
+      let highestText = ''
+
+      // If there are mutliple kanji with the same text, find the one with the highest similarity
+      if (data?.length > 1) {
+        let highestSimilarity = 0
+        let highestSimilarityIndex = 0
+        for (let i = 0; i < data.length; i++) {
+          const senses = data[i].jmdict_word?.jmdict_sense || []
+          for (const sense of senses) {
+            for (const gloss of sense.jmdict_gloss) {
+              const similarity = stringSimilarity(kanji[2], gloss.text)
+              if (similarity > highestSimilarity) {
+                highestText = gloss.text
+                highestSimilarity = similarity
+                highestSimilarityIndex = i
+              }
+            }
+          }
+        }
+
+        console.log(kanji[0], highestText)
+
+        responsesToWrite.push(kanji[0], highestText)
+
+        return [kanji[0], data[highestSimilarityIndex]]
+      }
+
+      // If the data is empty, search for similar kanji
+
       const { data: kanaData } = await supabase
         .from('jmdict_kana')
         .select('*')
         .eq('text', kanji[0])
+        .eq('common', true)
 
       if (kanaData?.length == 1) {
         return
@@ -64,10 +98,8 @@ async function processKanjiArray() {
   // Save the emptyResults array to a file
 
   await Bun.write('emptyResults.json', JSON.stringify(emptyResults))
-
-  console.log(kanjiArrayWithSearchResults)
-  console.log(emptyResults)
-  console.log(emptyResults.length)
 }
 
-processKanjiArray()
+await processKanjiArray()
+
+Bun.write('kanji.json', JSON.stringify(responsesToWrite))

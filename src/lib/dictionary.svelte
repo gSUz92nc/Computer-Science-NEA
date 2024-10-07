@@ -7,7 +7,7 @@
   const { debounce } = pkg
 
   export let supabase: SupabaseClient
-  
+
   type Sense = {
     id: string
     word_id: number
@@ -23,7 +23,7 @@
     related: JSON
     glosses: Glosses[]
   }
-  
+
   // Define the Kanji type
   type Kanji = {
     id: string
@@ -32,7 +32,7 @@
     tags: string[]
     text: string
   }
-  
+
   // Define the Kana type
   type Kana = {
     id: string
@@ -42,15 +42,13 @@
     tags: string[]
     text: string
   }
-  
+
   // Define the Glosses type
   type Glosses = {
     id: string
     gloss: string
     type: string | null
   }
-  
-  
 
   let dictionaryEntries: any[] = []
   let dictionarySearchValue = '開く'
@@ -191,13 +189,13 @@
 
   function removeDuplicateGlossesFromSenses(sense: Sense[]) {
     const glossMap = new Map<string, boolean>()
-    
-    const newSenses = sense.filter(s => {
-      s.glosses = s.glosses.filter(g => {
+
+    const newSenses = sense.filter((s) => {
+      s.glosses = s.glosses.filter((g) => {
         if (glossMap.has(g.gloss)) {
           return false
         } else {
-          console.log("I ran")
+          console.log('I ran')
           glossMap.set(g.gloss, true)
           return true
         }
@@ -206,9 +204,8 @@
     })
 
     console.log(glossMap)
-    
+
     return newSenses
-    
   }
 
   // onMount open the dictionary dialog
@@ -289,33 +286,33 @@
               {formatKanaReadings(entry.kana)}
             </h2>
           {/if}
-            {#each removeDuplicateGlossesFromSenses(entry.senses) as sense}
-              <li>
-                <p class="text-lg font-semibold">
-                  {sense.glosses.map(g => g.gloss).join(', ')}
-                </p>    
-                {#if sense.info.length > 0}
-                  <p class="text-sm text-gray-500">
-                    Info: {sense.info.join(', ')}
-                  </p>
-                {/if}
-                {#if sense.misc.length > 0}
-                  <p class="text-sm text-gray-500">
-                    Misc: {sense.misc.join(', ')}
-                  </p>
-                {/if}
-                {#if sense.field.length > 0}
-                  <p class="text-sm text-gray-500">
-                    Field: {sense.field.join(', ')}
-                  </p>
-                {/if}
-                {#if sense.dialect.length > 0}
-                  <p class="text-sm text-gray-500">
-                    Dialect: {sense.dialect.join(', ')}
-                  </p>
-                {/if}
-              </li>
-            {/each}
+          {#each removeDuplicateGlossesFromSenses(entry.senses) as sense}
+            <li>
+              <p class="text-lg font-semibold">
+                {sense.glosses.map((g) => g.gloss).join(', ')}
+              </p>
+              {#if sense.info.length > 0}
+                <p class="text-sm text-gray-500">
+                  Info: {sense.info.join(', ')}
+                </p>
+              {/if}
+              {#if sense.misc.length > 0}
+                <p class="text-sm text-gray-500">
+                  Misc: {sense.misc.join(', ')}
+                </p>
+              {/if}
+              {#if sense.field.length > 0}
+                <p class="text-sm text-gray-500">
+                  Field: {sense.field.join(', ')}
+                </p>
+              {/if}
+              {#if sense.dialect.length > 0}
+                <p class="text-sm text-gray-500">
+                  Dialect: {sense.dialect.join(', ')}
+                </p>
+              {/if}
+            </li>
+          {/each}
         </div>
         <div class="divider"></div>
       {/each}

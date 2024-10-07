@@ -38,6 +38,7 @@
     "csv-simple-parser": "^1.0.3",
     "lodash": "^4.17.21",
     "prettier-plugin-svelte": "^3.2.7",
+    "string-similarity-js": "^2.1.4",
     "supabase": "^1.200.3",
     "wanakana": "^5.3.1"
   }

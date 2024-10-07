@@ -1,446 +1,18 @@
 [
   [
-    "体",
-    "からだ",
-    "body; health",
-    "Genki Genki_Ln.23 Intermediate_Japanese Intermediate_Japanese_Ln.4 JLPT JLPT_5 JLPT_N5",
-    "x=d[R_7msH"
-  ],
-  [
-    "いつ",
-    "いつ",
-    "when",
-    "Genki Genki_Ln.3 JLPT JLPT_2 JLPT_5 JLPT_N5",
-    "oGX1~x%YQo"
-  ],
-  ["花瓶", "かびん", "(flower) vase", "JLPT JLPT_5 JLPT_N5", "m<:4xC~U|%"],
-  [
-    "声",
-    "こえ",
-    "voice",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.2 JLPT JLPT_5 JLPT_N5",
-    "In/Jo>[]?<"
-  ],
-  [
-    "キロ; キロメートル",
-    "キロ; キロメートル",
-    "(abbr.) kilo (kilometer)",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "I+%u|o<M9)"
-  ],
-  [
-    "伯父; 叔父さん",
-    "おじさん",
-    "uncle, middle-aged man",
-    "JLPT JLPT_5 JLPT_N5",
-    "s$4&3o9W|{"
-  ],
-  [
-    "妹",
-    "いもうと",
-    "younger sister (humble)",
-    "Genki Genki_Ln.1 Genki_Ln.7 JLPT JLPT_5 JLPT_N5",
-    "BL_XI^txw+"
-  ],
-  ["～がる", "～がる", "feel", "JLPT JLPT_5 JLPT_N5", "e--3P:#0au"],
-  [
-    "辛い",
-    "からい",
-    "hot and spicy; salty",
-    "Genki Genki_Ln.13 JLPT JLPT_5 JLPT_N5",
-    "EjaGe<]5<&"
-  ],
-  [
     "コート",
     "コート",
     "coat; court (e.g., tennis)",
     "JLPT JLPT_5 JLPT_N5",
     "e4scbA,t~J"
   ],
-  [
-    "～個",
-    "～こ",
-    "counter for small items (e.g., fruits, cups)",
-    "JLPT JLPT_2 JLPT_5 JLPT_N5",
-    "L)v,!KJ|+1"
-  ],
-  ["～月", "～がつ", "month of year", "JLPT JLPT_5 JLPT_N5", "x[qBqm:mer"],
-  [
-    "色",
-    "いろ",
-    "color",
-    "Genki Genki_Ln.9 Intermediate_Japanese Intermediate_Japanese_Ln.9 JLPT JLPT_5 JLPT_N5",
-    "Epa;v6=%P,"
-  ],
-  [
-    "キロ; キログラム",
-    "キロ; キログラム",
-    "(abbr.) kilo (kilogram)",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "v,MI,fa=Pd"
-  ],
-  ["～語", "～ご", "word, language", "JLPT JLPT_5 JLPT_N5", "OS-NJNma:q"],
-  [
-    "角",
-    "かど",
-    "corner (e.g., desk, pavement)",
-    "Genki Genki_Ln.20 JLPT JLPT_5 JLPT_N5",
-    "NblB:vgsi`"
-  ],
-  [
-    "薬",
-    "くすり",
-    "medicine",
-    "Genki Genki_Ln.9 Intermediate_Japanese Intermediate_Japanese_Ln.12 JLPT JLPT_5 JLPT_N5",
-    "e<qA>@afcN"
-  ],
-  [
-    "かかる",
-    "かかる",
-    "it takes (amount of time, money) (v.i.)",
-    "Genki Genki_Ln.10 Intermediate_Japanese Intermediate_Japanese_Ln.1 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "yajlZ<1W@="
-  ],
-  ["五", "ご", "five", "JLPT JLPT_3 JLPT_5 JLPT_N5", "CPX]&C<[AA"],
-  [
-    "かばん",
-    "かばん",
-    "bag, basket",
-    "Genki Genki_Ln.2 JLPT JLPT_5 JLPT_N5",
-    "M4T~@ehWYB"
-  ],
-  ["嫌い", "きらい", "dislike", "JLPT JLPT_5 JLPT_N5", "qw1}y,Um4C"],
-  [
-    "居る",
-    "いる",
-    "(humble) to be (animate), to exist",
-    "JLPT JLPT_5 JLPT_N5",
-    "wfzvV]4NOO"
-  ],
-  ["椅子", "いす", "chair", "JLPT JLPT_3 JLPT_5 JLPT_N5", "Nxw^e{dZp("],
-  ["九", "く", "nine", "JLPT JLPT_3 JLPT_5 JLPT_N5", "J.@??p5!Es"],
-  [
-    "紙",
-    "かみ",
-    "paper",
-    "Genki Genki_Ln.17 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "BZj5w]P?W@"
-  ],
-  ["来る", "くる", "to come", "JLPT JLPT_5 JLPT_N5", "t8%I(!NKuq"],
-  [
-    "遊ぶ",
-    "あそぶ",
-    "to play; to spend time pleasantly; to hang out",
-    "Genki Genki_Ln.6 Intermediate_Japanese Intermediate_Japanese_Ln.1 JLPT JLPT_5 JLPT_N5",
-    "e<h|f2`;&"
-  ],
-  [
-    "甘い",
-    "あまい",
-    "generous, sweet",
-    "Genki Genki_Ln.12 JLPT JLPT_5 JLPT_N5",
-    "jcM!HlCL`<"
-  ],
-  [
-    "口",
-    "くち",
-    "job opening; mouth",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.11 Intermediate_Japanese_Ln.8 JLPT JLPT_5 JLPT_N5",
-    "ODcS@5Ag5;"
-  ],
-  [
-    "後",
-    "あと",
-    "afterwards (later); in the future; the rest; since then",
-    "Genki Genki_Ln.18 JLPT JLPT_2 JLPT_3 JLPT_5 JLPT_N5",
-    "r-[yF55!,-"
-  ],
-  ["一", "いち", "one", "JLPT JLPT_3 JLPT_5 JLPT_N5", "C57gy_Lcmo"],
-  [
-    "～か月",
-    "～かげつ",
-    "(number of) months",
-    "JLPT JLPT_5 JLPT_N5",
-    "p^^qFJHF)["
-  ],
-  [
-    "姉",
-    "あね",
-    "(my) older sister (humble)",
-    "Genki Genki_Ln.7 JLPT JLPT_5 JLPT_N5",
-    "IX6p9}CO.e"
-  ],
-  [
-    "開く",
-    "あく",
-    "to open, to become open",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "m[4![DH*c~"
-  ],
-  [
-    "一番",
-    "いちばん",
-    "best (most), first, number one",
-    "Genki Genki_Ln.10 Intermediate_Japanese Intermediate_Japanese_Ln.3 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "y&ds7j((mb"
-  ],
-  [
-    "開ける",
-    "あける",
-    "to open (v.t.)",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.12 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "y.#AVx@-k>"
-  ],
-  [
-    "かける",
-    "かける",
-    "to dial/call (e.g., phone); to sit down",
-    "Genki Genki_Ln.19 JLPT JLPT_3 JLPT_4 JLPT_5 JLPT_N5",
-    "j[@hZ&;%2u"
-  ],
-  [
-    "上",
-    "うえ",
-    "above (up, top, etc.), over, on top of",
-    "JLPT JLPT_2 JLPT_5 JLPT_N5",
-    "j3j@,T!uH>"
-  ],
-  [
-    "あなた",
-    "あなた",
-    "you",
-    "Genki Genki_Ln.4 JLPT JLPT_5 JLPT_N5",
-    "dwd.i?n%,!"
-  ],
-  [
-    "兄",
-    "あに",
-    "(my) older brother (humble)",
-    "Genki Genki_Ln.14 JLPT JLPT_5 JLPT_N5",
-    "L}%Kue=51s"
-  ],
-  [
-    "あの",
-    "あの",
-    "that over there; like that, that way; um...",
-    "JLPT JLPT_4 JLPT_5 JLPT_N5",
-    "B2LX%goFyX"
-  ],
-  [
-    "鍵",
-    "かぎ",
-    "a lock; a key",
-    "Genki Genki_Ln.17 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "CBifo1C?=d"
-  ],
-  [
-    "～くらい; ぐらい",
-    "～くらい; ぐらい",
-    "approximate (quantity)",
-    "JLPT JLPT_5 JLPT_N5",
-    "i|aE4l1U6h"
-  ],
-  [
-    "車",
-    "くるま",
-    "car, vehicle",
-    "Genki Genki_Ln.7 JLPT JLPT_5 JLPT_N5",
-    "Dp50G3U@L="
-  ],
-  ["入れる", "いれる", "to put in", "JLPT JLPT_5 JLPT_N5", "swmy/(v]Eb"],
-  [
-    "うち",
-    "うち",
-    "home; house; my place",
-    "Genki Genki_Ln.3 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "u5l2?%hKEd"
-  ],
   ["足; 脚", "あし", "foot; leg", "JLPT JLPT_5 JLPT_N5", "m.INsC.wC2"],
   [
-    "顔",
-    "かお",
-    "face (body part)",
-    "Genki Genki_Ln.10 Intermediate_Japanese Intermediate_Japanese_Ln.2 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "MGLL{4`mK@"
-  ],
-  ["～歳", "～さい", "~ years old", "JLPT JLPT_2 JLPT_5 JLPT_N5", "yIt4LQzbb!"],
-  [
-    "コップ",
-    "コップ",
-    "a tumbler; a glass",
-    "Genki Genki_Ln.14 JLPT JLPT_5 JLPT_N5",
-    "fS_r5k@$Y6"
-  ],
-  [
-    "朝",
-    "あさ",
-    "morning",
-    "Genki Genki_Ln.3 Intermediate_Japanese Intermediate_Japanese_Ln.2 JLPT JLPT_5 JLPT_N5",
-    "g|Q>VbnCii"
-  ],
-  [
-    "方",
-    "かた",
-    "-- honorific form for 人 (ひと) --; way of doing",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.4 JLPT JLPT_3 JLPT_4 JLPT_5 JLPT_N5",
-    "GtdTiap.Os"
-  ],
-  [
-    "忙しい",
-    "いそがしい",
-    "busy (people, days)",
-    "Genki Genki_Ln.5 JLPT JLPT_5 JLPT_N5",
-    "pTORshR]m|"
-  ],
-  [
-    "傘",
-    "かさ",
-    "umbrella, parasol",
-    "Genki Genki_Ln.2 JLPT JLPT_5 JLPT_N5",
-    "p_LV=Cf?pc"
-  ],
-  [
-    "今",
-    "いま",
-    "now",
-    "Genki Genki_Ln.1 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "N{Ld-iFO]H"
-  ],
-  [
-    "こっち",
-    "こっち",
-    "this person; this direction; this side",
-    "JLPT JLPT_4 JLPT_5 JLPT_N5",
-    "KZ(~KRGBCG"
-  ],
-  [
-    "～さん",
-    "～さん",
-    "Mr. ~, Ms. ~",
-    "JLPT JLPT_2 JLPT_5 JLPT_N5",
-    "i|L#.MVmNG"
-  ],
-  [
-    "コピーする",
-    "コピーする",
-    "to copy",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "pIfdJ-gQ=x"
-  ],
-  ["この", "この", "this", "JLPT JLPT_3 JLPT_5 JLPT_N5", "pPsd:zD9O?"],
-  [
-    "学生",
-    "がくせい",
-    "student",
-    "Genki Genki_Ln.1 JLPT JLPT_5 JLPT_N5",
-    "JC,(K4dD=="
-  ],
-  [
-    "風",
-    "かぜ",
-    "wind, breeze",
-    "Genki Genki_Ln.22 JLPT JLPT_5 JLPT_N5",
-    "wPz(SGuAqF"
-  ],
-  ["三", "さん", "three", "JLPT JLPT_5 JLPT_N5", "jB}%X}YQ)P"],
-  [
-    "～時",
-    "～じ",
-    "~ o'clock (time)",
-    "JLPT JLPT_1 JLPT_5 JLPT_N5",
-    "m]7PVW-h[^"
-  ],
-  [
-    "先",
-    "さき",
-    "future; recent, previous",
-    "JLPT JLPT_5 JLPT_N5",
-    "tGm0X7=@hF"
-  ],
-  [
-    "作文",
-    "さくぶん",
-    "essay; composition",
-    "Genki Genki_Ln.9 JLPT JLPT_5 JLPT_N5",
-    "fOn$od$Eoc"
-  ],
-  [
-    "これ",
-    "これ",
-    "this one",
-    "Genki Genki_Ln.2 JLPT JLPT_5 JLPT_N5",
-    "CY7%/#&PC;"
-  ],
-  [
-    "一日",
-    "いちにち",
-    "one day (duration)",
-    "Genki Genki_Ln.13 JLPT JLPT_5 JLPT_N5",
-    "Q/Fb^F]yhk"
-  ],
-  ["～時間", "～じかん", "~ hours", "JLPT JLPT_5 JLPT_N5", "PfD-$$uDhD"],
-  [
-    "御飯",
-    "ごはん",
-    "rice (cooked); meal",
-    "Genki Genki_Ln.4 JLPT JLPT_5 JLPT_N5",
-    "biiyLkNokP"
-  ],
-  ["七", "しち", "seven", "JLPT JLPT_3 JLPT_5 JLPT_N5", "d9Ei.i(]l3"],
-  ["四", "し", "four", "JLPT JLPT_3 JLPT_5 JLPT_N5", "q%G#*K^0R+"],
-  ["塩", "しお", "salt", "JLPT JLPT_5 JLPT_N5", "mQXb>=tTk}"],
-  ["十", "じゅう", "ten", "JLPT JLPT_3 JLPT_5 JLPT_N5", "t#RE}A*?;i"],
-  [
-    "しかし",
-    "しかし",
-    "however; but",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.3 JLPT JLPT_5 JLPT_N5",
-    "g2(en9wt=#"
-  ],
-  ["～冊", "～さつ", "counter for books", "JLPT JLPT_5 JLPT_N5", "DJ:3n{-XN%"],
-  [
-    "じゃ; じゃあ",
-    "じゃ; じゃあ",
-    "well, well then",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "I*;H$6{i?j"
-  ],
-  ["～週間", "～しゅうかん", "~ weeks", "JLPT JLPT_5 JLPT_N5", "B5/n=cEC&j"],
-  [
-    "～中",
-    "～じゅう",
-    "during, while",
-    "JLPT JLPT_2 JLPT_5 JLPT_N5",
-    "GjJjAMMc<N"
-  ],
-  [
-    "丈夫",
-    "じょうぶ",
-    "strong, solid, durable",
-    "JLPT JLPT_5 JLPT_N5",
-    "rzxPYrs,=L"
-  ],
-  [
-    "下",
-    "した",
-    "under, below, beneath",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "j8V7%&V*V9"
-  ],
-  ["～人", "～じん", "counter for people", "JLPT JLPT_5 JLPT_N5", "cRB`piJTT="],
-  [
-    "上手",
-    "じょうず",
-    "be good at, skillful",
-    "JLPT JLPT_5 JLPT_N5",
-    "zE7uPe$TPk"
-  ],
-  [
-    "食堂",
-    "しょくどう",
-    "cafeteria, dining hall",
-    "Genki Genki_Ln.7 JLPT JLPT_5 JLPT_N5",
-    "q/e+PknS.X"
+    "ここ",
+    "ここ",
+    "here, this place",
+    "Genki Genki_Ln.4 JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "Lq)wtpkam*"
   ],
   [
     "～ころ; ～ごろ",
@@ -450,18 +22,59 @@
     "ygFZGug3gm"
   ],
   [
+    "コピーする",
+    "コピーする",
+    "to copy",
+    "JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "pIfdJ-gQ=x"
+  ],
+  ["～歳", "～さい", "~ years old", "JLPT JLPT_2 JLPT_5 JLPT_N5", "yIt4LQzbb!"],
+  ["～時間", "～じかん", "~ hours", "JLPT JLPT_5 JLPT_N5", "PfD-$$uDhD"],
+  ["～冊", "～さつ", "counter for books", "JLPT JLPT_5 JLPT_N5", "DJ:3n{-XN%"],
+  [
+    "さ来年",
+    "さらいねん",
+    "year after next",
+    "JLPT JLPT_5 JLPT_N5",
+    "C4/Z2oi:V>"
+  ],
+  [
+    "～さん",
+    "～さん",
+    "Mr. ~, Ms. ~",
+    "JLPT JLPT_2 JLPT_5 JLPT_N5",
+    "i|L#.MVmNG"
+  ],
+  [
+    "～時",
+    "～じ",
+    "~ o'clock (time)",
+    "JLPT JLPT_1 JLPT_5 JLPT_N5",
+    "m]7PVW-h[^"
+  ],
+  ["～週間", "～しゅうかん", "~ weeks", "JLPT JLPT_5 JLPT_N5", "B5/n=cEC&j"],
+  [
+    "じゃ; じゃあ",
+    "じゃ; じゃあ",
+    "well, well then",
+    "JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "I*;H$6{i?j"
+  ],
+  [
+    "～中",
+    "～じゅう",
+    "during, while",
+    "JLPT JLPT_2 JLPT_5 JLPT_N5",
+    "GjJjAMMc<N"
+  ],
+  ["～ずつ", "～ずつ", "at a time", "JLPT JLPT_5 JLPT_N5", "e7*dq)(1^5"],
+  ["～人", "～じん", "counter for people", "JLPT JLPT_5 JLPT_N5", "cRB`piJTT="],
+  [
     "～すぎ",
     "～すぎ",
     "past; to exceed, ~ too much",
     "JLPT JLPT_5 JLPT_N5",
     "D/A*oT1;-^"
-  ],
-  [
-    "好き",
-    "すき",
-    "liking, fondness, love",
-    "JLPT JLPT_5 JLPT_N5",
-    "B}kz{&9>=0"
   ],
   [
     "する",
@@ -471,136 +84,11 @@
     "LT|A_z,G+T"
   ],
   [
-    "背",
-    "せい",
-    "(one's) height, stature",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.4 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "xQDy{9R)S2"
-  ],
-  ["～ずつ", "～ずつ", "at a time", "JLPT JLPT_5 JLPT_N5", "e7*dq)(1^5"],
-  [
-    "そば",
-    "そば",
-    "near, close, beside; Japanese traditional buckwheat noodle",
-    "Genki Genki_Ln.15 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "M)]t*`<F@c"
-  ],
-  [
-    "そこ",
-    "そこ",
-    "that place, there; bottom, sole",
-    "Genki Genki_Ln.4 JLPT JLPT_2 JLPT_3 JLPT_5 JLPT_N5",
-    "v56KFY.>v@"
-  ],
-  [
-    "それ",
-    "それ",
-    "that one",
-    "Genki Genki_Ln.2 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "t%n)3@@XX+"
-  ],
-  [
-    "一昨日",
-    "おととい",
-    "the day before yesterday",
-    "Genki Genki_Ln.19 JLPT JLPT_5 JLPT_N5",
-    "n^WNNS^t5D"
-  ],
-  ["白", "しろ", "white", "JLPT JLPT_3 JLPT_5 JLPT_N5", "?4vV_taj)"],
-  [
-    "そう; そうです",
-    "そう; そうです",
-    "yes; appears, to be the case",
-    "JLPT JLPT_5 JLPT_N5",
-    "kkfDg[|_Yb"
-  ],
-  [
-    "先生",
-    "せんせい",
-    "teacher, professor; master; doctor",
-    "Genki Genki_Ln.1 JLPT JLPT_5 JLPT_N5",
-    "A`19t`6J6t"
-  ],
-  [
-    "外",
-    "そと",
-    "outside, exterior",
-    "Genki Genki_Ln.18 Intermediate_Japanese Intermediate_Japanese_Ln.2 JLPT JLPT_5 JLPT_N5",
-    "AFB3>g85F]"
-  ],
-  [
     "～台",
     "～だい",
     "counter for vehicles; machines",
     "JLPT JLPT_5 JLPT_N5",
     "ztM0ejgNN~"
-  ],
-  [
-    "歩く",
-    "あるく",
-    "to walk",
-    "Genki Genki_Ln.20 Intermediate_Japanese Intermediate_Japanese_Ln.1 JLPT JLPT_5 JLPT_N5",
-    "Kkagn,fSTU"
-  ],
-  ["沢山", "たくさん", "many, much", "JLPT JLPT_5 JLPT_N5", "v7m[:9zL*Y"],
-  [
-    "降りる",
-    "おりる",
-    "to get off",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "hM4FhZWg_/"
-  ],
-  ["空", "そら", "sky", "JLPT JLPT_5 JLPT_N5", "D.6b;1{88^"],
-  ["その", "その", "that", "JLPT JLPT_3 JLPT_5 JLPT_N5", "C2OIF=[)E_"],
-  [
-    "終る",
-    "おわる",
-    "to finish, to close",
-    "JLPT JLPT_5 JLPT_N5",
-    "D_J6!H@vf*"
-  ],
-  ["～たち", "～たち", "plural suffix", "JLPT JLPT_5 JLPT_N5", "Opbd!87m@p"],
-  [
-    "違う",
-    "ちがう",
-    "to be different; to differ; wrong",
-    "Genki Genki_Ln.23 Intermediate_Japanese Intermediate_Japanese_Ln.1 JLPT JLPT_5 JLPT_N5",
-    "N2Hj9)qK/l"
-  ],
-  [
-    "伯母さん; 叔母さん",
-    "おばさん",
-    "aunt",
-    "JLPT JLPT_5 JLPT_N5",
-    "fk]_fvvw.h"
-  ],
-  [
-    "会う",
-    "あう",
-    "to meet, to see",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "kupB!kWE}<"
-  ],
-  [
-    "段々",
-    "だんだん",
-    "gradually, by degrees",
-    "JLPT JLPT_5 JLPT_N5",
-    "O8dRR}CL>"
-  ],
-  [
-    "同じ",
-    "おなじ",
-    "same, identical",
-    "Genki Genki_Ln.14 Intermediate_Japanese Intermediate_Japanese_Ln.1 JLPT JLPT_5 JLPT_N5",
-    "FT1U+`d~$u"
-  ],
-  [
-    "たて",
-    "たて",
-    "length, height",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "L8wVt#MfRS"
   ],
   [
     "そうして; そして",
@@ -610,11 +98,34 @@
     "C/Lx0#`!+J"
   ],
   [
-    "卵",
-    "たまご",
-    "egg",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.6 JLPT JLPT_5 JLPT_N5",
-    "c|(S)f_).K"
+    "そば",
+    "そば",
+    "near, close, beside; Japanese traditional buckwheat noodle",
+    "Genki Genki_Ln.15 JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "M)]t*`<F@c"
+  ],
+  ["その", "その", "that", "JLPT JLPT_3 JLPT_5 JLPT_N5", "C2OIF=[)E_"],
+  [
+    "～だけ",
+    "～だけ",
+    "only ~, just ~, as ~",
+    "JLPT JLPT_1 JLPT_5 JLPT_N5",
+    "Lcbr*3r3b5"
+  ],
+  ["～たち", "～たち", "plural suffix", "JLPT JLPT_5 JLPT_N5", "Opbd!87m@p"],
+  [
+    "そこ",
+    "そこ",
+    "that place, there; bottom, sole",
+    "Genki Genki_Ln.4 JLPT JLPT_2 JLPT_3 JLPT_5 JLPT_N5",
+    "v56KFY.>v@"
+  ],
+  [
+    "そう; そうです",
+    "そう; そうです",
+    "yes; appears, to be the case",
+    "JLPT JLPT_5 JLPT_N5",
+    "kkfDg[|_Yb"
   ],
   [
     "～中",
@@ -624,33 +135,11 @@
     "J]E)zcwU%w"
   ],
   [
-    "～だけ",
-    "～だけ",
-    "only ~, just ~, as ~",
-    "JLPT JLPT_1 JLPT_5 JLPT_N5",
-    "Lcbr*3r3b5"
-  ],
-  ["大切", "たいせつ", "important", "JLPT JLPT_5 JLPT_N5", "tu70?MYeL5"],
-  [
-    "お姉さん",
-    "おねえさん",
-    "older sister (formal)",
-    "Genki Genki_Ln.1 Genki_Ln.7 JLPT JLPT_5 JLPT_N5",
-    "Q,2s6~F,9F"
-  ],
-  [
-    "着く",
-    "つく",
-    "to arrive at, to reach",
+    "たて",
+    "たて",
+    "length, height",
     "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "hc-pfPX>PQ"
-  ],
-  [
-    "一日",
-    "ついたち",
-    "one day; first day of the month",
-    "JLPT JLPT_5 JLPT_N5",
-    "qK&D4iveg"
+    "L8wVt#MfRS"
   ],
   [
     "つける",
@@ -660,19 +149,11 @@
     "o}z*=/A8o~"
   ],
   [
-    "大丈夫",
-    "だいじょうぶ",
-    "It's ok (all right); No need to worry; Everything is under control",
-    "Genki Genki_Ln.5 Intermediate_Japanese Intermediate_Japanese_Ln.3 JLPT JLPT_5 JLPT_N5",
-    "nEIlSJfx#r"
-  ],
-  ["次", "つぎ", "next", "Genki Genki_Ln.6 JLPT JLPT_5 JLPT_N5", "IPls}w5_e-"],
-  [
-    "所",
-    "ところ",
-    "place",
-    "Genki Genki_Ln.8 Intermediate_Japanese Intermediate_Japanese_Ln.1 JLPT JLPT_5 JLPT_N5",
-    "J`^6YmuA-0"
+    "～度",
+    "～ど",
+    "counter for occurrences; ~ degree; ~ point",
+    "JLPT JLPT_1 JLPT_5 JLPT_N5",
+    "K9|0UgYaJ_"
   ],
   [
     "～時",
@@ -682,49 +163,66 @@
     "bGLp[lZC.;"
   ],
   [
-    "強い",
-    "つよい",
-    "strong, powerful",
-    "Genki Genki_Ln.17 Intermediate_Japanese Intermediate_Japanese_Ln.13 JLPT JLPT_5 JLPT_N5",
-    "d[wde~o@q("
+    "～階",
+    "～かい",
+    "counter for stories (floors) of a building",
+    "JLPT JLPT_4 JLPT_5 JLPT_N5",
+    "x]4mRhDP?0"
   ],
-  [
-    "～度",
-    "～ど",
-    "counter for occurrences; ~ degree; ~ point",
-    "JLPT JLPT_1 JLPT_5 JLPT_N5",
-    "K9|0UgYaJ_"
-  ],
-  ["年", "とし", "year, age", "JLPT JLPT_3 JLPT_5 JLPT_N5", "N=hcG9wG3;"],
-  [
-    "十",
-    "(〜を) とお",
-    "ten (~)",
-    "Genki Genki_Ln.9 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "BjWdBTc)9!"
-  ],
-  ["戸", "と", "door (Japanese style)", "JLPT JLPT_5 JLPT_N5", "o.K?EMap~;"],
   ["どう", "どう", "how, in what way", "JLPT JLPT_5 JLPT_N5", "FZt/a?Mnu^"],
   [
-    "止まる",
-    "とまる",
-    "to come to a halt",
-    "JLPT JLPT_5 JLPT_N5",
-    "Q+OrrzleWd"
+    "～回",
+    "～かい",
+    "counter for occurrences (~ times)",
+    "JLPT JLPT_1 JLPT_5 JLPT_N5",
+    "dwW`SX||PF"
   ],
   [
-    "できる",
-    "できる",
-    "to be able to (to accomplish)",
-    "JLPT JLPT_3 JLPT_4 JLPT_5 JLPT_N5",
-    "vB~NGv+*>H"
+    "～か月",
+    "～かげつ",
+    "(number of) months",
+    "JLPT JLPT_5 JLPT_N5",
+    "p^^qFJHF)["
   ],
+  [
+    "かかる",
+    "かかる",
+    "it takes (amount of time, money) (v.i.)",
+    "Genki Genki_Ln.10 Intermediate_Japanese Intermediate_Japanese_Ln.1 JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "yajlZ<1W@="
+  ],
+  [
+    "終る",
+    "おわる",
+    "to finish, to close",
+    "JLPT JLPT_5 JLPT_N5",
+    "D_J6!H@vf*"
+  ],
+  ["片仮名", "かたかな", "katakana", "JLPT JLPT_5 JLPT_N5", "y%B]18.T{|"],
+  ["～月", "～がつ", "month of year", "JLPT JLPT_5 JLPT_N5", "x[qBqm:mer"],
+  ["どの", "どの", "which", "JLPT JLPT_5 JLPT_N5", "H+g1ci<Mvc"],
+  [
+    "ない",
+    "ない",
+    "there isn't, doesn't have",
+    "JLPT JLPT_5 JLPT_N5",
+    "I08@<2+DPk"
+  ],
+  ["～など", "～など", "et cetera", "JLPT JLPT_3 JLPT_5 JLPT_N5", "e(]O3py,;2"],
   [
     "なる",
     "なる",
     "to become",
     "Genki Genki_Ln.10 JLPT JLPT_3 JLPT_5 JLPT_N5",
     "ukKTUxR2lk"
+  ],
+  ["何～", "なん～", "what sort of ~", "JLPT JLPT_5 JLPT_N5", "C!@pB0L*^>"],
+  [
+    "かける",
+    "かける",
+    "to dial/call (e.g., phone); to sit down",
+    "Genki Genki_Ln.19 JLPT JLPT_3 JLPT_4 JLPT_5 JLPT_N5",
+    "j[@hZ&;%2u"
   ],
   [
     "～日",
@@ -733,112 +231,21 @@
     "JLPT JLPT_5 JLPT_N5",
     "DbJ@Azg05L"
   ],
-  ["どの", "どの", "which", "JLPT JLPT_5 JLPT_N5", "H+g1ci<Mvc"],
+  ["～人", "～にん", "counter for people", "JLPT JLPT_5 JLPT_N5", "FNnJ8yNPin"],
+  ["～年", "～ねん", "~ years", "JLPT JLPT_5 JLPT_N5", "gYAXz}z6O,"],
   [
-    "中",
-    "なか",
-    "inside, middle, among",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "rVjcK=lE15"
+    "はい",
+    "はい",
+    "yes",
+    "Genki Genki_Ln.1 JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "Q.;:Q&Nmh}"
   ],
-  [
-    "ない",
-    "ない",
-    "there isn't, doesn't have",
-    "JLPT JLPT_5 JLPT_N5",
-    "I08@<2+DPk"
-  ],
-  [
-    "では",
-    "では",
-    "then, well, so",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "NY{|SsdlKz"
-  ],
-  ["肉", "にく", "meat", "Genki Genki_Ln.2 JLPT JLPT_5 JLPT_N5", "Go(gh2eIxK"],
-  ["何～", "なん～", "what sort of ~", "JLPT JLPT_5 JLPT_N5", "C!@pB0L*^>"],
-  ["二", "に", "two", "JLPT JLPT_5 JLPT_N5", "uzD!:&B)8|"],
-  [
-    "弟",
-    "おとうと",
-    "younger brother",
-    "Genki Genki_Ln.1 Genki_Ln.7 JLPT JLPT_5 JLPT_N5",
-    "ht,o]F,GkV"
-  ],
-  ["西", "にし", "west", "JLPT JLPT_5 JLPT_N5", "D!YA^58RBg"],
   [
     "初め; 始め",
     "はじめ",
     "beginning, start",
     "JLPT JLPT_3 JLPT_5 JLPT_N5",
     "Po{k$4o=i}"
-  ],
-  ["～人", "～にん", "counter for people", "JLPT JLPT_5 JLPT_N5", "FNnJ8yNPin"],
-  [
-    "何",
-    "なん; なに",
-    "what",
-    "Genki Genki_Ln.1 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "g<hW@mElnM"
-  ],
-  ["～など", "～など", "et cetera", "JLPT JLPT_3 JLPT_5 JLPT_N5", "e(]O3py,;2"],
-  [
-    "夏",
-    "なつ",
-    "summer",
-    "Genki Genki_Ln.8 Intermediate_Japanese Intermediate_Japanese_Ln.4 JLPT JLPT_5 JLPT_N5",
-    "P,[b8Eh|6R"
-  ],
-  [
-    "大人",
-    "おとな",
-    "adult",
-    "Genki Genki_Ln.13 JLPT JLPT_5 JLPT_N5",
-    "F~j9Wag0^x"
-  ],
-  ["～年", "～ねん", "~ years", "JLPT JLPT_5 JLPT_N5", "gYAXz}z6O,"],
-  [
-    "入る",
-    "はいる",
-    "to enter, to contain, to hold",
-    "JLPT JLPT_5 JLPT_N5",
-    "zZFQIc).TB"
-  ],
-  [
-    "はく",
-    "はく",
-    "to put on (items below your waist)",
-    "Genki Genki_Ln.7 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "oRjJ`o{id)"
-  ],
-  [
-    "女の子",
-    "おんなのこ",
-    "girl",
-    "Genki Genki_Ln.11 JLPT JLPT_5 JLPT_N5",
-    "n^ma[3kYmi"
-  ],
-  [
-    "歯",
-    "は",
-    "tooth",
-    "Genki Genki_Ln.12 Intermediate_Japanese Intermediate_Japanese_Ln.12 JLPT JLPT_5 JLPT_N5",
-    "J1;2F+tdr`"
-  ],
-  ["猫", "ねこ", "cat", "Genki Genki_Ln.4 JLPT JLPT_5 JLPT_N5", "x^.ijbc4Mz"],
-  [
-    "女",
-    "おんな",
-    "woman, female",
-    "Genki Genki_Ln.17 JLPT JLPT_5 JLPT_N5",
-    "d3!7^Z7+&i"
-  ],
-  [
-    "話",
-    "はなし",
-    "talk (chat), story",
-    "Genki Genki_Ln.19 JLPT JLPT_5 JLPT_N5",
-    "A(<B}*ZSa_"
   ],
   [
     "～杯",
@@ -848,83 +255,13 @@
     "JTOz#Az0jW"
   ],
   [
-    "男の子",
-    "おとこのこ",
-    "boy",
-    "Genki Genki_Ln.11 JLPT JLPT_5 JLPT_N5",
-    "mDCUq=3c&Y"
+    "はく",
+    "はく",
+    "to put on (items below your waist)",
+    "Genki Genki_Ln.7 JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "oRjJ`o{id)"
   ],
-  ["川; 河", "かわ", "river", "JLPT JLPT_3 JLPT_5 JLPT_N5", "QzV_(D2VAO"],
-  [
-    "木",
-    "き",
-    "tree, wood, timber",
-    "Genki Genki_Ln.22 JLPT JLPT_5 JLPT_N5",
-    "Pt,~h2%O9J"
-  ],
-  [
-    "～階",
-    "～かい",
-    "counter for stories (floors) of a building",
-    "JLPT JLPT_4 JLPT_5 JLPT_N5",
-    "x]4mRhDP?0"
-  ],
-  [
-    "男",
-    "おとこ",
-    "man, male",
-    "Genki Genki_Ln.17 JLPT JLPT_5 JLPT_N5",
-    "QC9-<k]D|G"
-  ],
-  [
-    "はい",
-    "はい",
-    "yes",
-    "Genki Genki_Ln.1 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "Q.;:Q&Nmh}"
-  ],
-  ["橋", "はし", "bridge", "JLPT JLPT_3 JLPT_5 JLPT_N5", "gMcz>SvPjQ"],
-  [
-    "～回",
-    "～かい",
-    "counter for occurrences (~ times)",
-    "JLPT JLPT_1 JLPT_5 JLPT_N5",
-    "dwW`SX||PF"
-  ],
-  [
-    "切手",
-    "きって",
-    "postal (postage) stamps",
-    "Genki Genki_Ln.5 Intermediate_Japanese Intermediate_Japanese_Ln.3 JLPT JLPT_5 JLPT_N5",
-    "GZ2eU+7^)f"
-  ],
-  [
-    "北",
-    "きた",
-    "north",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.10 JLPT JLPT_5 JLPT_N5",
-    "c_4*(T~qY|"
-  ],
-  ["いい; よい", "いい; よい", "good", "JLPT JLPT_5 JLPT_N5", "O(#?WJE%7H"],
-  ["九", "きゅう", "nine", "JLPT JLPT_3 JLPT_5 JLPT_N5", "PCz+i!/c^t"],
-  ["飴", "あめ", "(hard) candy", "JLPT JLPT_5 JLPT_N5", "v}dp1l^X:W"],
-  [
-    "家",
-    "いえ",
-    "house, home",
-    "Genki Genki_Ln.3 JLPT JLPT_2 JLPT_3 JLPT_5 JLPT_N5",
-    "QGc`#y1e97"
-  ],
-  ["～側", "～がわ", "~ side", "JLPT_N5", "ks2wGx4U0-"],
-  ["半分", "はんぶん", "half", "JLPT JLPT_5 JLPT_N5", "DN!/&cg9bL"],
-  ["池", "いけ", "pond", "JLPT JLPT_5 JLPT_N5", "u8]?l[G,7&"],
-  [
-    "頭",
-    "あたま",
-    "head",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.2 JLPT JLPT_5 JLPT_N5",
-    "DaKiPvzaex"
-  ],
+  ["～番", "～ばん", "~st; ~th best", "JLPT JLPT_5 JLPT_N5", "b/wgPDiVBg"],
   [
     "～匹",
     "～ひき",
@@ -932,109 +269,20 @@
     "JLPT JLPT_5 JLPT_N5",
     "ivmKu+!yZ}"
   ],
-  ["東", "ひがし", "east", "JLPT JLPT_5 JLPT_N5", "pI3YEa2,3t"],
-  ["～番", "～ばん", "~st; ~th best", "JLPT JLPT_5 JLPT_N5", "b/wgPDiVBg"],
-  ["一月", "ひとつき", "one month", "JLPT JLPT_5 JLPT_N5", "JU.k{Nz*{h"],
   [
-    "あれ",
-    "あれ",
-    "that one (over there)",
-    "Genki Genki_Ln.2 JLPT JLPT_5 JLPT_N5",
-    "Co(PaI(^/_"
-  ],
-  [
-    "パン",
-    "パン",
-    "bread",
-    "Genki Genki_Ln.4 JLPT JLPT_5 JLPT_N5",
-    "FI2Z[9I*9Q"
-  ],
-  [
-    "人",
-    "ひと",
-    "man, person",
-    "Genki Genki_Ln.4 JLPT JLPT_5 JLPT_N5",
-    "ya&#4:D}>{"
-  ],
-  ["百", "ひゃく", "hundred", "JLPT JLPT_5 JLPT_N5", "J;(UasY_=O"],
-  ["左", "ひだり", "left hand side", "JLPT JLPT_5 JLPT_N5", "h_@t6d`1:*"],
-  [
-    "弾く",
-    "ひく",
-    "to play (a string instrument or piano)",
-    "Genki Genki_Ln.9 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "HK}b0#P-HS"
+    "昼御飯",
+    "ひるごはん",
+    "lunch, midday meal",
+    "Genki Genki_Ln.3 JLPT JLPT_5 JLPT_N5",
+    "JGK7M1P.PA"
   ],
   ["～分", "～ふん", "~ minutes", "JLPT JLPT_5 JLPT_N5", "chUnU+#xr]"],
   [
-    "服",
-    "ふく",
-    "clothes",
-    "Genki Genki_Ln.12 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "G;N&<jI3Ep"
-  ],
-  [
-    "降る",
-    "ふる",
-    "to precipitate, to fall (e.g., rain, snow, etc.)",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.2 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "q(<}4NV?U@"
-  ],
-  [
-    "病気",
-    "びょうき",
-    "illness; sickness",
-    "Genki Genki_Ln.9 Intermediate_Japanese Intermediate_Japanese_Ln.2 JLPT JLPT_5 JLPT_N5",
-    "Ibs3I0!xB|"
-  ],
-  ["フォーク", "フォーク", "fork", "JLPT JLPT_5 JLPT_N5", "Q#>HBX67;#"],
-  ["暇", "ひま", "free time, leisure", "JLPT JLPT_5 JLPT_N5", "urDxNZnrq<"],
-  ["下手", "へた", "unskillful, poor", "JLPT JLPT_5 JLPT_N5", "zx]n<UpO/Q"],
-  [
-    "ペット",
-    "ペット",
-    "pet",
-    "Genki Genki_Ln.15 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "Gm:f8t8t/V"
-  ],
-  [
-    "細い",
-    "ほそい",
-    "thin, slender, fine",
-    "JLPT JLPT_5 JLPT_N5",
-    "zm=f9J*i)W"
-  ],
-  ["ボタン", "ボタン", "button", "JLPT JLPT_5 JLPT_N5", "o=Cnvf:%>b"],
-  ["本", "ほん", "book", "Genki Genki_Ln.2 JLPT JLPT_5 JLPT_N5", "PgM`&0<&bX"],
-  ["門", "もん", "gate", "JLPT JLPT_5 JLPT_N5", "H&[yCKRvgq"],
-  ["ペン", "ペン", "pen", "Genki Genki_Ln.2 JLPT JLPT_5 JLPT_N5", "PpbmxKp]%S"],
-  [
-    "町",
-    "まち",
-    "town; city",
-    "Genki Genki_Ln.4 Intermediate_Japanese Intermediate_Japanese_Ln.1 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "xztbV5AMZZ"
-  ],
-  [
-    "ゆっくりと",
-    "ゆっくりと",
-    "slowly, at ease",
-    "JLPT JLPT_5 JLPT_N5",
-    "w_ef65R9#}"
-  ],
-  [
-    "目",
-    "め",
-    "eye(s)",
-    "Genki Genki_Ln.7 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "dhfW}%pIM+"
-  ],
-  [
-    "店",
-    "みせ",
-    "store, shop",
-    "Genki Genki_Ln.13 Intermediate_Japanese Intermediate_Japanese_Ln.6 JLPT JLPT_5 JLPT_N5",
-    "w{yPQLxrpZ"
+    "また",
+    "また",
+    "and; furthermore",
+    "Genki Genki_Ln.20 Intermediate_Japanese Intermediate_Japanese_Ln.5 JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "H#sUyG^B<2"
   ],
   [
     "～枚",
@@ -1044,96 +292,21 @@
     "eZ7Lx)q}m"
   ],
   [
-    "南",
-    "みなみ",
-    "South",
-    "Intermediate_Japanese Intermediate_Japanese_Ln.10 JLPT JLPT_5 JLPT_N5",
-    "tmB.Hd2Sk_"
-  ],
-  [
-    "物",
-    "もの",
-    "thing (concrete object)",
-    "Genki Genki_Ln.12 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "z6=4|ALO,V"
-  ],
-  ["辺", "へん", "area, vicinity", "JLPT JLPT_5 JLPT_N5", "v^uJ@o,r7C"],
-  [
-    "また",
-    "また",
-    "and; furthermore",
-    "Genki Genki_Ln.20 Intermediate_Japanese Intermediate_Japanese_Ln.5 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "H#sUyG^B<2"
-  ],
-  ["～前", "～まえ", "in front of ~", "JLPT JLPT_5 JLPT_N5", "Jh#_2I1KK<"],
-  ["零", "れい", "zero, nought", "JLPT JLPT_3 JLPT_5 JLPT_N5", "rc1t]Q^qI("],
-  [
-    "もう",
-    "もう",
-    "already; again; more",
-    "Genki Genki_Ln.9 JLPT JLPT_2 JLPT_5 JLPT_N5",
-    "C9[8>(KXKL"
-  ],
-  [
     "～本",
     "～ほん",
     "counter for long cylindrical things",
     "JLPT JLPT_2 JLPT_5 JLPT_N5",
     "Aln2n5Y6m$"
   ],
+  ["～前", "～まえ", "in front of ~", "JLPT JLPT_5 JLPT_N5", "Jh#_2I1KK<"],
   [
-    "道",
-    "みち",
-    "road, street; way, directions",
-    "Genki Genki_Ln.16 JLPT JLPT_5 JLPT_N5",
-    "g*1iadY2;L"
-  ],
-  [
-    "まずい",
-    "まずい",
-    "terrible (in reference to food), unappetizing, unpleasant (taste)",
-    "Genki Genki_Ln.23 JLPT JLPT_5 JLPT_N5",
-    "y=A8n$:VZF"
-  ],
-  [
-    "りっぱ",
-    "りっぱ",
-    "splendid, fine",
+    "曲る",
+    "まがる",
+    "to turn, to bend",
     "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "J%`%&)W1.O"
+    "fZb*Dqk8+n"
   ],
-  ["万", "まん", "ten thousand", "JLPT JLPT_5 JLPT_N5", "k%8Ts^<^Df"],
-  ["外", "ほか", "other, the rest", "JLPT JLPT_3 JLPT_5 JLPT_N5", "q-Rsw+YG/*"],
-  [
-    "夜",
-    "よる",
-    "evening, night",
-    "Genki Genki_Ln.6 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "lj*phUSR[b"
-  ],
-  [
-    "やる",
-    "やる",
-    "to do; to give (to pets, parents, siblings, etc.)",
-    "Genki Genki_Ln.21 JLPT JLPT_4 JLPT_5 JLPT_N5",
-    "ee,Y5GOGX?"
-  ],
-  [
-    "前",
-    "まえ",
-    "before, in front",
-    "Genki Genki_Ln.17 JLPT JLPT_5 JLPT_N5",
-    "AcNx(A=]3O"
-  ],
-  ["水", "みず", "water", "Genki Genki_Ln.3 JLPT JLPT_5 JLPT_N5", "Psad>Q=[fe"],
-  [
-    "山",
-    "やま",
-    "mountain",
-    "Genki Genki_Ln.11 JLPT JLPT_5 JLPT_N5",
-    "FM#``XMUDZ"
-  ],
-  ["マッチ", "マッチ", "match", "JLPT JLPT_5 JLPT_N5", "r{cxPi6M{l"],
+  ["～屋", "～や", "~ shop", "JLPT_N5", "ht#2@^87+]"],
   [
     "丸い; 円い",
     "まるい",
@@ -1141,12 +314,20 @@
     "JLPT JLPT_3 JLPT_5 JLPT_N5",
     "kXV&n*v-w~"
   ],
+  ["～語", "～ご", "word, language", "JLPT JLPT_5 JLPT_N5", "OS-NJNma:q"],
   [
-    "眼鏡",
-    "めがね",
-    "eye glasses",
-    "Genki Genki_Ln.7 JLPT JLPT_5 JLPT_N5",
-    "OGc^3PJcd3"
+    "ラジオカセ",
+    "ラジオカセ",
+    "radio cassette player",
+    "JLPT JLPT_5 JLPT_N5",
+    "eBPF6I+,&0"
+  ],
+  [
+    "ゆっくりと",
+    "ゆっくりと",
+    "slowly, at ease",
+    "JLPT JLPT_5 JLPT_N5",
+    "w_ef65R9#}"
   ],
   [
     "よく",
@@ -1156,42 +337,72 @@
     "Fz[l>+!/Hl"
   ],
   [
-    "ラジオカセ",
-    "ラジオカセ",
-    "radio cassette player",
+    "～個",
+    "～こ",
+    "counter for small items (e.g., fruits, cups)",
+    "JLPT JLPT_2 JLPT_5 JLPT_N5",
+    "L)v,!KJ|+1"
+  ],
+  [
+    "～くらい; ぐらい",
+    "～くらい; ぐらい",
+    "approximate (quantity)",
     "JLPT JLPT_5 JLPT_N5",
-    "eBPF6I+,&0"
+    "i|aE4l1U6h"
   ],
-  ["～屋", "～や", "~ shop", "JLPT_N5", "ht#2@^87+]"],
+  ["川; 河", "かわ", "river", "JLPT JLPT_3 JLPT_5 JLPT_N5", "QzV_(D2VAO"],
+  ["～がる", "～がる", "feel", "JLPT JLPT_5 JLPT_N5", "e--3P:#0au"],
+  ["～側", "～がわ", "~ side", "JLPT_N5", "ks2wGx4U0-"],
   [
-    "私",
-    "わたし",
-    "I, myself",
-    "Genki Genki_Ln.1 JLPT JLPT_5 JLPT_N5",
-    "I+Y7lySy.4"
-  ],
-  [
-    "悪い",
-    "わるい",
-    "bad, sinful; inferior",
-    "Genki Genki_Ln.12 Intermediate_Japanese Intermediate_Japanese_Ln.3 JLPT JLPT_5 JLPT_N5",
-    "rxV$$v%QZ;"
+    "キロ; キログラム",
+    "キロ; キログラム",
+    "(abbr.) kilo (kilogram)",
+    "JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "v,MI,fa=Pd"
   ],
   ["ああ", "ああ", "Ah!, Oh!", "JLPT JLPT_4 JLPT_5 JLPT_N5", "HI-.Ij?HS~"],
   [
-    "私",
-    "わたくし",
-    "I (formal), myself, private affairs",
-    "Genki Genki_Ln.13 JLPT JLPT_2 JLPT_5 JLPT_N5",
-    "m!I5:hHt<W"
+    "キロ; キロメートル",
+    "キロ; キロメートル",
+    "(abbr.) kilo (kilometer)",
+    "JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "I+%u|o<M9)"
   ],
-  ["六", "ろく", "six", "JLPT JLPT_5 JLPT_N5", "w>WY?cJ:VM"],
   [
-    "大勢",
-    "おおぜい",
-    "great number of people",
+    "うち",
+    "うち",
+    "home; house; my place",
+    "Genki Genki_Ln.3 JLPT JLPT_3 JLPT_5 JLPT_N5",
+    "u5l2?%hKEd"
+  ],
+  [
+    "伯母さん; 叔母さん",
+    "おばさん",
+    "aunt",
     "JLPT JLPT_5 JLPT_N5",
-    "d_f[=H{F{<"
+    "fk]_fvvw.h"
+  ],
+  [
+    "伯父; 叔父さん",
+    "おじさん",
+    "uncle, middle-aged man",
+    "JLPT JLPT_5 JLPT_N5",
+    "s$4&3o9W|{"
+  ],
+  ["お皿", "おさら", "plate, dish", "JLPT JLPT_5 JLPT_N5", "lNBs!SV,D!"],
+  [
+    "お酒",
+    "おさけ",
+    "sake; alcohol",
+    "Genki Genki_Ln.3 JLPT JLPT_5 JLPT_N5",
+    "BPnYG]G`g3"
+  ],
+  [
+    "あの",
+    "あの",
+    "that over there; like that, that way; um...",
+    "JLPT JLPT_4 JLPT_5 JLPT_N5",
+    "B2LX%goFyX"
   ],
   [
     "お～",
@@ -1202,32 +413,11 @@
   ],
   ["～円", "～えん", "Yen", "JLPT JLPT_5 JLPT_N5", "rY,[_6)@&p"],
   [
-    "二十歳",
-    "はたち",
-    "20 years old",
-    "JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "s,}HT(8Tzb"
+    "あれ",
+    "あれ",
+    "that one (over there)",
+    "Genki Genki_Ln.2 JLPT JLPT_5 JLPT_N5",
+    "Co(PaI(^/_"
   ],
-  [
-    "バス",
-    "バス",
-    "bus; bath; bass",
-    "Genki Genki_Ln.5 Intermediate_Japanese Intermediate_Japanese_Ln.10 JLPT JLPT_1 JLPT_5 JLPT_N5",
-    "nF2zK|?mh~"
-  ],
-  ["八", "はち", "eight", "JLPT JLPT_5 JLPT_N5", "maEI.lHT3>"],
-  [
-    "ここ",
-    "ここ",
-    "here, this place",
-    "Genki Genki_Ln.4 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "Lq)wtpkam*"
-  ],
-  [
-    "秋",
-    "あき",
-    "fall (season)",
-    "Genki Genki_Ln.10 Intermediate_Japanese Intermediate_Japanese_Ln.4 JLPT JLPT_3 JLPT_5 JLPT_N5",
-    "H~$iS3{X?*"
-  ]
+  ["いい; よい", "いい; よい", "good", "JLPT JLPT_5 JLPT_N5", "O(#?WJE%7H"]
 ]
