@@ -195,7 +195,6 @@
         if (glossMap.has(g.gloss)) {
           return false
         } else {
-          console.log('I ran')
           glossMap.set(g.gloss, true)
           return true
         }
@@ -203,22 +202,8 @@
       return s.glosses.length > 0
     })
 
-    console.log(glossMap)
-
     return newSenses
   }
-
-  // onMount open the dictionary dialog
-  onMount(() => {
-    const dictionaryDialog = document.getElementById(
-      'dictionary',
-    ) as HTMLDialogElement
-    if (dictionaryDialog) {
-      dictionaryDialog.showModal()
-    } else {
-      console.error('Dictionary dialog element not found')
-    }
-  })
 </script>
 
 <dialog id="dictionary" class="modal modal-bottom lg:modal-middle w-full">

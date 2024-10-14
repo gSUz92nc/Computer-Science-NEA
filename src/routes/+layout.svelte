@@ -1,12 +1,74 @@
 <script lang="ts">
   import '../app.css'
   import Dictionary from '$lib/dictionary.svelte'
+  import { getContext, onMount } from 'svelte'
+  import { page } from '$app/stores'
 
   export let data
   const { supabase } = data
+
+  let menuOpen = true
+
+  // Read the url and update the active tab in the bottom nav on mobile
+  let url: string = 'null'
+
+  function toggleOpenMenu() {
+    menuOpen = !menuOpen
+  }
+
+  onMount(() => {
+    // get the current page from the store and update the url
+    url = $page.url.pathname
+
+    console.log(url)
+  })
 </script>
 
 <Dictionary {supabase} />
+
+{#if menuOpen}
+  <div class="absolute right-2 bottom-[4.5rem] z-50">
+    <ul class="menu bg-base-200 rounded-box w-56">
+      <li>
+        <a href="/practice" on:click={toggleOpenMenu} class="w-full h-14 flex place-items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-chat-left-dots-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+            />
+          </svg>
+          Practice
+        </a>
+      </li>
+      <li>
+        <a href="/settings" on:click={toggleOpenMenu} class="w-full h-14 `flex place-items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-gear"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"
+            />
+            <path
+              d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"
+            />
+          </svg>
+          Settings
+        </a>
+      </li>
+    </ul>
+  </div>
+{/if}
 
 <div class="drawer lg:drawer-open h-screen">
   <input id="main-menu-drawer" type="checkbox" class="drawer-toggle" />
@@ -18,7 +80,11 @@
 
     <div class="flex-none h-[4rem] w-full lg:hidden bg-base-200">
       <div class="btm-nav">
-        <button class="active">
+        <a
+          href="/"
+          class={url == '/' ? 'active' : ''}
+          on:click={() => (url = '/')}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -30,8 +96,12 @@
             />
           </svg>
           <span class="btm-nav-label">Home</span>
-        </button>
-        <button>
+        </a>
+        <a
+          href="/lessons"
+          class={url == '/lessons' ? 'active' : ''}
+          on:click={() => (url = '/lessons')}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -45,8 +115,8 @@
               d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1.612 10.867l.756-1.288a1 1 0 0 1 1.545-.225l1.074 1.005a.986.986 0 0 0 1.36-.011l.038-.037a.88.88 0 0 0 .26-.755c-.075-.548.37-1.033.92-1.099.728-.086 1.587-.324 1.728-.957.086-.386-.114-.83-.361-1.2-.207-.312 0-.8.374-.8.123 0 .24-.055.318-.15l.393-.474c.196-.237.491-.368.797-.403.554-.064 1.407-.277 1.583-.973.098-.391-.192-.634-.484-.88-.254-.212-.51-.426-.515-.741a7 7 0 0 1 3.425 7.692 1 1 0 0 0-.087-.063l-.316-.204a1 1 0 0 0-.977-.06l-.169.082a1 1 0 0 1-.741.051l-1.021-.329A1 1 0 0 0 11.205 9h-.165a1 1 0 0 0-.945.674l-.172.499a1 1 0 0 1-.404.514l-.802.518a1 1 0 0 0-.458.84v.455a1 1 0 0 0 1 1h.257a1 1 0 0 1 .542.16l.762.49a1 1 0 0 0 .283.126 7 7 0 0 1-9.49-3.409Z"
             />
           </svg>
-          <span class="btm-nav-label">Map</span>
-        </button>
+          <span class="btm-nav-label">Lessons</span>
+        </a>
         <button
           on:click={() => {
             // @ts-ignore
@@ -65,7 +135,11 @@
           </svg>
           <span class="btm-nav-label">Dictionary</span>
         </button>
-        <button>
+        <a
+          href="/review"
+          class={url == '/review' ? 'active' : ''}
+          on:click={() => (url = '/review')}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -84,8 +158,8 @@
             />
           </svg>
           <span class="btm-nav-label">Review</span>
-        </button>
-        <button>
+        </a>
+        <button on:click={toggleOpenMenu}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -129,7 +203,7 @@
         >
       </li>
       <li>
-        <a class="h-11 text-lg font-semibold" href="/"
+        <a class="h-11 text-lg font-semibold" href="/lessons"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -144,7 +218,7 @@
             <path
               d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1.612 10.867l.756-1.288a1 1 0 0 1 1.545-.225l1.074 1.005a.986.986 0 0 0 1.36-.011l.038-.037a.88.88 0 0 0 .26-.755c-.075-.548.37-1.033.92-1.099.728-.086 1.587-.324 1.728-.957.086-.386-.114-.83-.361-1.2-.207-.312 0-.8.374-.8.123 0 .24-.055.318-.15l.393-.474c.196-.237.491-.368.797-.403.554-.064 1.407-.277 1.583-.973.098-.391-.192-.634-.484-.88-.254-.212-.51-.426-.515-.741a7 7 0 0 1 3.425 7.692 1 1 0 0 0-.087-.063l-.316-.204a1 1 0 0 0-.977-.06l-.169.082a1 1 0 0 1-.741.051l-1.021-.329A1 1 0 0 0 11.205 9h-.165a1 1 0 0 0-.945.674l-.172.499a1 1 0 0 1-.404.514l-.802.518a1 1 0 0 0-.458.84v.455a1 1 0 0 0 1 1h.257a1 1 0 0 1 .542.16l.762.49a1 1 0 0 0 .283.126 7 7 0 0 1-9.49-3.409Z"
             />
-          </svg>Map</a
+          </svg>Lessons</a
         >
       </li>
       <li>
@@ -169,7 +243,7 @@
         >
       </li>
       <li>
-        <a class="h-11 text-lg font-semibold" href="/"
+        <a class="h-11 text-lg font-semibold" href="/review"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -207,8 +281,8 @@
           </svg>Practice</a
         >
       </li>
-      <li>
-        <a class="h-11 text-lg font-semibold" href="/"
+      <li class="mt-auto">
+        <a class="h-11 text-lg font-semibold" href="/settings"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -224,24 +298,6 @@
               d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"
             />
           </svg>Settings</a
-        >
-      </li>
-      <li class="mt-auto">
-        <a class="h-11 text-lg font-semibold" href="/"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-person-circle"
-            viewBox="0 0 16 16"
-          >
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-            <path
-              fill-rule="evenodd"
-              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
-            />
-          </svg>Account</a
         >
       </li>
     </ul>
