@@ -9,6 +9,154 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      antonym: {
+        Row: {
+          id: number
+          sense_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "antonym_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cross_reference: {
+        Row: {
+          id: number
+          sense_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cross_reference_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      definition: {
+        Row: {
+          id: number
+          lang: string | null
+          sense_id: number | null
+          type: string | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          lang?: string | null
+          sense_id?: number | null
+          type?: string | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          lang?: string | null
+          sense_id?: number | null
+          type?: string | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "definition_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dialect: {
+        Row: {
+          id: number
+          sense_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dialect_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      entry: {
+        Row: {
+          id: number
+        }
+        Insert: {
+          id: number
+        }
+        Update: {
+          id?: number
+        }
+        Relationships: []
+      }
+      field: {
+        Row: {
+          id: number
+          sense_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "field_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       jlpt_levels: {
         Row: {
           level: number
@@ -203,6 +351,379 @@ export type Database = {
         }
         Relationships: []
       }
+      kana: {
+        Row: {
+          entry_id: number | null
+          id: number
+          no_kanji: number | null
+          value: string | null
+        }
+        Insert: {
+          entry_id?: number | null
+          id: number
+          no_kanji?: number | null
+          value?: string | null
+        }
+        Update: {
+          entry_id?: number | null
+          id?: number
+          no_kanji?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kana_entry_id_fkey"
+            columns: ["entry_id"]
+            isOneToOne: false
+            referencedRelation: "entry"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kana_applies_to_kanji: {
+        Row: {
+          id: number
+          kana_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          kana_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          kana_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kana_applies_to_kanji_kana_id_fkey"
+            columns: ["kana_id"]
+            isOneToOne: false
+            referencedRelation: "kana"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kana_common: {
+        Row: {
+          id: number
+          kana_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          kana_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          kana_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kana_common_kana_id_fkey"
+            columns: ["kana_id"]
+            isOneToOne: false
+            referencedRelation: "kana"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kana_tags: {
+        Row: {
+          id: number
+          kana_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          kana_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          kana_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kana_tags_kana_id_fkey"
+            columns: ["kana_id"]
+            isOneToOne: false
+            referencedRelation: "kana"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kanji: {
+        Row: {
+          entry_id: number | null
+          id: number
+          value: string | null
+        }
+        Insert: {
+          entry_id?: number | null
+          id: number
+          value?: string | null
+        }
+        Update: {
+          entry_id?: number | null
+          id?: number
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kanji_entry_id_fkey"
+            columns: ["entry_id"]
+            isOneToOne: false
+            referencedRelation: "entry"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kanji_common: {
+        Row: {
+          id: number
+          kanji_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          kanji_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          kanji_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kanji_common_kanji_id_fkey"
+            columns: ["kanji_id"]
+            isOneToOne: false
+            referencedRelation: "kanji"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kanji_tags: {
+        Row: {
+          id: number
+          kanji_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          kanji_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          kanji_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kanji_tags_kanji_id_fkey"
+            columns: ["kanji_id"]
+            isOneToOne: false
+            referencedRelation: "kanji"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lang_source: {
+        Row: {
+          id: number
+          lang: string | null
+          origin: string | null
+          sense_id: number | null
+          type: string | null
+          wasei: number | null
+        }
+        Insert: {
+          id: number
+          lang?: string | null
+          origin?: string | null
+          sense_id?: number | null
+          type?: string | null
+          wasei?: number | null
+        }
+        Update: {
+          id?: number
+          lang?: string | null
+          origin?: string | null
+          sense_id?: number | null
+          type?: string | null
+          wasei?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lang_source_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      misc: {
+        Row: {
+          id: number
+          sense_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "misc_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      part_of_speech: {
+        Row: {
+          id: number
+          sense_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "part_of_speech_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sense: {
+        Row: {
+          entry_id: number | null
+          id: number
+        }
+        Insert: {
+          entry_id?: number | null
+          id: number
+        }
+        Update: {
+          entry_id?: number | null
+          id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sense_entry_id_fkey"
+            columns: ["entry_id"]
+            isOneToOne: false
+            referencedRelation: "entry"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sense_applies_to_kana: {
+        Row: {
+          id: number
+          sense_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sense_applies_to_kana_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sense_applies_to_kanji: {
+        Row: {
+          id: number
+          sense_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sense_applies_to_kanji_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sense_info: {
+        Row: {
+          id: number
+          sense_id: number | null
+          value: string | null
+        }
+        Insert: {
+          id: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Update: {
+          id?: number
+          sense_id?: number | null
+          value?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sense_info_sense_id_fkey"
+            columns: ["sense_id"]
+            isOneToOne: false
+            referencedRelation: "sense"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -312,4 +833,19 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never

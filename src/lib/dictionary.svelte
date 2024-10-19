@@ -88,8 +88,8 @@
 
     try {
       const { data, error } = await supabase.rpc('get_jmdict_entries', {
-        gloss_input: searchTerm,
-        kanji_input: searchTerm,
+        gloss_input: searchTerm.toLowerCase(),
+        kanji_input: searchTerm.toLowerCase(),
         hiragana_input: hira,
         katakana_input: kata,
       })
@@ -308,12 +308,6 @@
 <style>
   .modal-box {
     overflow-y: auto;
-  }
-  .list-disc {
-    list-style-type: disc;
-  }
-  .pl-5 {
-    padding-left: 1.25rem;
   }
   .text-gray-500 {
     color: #6b7280;

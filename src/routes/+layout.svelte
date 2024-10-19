@@ -7,7 +7,7 @@
   export let data
   const { supabase } = data
 
-  let menuOpen = true
+  let menuOpen = false
 
   // Read the url and update the active tab in the bottom nav on mobile
   let url: string = 'null'
@@ -21,6 +21,20 @@
     url = $page.url.pathname
 
     console.log(url)
+    
+    // Add a listener for screen width changes
+    const mediaQuery = window.matchMedia('(min-width: 1024px)')
+    const handleMediaChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        menuOpen = false
+      }
+    }
+    mediaQuery.addEventListener('change', handleMediaChange)
+
+    // Cleanup listener on component unmount
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaChange)
+    }
   })
 </script>
 
