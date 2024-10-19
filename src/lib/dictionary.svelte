@@ -1,6 +1,6 @@
 <!-- src/components/Dictionary.svelte -->
 <script lang="ts">
-  import { toKatakana, toHiragana } from 'wanakana'
+  import { toKatakana, toHiragana, toKana } from 'wanakana'
   import type { SupabaseClient } from '@supabase/supabase-js'
   import { onMount } from 'svelte'
   import pkg from 'lodash'
@@ -8,50 +8,54 @@
 
   export let supabase: SupabaseClient
 
+  type DictionaryEntry = {
+    id: number
+    senses: Sense[]
+    kana: Kana[]
+    kanji: Kanji[]
+  }
+
   type Sense = {
     id: string
+    info: any[]
+    misc: any[]
+    field: any[]
+    antonym: any[]
+    dialect: any[]
+    glosses: Gloss[]
+    related: any[]
     word_id: number
-    antonym: JSON
-    applies_to_kana: string[] | null
-    applies_to_kanji: string[] | null
-    dialect: string[]
-    field: string[]
-    info: string[]
-    language_source: JSON | null
-    misc: string[]
-    part_of_speech: string[] | null
-    related: JSON
-    glosses: Glosses[]
+    part_of_speech: string | null
+    applies_to_kana: string | null
+    language_source: string | null
+    applies_to_kanji: string | null
   }
 
-  // Define the Kanji type
-  type Kanji = {
-    id: string
-    word_id: number
-    common: boolean
-    tags: string[]
-    text: string
+  type Gloss = {
+    type: string | null
+    gloss: string
+    gloss_id: string
   }
 
-  // Define the Kana type
   type Kana = {
     id: string
-    word_id: number
-    common: boolean
-    applies_to_kanji: string[] | null
-    tags: string[]
+    tags: any[]
     text: string
+    common: boolean
+    word_id: number
+    applies_to_kanji: string | null
   }
 
-  // Define the Glosses type
-  type Glosses = {
+  type Kanji = {
     id: string
-    gloss: string
-    type: string | null
+    tags: any[]
+    text: string
+    common: boolean
+    word_id: number
   }
 
-  let dictionaryEntries: any[] = []
-  let dictionarySearchValue = '開く'
+  let dictionaryEntries: DictionaryEntry[] = []
+  let dictionarySearchValue = 'tesuto'
   let searching = false
 
   $: fetchDictionary(dictionarySearchValue)
@@ -83,6 +87,7 @@
     }
 
     const kata = toKatakana(searchTerm)
+    console.log(kata)
     const hira = toHiragana(searchTerm)
     searching = true
 
@@ -97,7 +102,7 @@
       if (error) {
         console.error('Error fetching dictionary entries', error)
       } else {
-        dictionaryEntries = reorderDictionaryEntries(data, searchTerm)
+        dictionaryEntries = reorderDictionaryEntries(data)
         console.log(dictionaryEntries)
       }
     } catch (err) {
@@ -112,73 +117,76 @@
     }
   }, 200)
 
-  function reorderDictionaryEntries(
-    entriesToBeReordered: any[],
-    searchTerm: string,
-  ) {
-    // Sort dictionary by whether their one of their entry.kana[].common = true and then by whether one of their entry.senses.glosses[].text is equal to the search term
+  function reorderDictionaryEntries(entriesToBeReordered: DictionaryEntry[]) {
+    // Sort dictionary by whether their one of their entry.kana[].common = true and then by whether one of their rentry.senses.glosses[].text is equal to the search term
 
+    // First move the entries that have the search term in their senses to the top
     entriesToBeReordered.sort((a, b) => {
-      const aCommon: boolean = a.kana.some((k: { common: boolean }) => k.common)
-      const bCommon: boolean = b.kana.some((k: { common: boolean }) => k.common)
-
-      const aGlosses: string[] = a.senses
-        .map((s: { glosses: { gloss: string }[] }) =>
-          s.glosses.map((g: { gloss: string }) => g.gloss),
-        )
-        .flat()
-      const bGlosses: string[] = b.senses
-        .map((s: { glosses: { gloss: string }[] }) =>
-          s.glosses.map((g: { gloss: string }) => g.gloss),
-        )
-        .flat()
-
-      const aGlossMatch: boolean = aGlosses.some((g: string) =>
-        g.includes(searchTerm),
+      const aHasSearchTermInSenses: boolean = a.senses.some(
+        (sense: { glosses: { gloss: string }[] }) =>
+          sense.glosses.some(
+            (gloss: { gloss: string }) => gloss.gloss === dictionarySearchValue,
+          ),
       )
-      const bGlossMatch: boolean = bGlosses.some((g: string) =>
-        g.includes(searchTerm),
+      const bHasSearchTermInSenses: boolean = b.senses.some(
+        (sense: { glosses: { gloss: string }[] }) =>
+          sense.glosses.some(
+            (gloss: { gloss: string }) => gloss.gloss === dictionarySearchValue,
+          ),
       )
 
-      // Combine commonality and relevance scores
-      const aScore = (aCommon ? 1 : 0) + (aGlossMatch ? 2 : 0)
-      const bScore = (bCommon ? 1 : 0) + (bGlossMatch ? 2 : 0)
+      if (aHasSearchTermInSenses && !bHasSearchTermInSenses) {
+        return -1
+      } else if (!aHasSearchTermInSenses && bHasSearchTermInSenses) {
+        return 1
+      } else {
+        return 0
+      }
+    })
 
-      return bScore - aScore
+    // Order the rest by whether they have a common reading
+    entriesToBeReordered.sort((a, b) => {
+      const aHasCommonKana: boolean = a.kana.some(
+        (kana: { common: boolean }) => kana.common,
+      )
+      const bHasCommonKana: boolean = b.kana.some(
+        (kana: { common: boolean }) => kana.common,
+      )
+
+      if (aHasCommonKana && !bHasCommonKana) {
+        return -1
+      } else if (!aHasCommonKana && bHasCommonKana) {
+        return 1
+      } else {
+        return 0
+      }
     })
 
     return entriesToBeReordered
   }
 
   async function fetchDictionary(searchTerm: string) {
+
+    console.log(toKana(searchTerm));
+
     fetchDictionaryDebounced(searchTerm)
   }
 
-  function formatKanjiReadings(
-    kanjiEntries: [{ common: boolean; text: string }],
-  ): string {
+  function formatKanjiReadings(kanjiEntries: Kanji[]): string {
     kanjiEntries.sort((a, b) =>
       a.common && !b.common ? -1 : !a.common && b.common ? 1 : 0,
     )
     return kanjiEntries.map((entry) => entry.text).join(', ')
   }
 
-  function formatKanaReadings(
-    kanaEntries: [{ common: boolean; text: string }],
-  ): string {
+  function formatKanaReadings(kanaEntries: Kana[]): string {
     kanaEntries.sort((a, b) =>
       a.common && !b.common ? -1 : !a.common && b.common ? 1 : 0,
     )
     return kanaEntries.map((entry) => entry.text).join(', ')
   }
 
-  function formatSenses(
-    glossEntries: [{ common: boolean; glosses: { gloss: string }[] }],
-  ): string {
-    glossEntries.sort((a, b) =>
-      a.common && !b.common ? -1 : !a.common && b.common ? 1 : 0,
-    )
-
+  function formatSenses(glossEntries: Sense[]): string {
     return glossEntries
       .map(
         (entry, index) =>
@@ -257,6 +265,9 @@
       {/if}
       <div></div>
     {:else}
+      <div class="mt-2">
+        <h2 class="font-semibold text-md">Entries found: {dictionaryEntries.length}</h2>
+      </div>
       {#each dictionaryEntries as entry}
         <div class="mt-2">
           {#if entry.kanji}
@@ -271,33 +282,13 @@
               {formatKanaReadings(entry.kana)}
             </h2>
           {/if}
-          {#each removeDuplicateGlossesFromSenses(entry.senses) as sense}
-            <li>
-              <p class="text-lg font-semibold">
-                {sense.glosses.map((g) => g.gloss).join(', ')}
-              </p>
-              {#if sense.info.length > 0}
-                <p class="text-sm text-gray-500">
-                  Info: {sense.info.join(', ')}
-                </p>
-              {/if}
-              {#if sense.misc.length > 0}
-                <p class="text-sm text-gray-500">
-                  Misc: {sense.misc.join(', ')}
-                </p>
-              {/if}
-              {#if sense.field.length > 0}
-                <p class="text-sm text-gray-500">
-                  Field: {sense.field.join(', ')}
-                </p>
-              {/if}
-              {#if sense.dialect.length > 0}
-                <p class="text-sm text-gray-500">
-                  Dialect: {sense.dialect.join(', ')}
-                </p>
-              {/if}
-            </li>
-          {/each}
+          <!-- @ts-ignore -->
+          {#if entry.kana.some((kana) => kana.common)}
+            <span class="badge badge-success">Common</span>
+          {/if}
+          <p class="text-sm font-semibold">
+            {formatSenses(entry.senses)}
+          </p>
         </div>
         <div class="divider"></div>
       {/each}
@@ -308,8 +299,5 @@
 <style>
   .modal-box {
     overflow-y: auto;
-  }
-  .text-gray-500 {
-    color: #6b7280;
   }
 </style>
