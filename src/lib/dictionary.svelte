@@ -1,54 +1,12 @@
 <!-- src/components/Dictionary.svelte -->
 <script lang="ts">
-  import { toKatakana, toHiragana } from 'wanakana'
+  import { isJapanese } from 'wanakana'
   import type { SupabaseClient } from '@supabase/supabase-js'
   import { onMount } from 'svelte'
   import pkg from 'lodash'
   const { debounce } = pkg
 
   export let supabase: SupabaseClient
-
-  type Sense = {
-    id: string
-    word_id: number
-    antonym: JSON
-    applies_to_kana: string[] | null
-    applies_to_kanji: string[] | null
-    dialect: string[]
-    field: string[]
-    info: string[]
-    language_source: JSON | null
-    misc: string[]
-    part_of_speech: string[] | null
-    related: JSON
-    glosses: Glosses[]
-  }
-
-  // Define the Kanji type
-  type Kanji = {
-    id: string
-    word_id: number
-    common: boolean
-    tags: string[]
-    text: string
-  }
-
-  // Define the Kana type
-  type Kana = {
-    id: string
-    word_id: number
-    common: boolean
-    applies_to_kanji: string[] | null
-    tags: string[]
-    text: string
-  }
-
-  // Define the Glosses type
-  type Glosses = {
-    id: string
-    gloss: string
-    type: string | null
-  }
 
   let dictionaryEntries: any[] = []
   let dictionarySearchValue = '開く'
@@ -82,22 +40,23 @@
       return
     }
 
-    const kata = toKatakana(searchTerm)
-    const hira = toHiragana(searchTerm)
+    let japanese = isJapanese(searchTerm)
+
     searching = true
 
     try {
-      const { data, error } = await supabase.rpc('get_jmdict_entries', {
-        gloss_input: searchTerm.toLowerCase(),
-        kanji_input: searchTerm.toLowerCase(),
-        hiragana_input: hira,
-        katakana_input: kata,
+      const { data, error } = await supabase.rpc('search_entries', {
+        p_definition: japanese ? searchTerm : '',
+        p_kana: japanese ? '' : searchTerm,
+        p_kanji: japanese ? searchTerm : '',
       })
+
+      console.log(data)
 
       if (error) {
         console.error('Error fetching dictionary entries', error)
       } else {
-        dictionaryEntries = reorderDictionaryEntries(data, searchTerm)
+        dictionaryEntries = data
         console.log(dictionaryEntries)
       }
     } catch (err) {
@@ -112,97 +71,8 @@
     }
   }, 200)
 
-  function reorderDictionaryEntries(
-    entriesToBeReordered: any[],
-    searchTerm: string,
-  ) {
-    // Sort dictionary by whether their one of their entry.kana[].common = true and then by whether one of their entry.senses.glosses[].text is equal to the search term
-
-    entriesToBeReordered.sort((a, b) => {
-      const aCommon: boolean = a.kana.some((k: { common: boolean }) => k.common)
-      const bCommon: boolean = b.kana.some((k: { common: boolean }) => k.common)
-
-      const aGlosses: string[] = a.senses
-        .map((s: { glosses: { gloss: string }[] }) =>
-          s.glosses.map((g: { gloss: string }) => g.gloss),
-        )
-        .flat()
-      const bGlosses: string[] = b.senses
-        .map((s: { glosses: { gloss: string }[] }) =>
-          s.glosses.map((g: { gloss: string }) => g.gloss),
-        )
-        .flat()
-
-      const aGlossMatch: boolean = aGlosses.some((g: string) =>
-        g.includes(searchTerm),
-      )
-      const bGlossMatch: boolean = bGlosses.some((g: string) =>
-        g.includes(searchTerm),
-      )
-
-      // Combine commonality and relevance scores
-      const aScore = (aCommon ? 1 : 0) + (aGlossMatch ? 2 : 0)
-      const bScore = (bCommon ? 1 : 0) + (bGlossMatch ? 2 : 0)
-
-      return bScore - aScore
-    })
-
-    return entriesToBeReordered
-  }
-
   async function fetchDictionary(searchTerm: string) {
     fetchDictionaryDebounced(searchTerm)
-  }
-
-  function formatKanjiReadings(
-    kanjiEntries: [{ common: boolean; text: string }],
-  ): string {
-    kanjiEntries.sort((a, b) =>
-      a.common && !b.common ? -1 : !a.common && b.common ? 1 : 0,
-    )
-    return kanjiEntries.map((entry) => entry.text).join(', ')
-  }
-
-  function formatKanaReadings(
-    kanaEntries: [{ common: boolean; text: string }],
-  ): string {
-    kanaEntries.sort((a, b) =>
-      a.common && !b.common ? -1 : !a.common && b.common ? 1 : 0,
-    )
-    return kanaEntries.map((entry) => entry.text).join(', ')
-  }
-
-  function formatSenses(
-    glossEntries: [{ common: boolean; glosses: { gloss: string }[] }],
-  ): string {
-    glossEntries.sort((a, b) =>
-      a.common && !b.common ? -1 : !a.common && b.common ? 1 : 0,
-    )
-
-    return glossEntries
-      .map(
-        (entry, index) =>
-          `${index + 1}. "${entry.glosses.map((g) => g.gloss).join(', ')}"`,
-      )
-      .join(' ')
-  }
-
-  function removeDuplicateGlossesFromSenses(sense: Sense[]) {
-    const glossMap = new Map<string, boolean>()
-
-    const newSenses = sense.filter((s) => {
-      s.glosses = s.glosses.filter((g) => {
-        if (glossMap.has(g.gloss)) {
-          return false
-        } else {
-          glossMap.set(g.gloss, true)
-          return true
-        }
-      })
-      return s.glosses.length > 0
-    })
-
-    return newSenses
   }
 </script>
 
@@ -261,20 +131,20 @@
         <div class="mt-2">
           {#if entry.kanji}
             <h2 class="font-bold text-2xl">
-              {formatKanjiReadings(entry.kanji)}
+              {entry.kanji}
             </h2>
             <p>
-              {formatKanaReadings(entry.kana)}
+              {entry.kana}
             </p>
           {:else}
             <h2 class="font-bold text-2xl">
-              {formatKanaReadings(entry.kana)}
+              {entry.kana}
             </h2>
           {/if}
-          {#each removeDuplicateGlossesFromSenses(entry.senses) as sense}
+          {#each entry.senses as sense}
             <li>
               <p class="text-lg font-semibold">
-                {sense.glosses.map((g) => g.gloss).join(', ')}
+                {sense.definition}
               </p>
               {#if sense.info.length > 0}
                 <p class="text-sm text-gray-500">
