@@ -8,209 +8,46 @@
 
   export let supabase: SupabaseClient
 
-  type DictionaryEntry = {
-    id: number
-    senses: Sense[]
-    kana: Kana[]
-    kanji: Kanji[]
-  }
-
-  type Sense = {
-    id: string
-    info: any[]
-    misc: any[]
-    field: any[]
-    antonym: any[]
-    dialect: any[]
-    glosses: Gloss[]
-    related: any[]
-    word_id: number
-    part_of_speech: string | null
-    applies_to_kana: string | null
-    language_source: string | null
-    applies_to_kanji: string | null
-  }
-
-  type Gloss = {
-    type: string | null
-    gloss: string
-    gloss_id: string
-  }
-
-  type Kana = {
-    id: string
-    tags: any[]
-    text: string
-    common: boolean
-    word_id: number
-    applies_to_kanji: string | null
-  }
-
-  type Kanji = {
-    id: string
-    tags: any[]
-    text: string
-    common: boolean
-    word_id: number
-  }
-
-  let dictionaryEntries: DictionaryEntry[] = []
-  let dictionarySearchValue = 'tesuto'
+  let dictionaryEntries: any[] = []
+  let dictionarySearchValue = ''
   let searching = false
 
   $: fetchDictionary(dictionarySearchValue)
 
-  let counter = 0
+  let currentSearchId = 0
 
-  $: console.log(counter)
-
-  let lastRequestTimestamp = 0
-  let pendingRequest: AbortController | null = null
-
-  const fetchDictionaryDebounced = debounce(async (searchTerm: string) => {
-    const currentTimestamp = Date.now()
-    if (currentTimestamp - lastRequestTimestamp < 200) {
-      if (pendingRequest) {
-        pendingRequest.abort()
-      }
-    }
-    lastRequestTimestamp = currentTimestamp
-
-    const controller = new AbortController()
-    pendingRequest = controller
-
-    counter++
-
-    if (searchTerm === '') {
-      dictionaryEntries = []
-      return
-    }
-
-    const kata = toKatakana(searchTerm)
-    console.log(kata)
-    const hira = toHiragana(searchTerm)
-    searching = true
-
+  async function fetchDictionary(searchValue: string) {
+    const searchId = ++currentSearchId
     try {
-      const { data, error } = await supabase.rpc('get_jmdict_entries', {
-        gloss_input: searchTerm.toLowerCase(),
-        kanji_input: searchTerm.toLowerCase(),
-        hiragana_input: hira,
-        katakana_input: kata,
-      })
+      searching = true
 
-      if (error) {
-        console.error('Error fetching dictionary entries', error)
-      } else {
-        dictionaryEntries = reorderDictionaryEntries(data)
-        console.log(dictionaryEntries)
+      // const { data } = await supabase
+      //   .from('entry')
+      //   .select(
+      //     '*, kana ( *, kana_common (*), kana_tags(*), kana_applies_to_kanji(*)), kanji ( *, kanji_common (*), kanji_tags (*)), sense ( *, sense_info (*), antonym (*), cross_reference (*), sense_applies_to_kanji (*), dialect (*), sense_applies_to_kana (*), field (*), definition (*), misc (*), lang_source (*), part_of_speech (*) ))',
+      //   )
+      //   .textSearch('sense.definition.value', searchValue, { config: "english", type: "websearch" })
+
+
+      const { data } = await supabase
+        .from('definition')
+        .select(
+          '*',
+        )
+        .textSearch('value', searchValue)
+
+      if (searchId === currentSearchId) {
+        dictionaryEntries = data ?? []
       }
-    } catch (err) {
-      if ((err as Error).name === 'AbortError') {
-        console.log('Request aborted')
-      } else {
-        console.error('Error fetching dictionary entries', err)
-      }
+
+      console.log('Dictionary entries', dictionaryEntries)
+    } catch (error) {
+      console.error('Error fetching dictionary', error)
     } finally {
-      searching = false
-      pendingRequest = null
+      if (searchId === currentSearchId) {
+        searching = false
+      }
     }
-  }, 200)
-
-  function reorderDictionaryEntries(entriesToBeReordered: DictionaryEntry[]) {
-    // Sort dictionary by whether their one of their entry.kana[].common = true and then by whether one of their rentry.senses.glosses[].text is equal to the search term
-
-    // First move the entries that have the search term in their senses to the top
-    entriesToBeReordered.sort((a, b) => {
-      const aHasSearchTermInSenses: boolean = a.senses.some(
-        (sense: { glosses: { gloss: string }[] }) =>
-          sense.glosses.some(
-            (gloss: { gloss: string }) => gloss.gloss === dictionarySearchValue,
-          ),
-      )
-      const bHasSearchTermInSenses: boolean = b.senses.some(
-        (sense: { glosses: { gloss: string }[] }) =>
-          sense.glosses.some(
-            (gloss: { gloss: string }) => gloss.gloss === dictionarySearchValue,
-          ),
-      )
-
-      if (aHasSearchTermInSenses && !bHasSearchTermInSenses) {
-        return -1
-      } else if (!aHasSearchTermInSenses && bHasSearchTermInSenses) {
-        return 1
-      } else {
-        return 0
-      }
-    })
-
-    // Order the rest by whether they have a common reading
-    entriesToBeReordered.sort((a, b) => {
-      const aHasCommonKana: boolean = a.kana.some(
-        (kana: { common: boolean }) => kana.common,
-      )
-      const bHasCommonKana: boolean = b.kana.some(
-        (kana: { common: boolean }) => kana.common,
-      )
-
-      if (aHasCommonKana && !bHasCommonKana) {
-        return -1
-      } else if (!aHasCommonKana && bHasCommonKana) {
-        return 1
-      } else {
-        return 0
-      }
-    })
-
-    return entriesToBeReordered
-  }
-
-  async function fetchDictionary(searchTerm: string) {
-
-    console.log(toKana(searchTerm));
-
-    fetchDictionaryDebounced(searchTerm)
-  }
-
-  function formatKanjiReadings(kanjiEntries: Kanji[]): string {
-    kanjiEntries.sort((a, b) =>
-      a.common && !b.common ? -1 : !a.common && b.common ? 1 : 0,
-    )
-    return kanjiEntries.map((entry) => entry.text).join(', ')
-  }
-
-  function formatKanaReadings(kanaEntries: Kana[]): string {
-    kanaEntries.sort((a, b) =>
-      a.common && !b.common ? -1 : !a.common && b.common ? 1 : 0,
-    )
-    return kanaEntries.map((entry) => entry.text).join(', ')
-  }
-
-  function formatSenses(glossEntries: Sense[]): string {
-    return glossEntries
-      .map(
-        (entry, index) =>
-          `${index + 1}. "${entry.glosses.map((g) => g.gloss).join(', ')}"`,
-      )
-      .join(' ')
-  }
-
-  function removeDuplicateGlossesFromSenses(sense: Sense[]) {
-    const glossMap = new Map<string, boolean>()
-
-    const newSenses = sense.filter((s) => {
-      s.glosses = s.glosses.filter((g) => {
-        if (glossMap.has(g.gloss)) {
-          return false
-        } else {
-          glossMap.set(g.gloss, true)
-          return true
-        }
-      })
-      return s.glosses.length > 0
-    })
-
-    return newSenses
   }
 </script>
 
@@ -226,7 +63,6 @@
           <input
             class="input input-bordered join-item w-full"
             placeholder="Search"
-            on:change={() => fetchDictionary(dictionarySearchValue)}
             bind:value={dictionarySearchValue}
           />
         </div>
@@ -266,28 +102,28 @@
       <div></div>
     {:else}
       <div class="mt-2">
-        <h2 class="font-semibold text-md">Entries found: {dictionaryEntries.length}</h2>
+        <h2 class="font-semibold text-md">
+          Entries found: {dictionaryEntries.length}
+        </h2>
       </div>
       {#each dictionaryEntries as entry}
         <div class="mt-2">
           {#if entry.kanji}
             <h2 class="font-bold text-2xl">
-              {formatKanjiReadings(entry.kanji)}
+              {entry.kanji}
             </h2>
             <p>
-              {formatKanaReadings(entry.kana)}
+              {entry.kana}
             </p>
           {:else}
             <h2 class="font-bold text-2xl">
-              {formatKanaReadings(entry.kana)}
+              {entry.kana}
             </h2>
           {/if}
           <!-- @ts-ignore -->
-          {#if entry.kana.some((kana) => kana.common)}
-            <span class="badge badge-success">Common</span>
-          {/if}
+          <span class="badge badge-success">Common</span>
           <p class="text-sm font-semibold">
-            {formatSenses(entry.senses)}
+            {entry.senses}
           </p>
         </div>
         <div class="divider"></div>

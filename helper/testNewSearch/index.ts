@@ -10,7 +10,7 @@ const supabaseKey = SUPABASE_SERVICE_KEY
 const supabase = createClient<Database>(supabaseUrl, supabaseKey)
 
 const benchmark = async () => {
-  const results = [];
+  const results: number[] = [];
   const iterations = 10;
 
   for (let i = 0; i < iterations; i++) {
@@ -20,12 +20,12 @@ const benchmark = async () => {
       .from('entry')
       .select(
         '*, kana ( *, kana_common (*), kana_tags(*), kana_applies_to_kanji(*)), kanji ( *, kanji_common (*), kanji_tags (*)), sense ( *, sense_info (*), antonym (*), cross_reference (*), sense_applies_to_kanji (*), dialect (*), sense_applies_to_kana (*), field (*), definition (*), misc (*), lang_source (*), part_of_speech (*) ))',
-      ).textSearch("sense.definition.value", "Hello");
+      ).like('name', `%Alba%'`);
 
     const end = performance.now();
     results.push(end - start);
 
-    console.log(JSON.stringify(data, null, 2));
+    console.log(data?.length);
     console.log(JSON.stringify(error, null, 2));
   }
 
