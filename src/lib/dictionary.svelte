@@ -1,6 +1,6 @@
 <!-- src/components/Dictionary.svelte -->
 <script lang="ts">
-  import { toKatakana, toHiragana, toKana } from 'wanakana'
+  import { isJapanese } from 'wanakana'
   import type { SupabaseClient } from '@supabase/supabase-js'
   import { onMount } from 'svelte'
   import pkg from 'lodash'
@@ -16,38 +16,63 @@
 
   let currentSearchId = 0
 
-  async function fetchDictionary(searchValue: string) {
-    const searchId = ++currentSearchId
-    try {
-      searching = true
+  $: console.log(counter)
 
-      // const { data } = await supabase
-      //   .from('entry')
-      //   .select(
-      //     '*, kana ( *, kana_common (*), kana_tags(*), kana_applies_to_kanji(*)), kanji ( *, kanji_common (*), kanji_tags (*)), sense ( *, sense_info (*), antonym (*), cross_reference (*), sense_applies_to_kanji (*), dialect (*), sense_applies_to_kana (*), field (*), definition (*), misc (*), lang_source (*), part_of_speech (*) ))',
-      //   )
-      //   .textSearch('sense.definition.value', searchValue, { config: "english", type: "websearch" })
+  let lastRequestTimestamp = 0
+  let pendingRequest: AbortController | null = null
 
-
-      const { data } = await supabase
-        .from('definition')
-        .select(
-          '*',
-        )
-        .textSearch('value', searchValue)
-
-      if (searchId === currentSearchId) {
-        dictionaryEntries = data ?? []
-      }
-
-      console.log('Dictionary entries', dictionaryEntries)
-    } catch (error) {
-      console.error('Error fetching dictionary', error)
-    } finally {
-      if (searchId === currentSearchId) {
-        searching = false
+  const fetchDictionaryDebounced = debounce(async (searchTerm: string) => {
+    const currentTimestamp = Date.now()
+    if (currentTimestamp - lastRequestTimestamp < 200) {
+      if (pendingRequest) {
+        pendingRequest.abort()
       }
     }
+    lastRequestTimestamp = currentTimestamp
+
+    const controller = new AbortController()
+    pendingRequest = controller
+
+    counter++
+
+    if (searchTerm === '') {
+      dictionaryEntries = []
+      return
+    }
+
+    let japanese = isJapanese(searchTerm)
+
+    searching = true
+
+    try {
+      const { data, error } = await supabase.rpc('search_entries', {
+        p_definition: japanese ? searchTerm : '',
+        p_kana: japanese ? '' : searchTerm,
+        p_kanji: japanese ? searchTerm : '',
+      })
+
+      console.log(data)
+
+      if (error) {
+        console.error('Error fetching dictionary entries', error)
+      } else {
+        dictionaryEntries = data
+        console.log(dictionaryEntries)
+      }
+    } catch (err) {
+      if ((err as Error).name === 'AbortError') {
+        console.log('Request aborted')
+      } else {
+        console.error('Error fetching dictionary entries', err)
+      }
+    } finally {
+      searching = false
+      pendingRequest = null
+    }
+  }, 200)
+
+  async function fetchDictionary(searchTerm: string) {
+    fetchDictionaryDebounced(searchTerm)
   }
 </script>
 
@@ -120,11 +145,33 @@
               {entry.kana}
             </h2>
           {/if}
-          <!-- @ts-ignore -->
-          <span class="badge badge-success">Common</span>
-          <p class="text-sm font-semibold">
-            {entry.senses}
-          </p>
+          {#each entry.senses as sense}
+            <li>
+              <p class="text-lg font-semibold">
+                {sense.definition}
+              </p>
+              {#if sense.info.length > 0}
+                <p class="text-sm text-gray-500">
+                  Info: {sense.info.join(', ')}
+                </p>
+              {/if}
+              {#if sense.misc.length > 0}
+                <p class="text-sm text-gray-500">
+                  Misc: {sense.misc.join(', ')}
+                </p>
+              {/if}
+              {#if sense.field.length > 0}
+                <p class="text-sm text-gray-500">
+                  Field: {sense.field.join(', ')}
+                </p>
+              {/if}
+              {#if sense.dialect.length > 0}
+                <p class="text-sm text-gray-500">
+                  Dialect: {sense.dialect.join(', ')}
+                </p>
+              {/if}
+            </li>
+          {/each}
         </div>
         <div class="divider"></div>
       {/each}
