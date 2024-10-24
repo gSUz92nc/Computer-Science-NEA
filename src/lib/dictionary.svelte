@@ -1,79 +1,149 @@
 <!-- src/components/Dictionary.svelte -->
 <script lang="ts">
-  import { isJapanese } from 'wanakana'
+  import { toKana } from 'wanakana'
   import type { SupabaseClient } from '@supabase/supabase-js'
+  import type { Entry } from '$lib/types'
   import { onMount } from 'svelte'
-  import pkg from 'lodash'
-  const { debounce } = pkg
-
   export let supabase: SupabaseClient
 
   let dictionaryEntries: any[] = []
-  let dictionarySearchValue = ''
+  let dictionarySearchValue = 'hello'
   let searching = false
 
-  $: fetchDictionary(dictionarySearchValue)
+  $: fetchDictionaryDebounced(dictionarySearchValue)
 
   let currentSearchId = 0
-
-  $: console.log(counter)
 
   let lastRequestTimestamp = 0
   let pendingRequest: AbortController | null = null
 
-  const fetchDictionaryDebounced = debounce(async (searchTerm: string) => {
-    const currentTimestamp = Date.now()
-    if (currentTimestamp - lastRequestTimestamp < 200) {
-      if (pendingRequest) {
-        pendingRequest.abort()
-      }
-    }
-    lastRequestTimestamp = currentTimestamp
+  async function fetchDictionaryDebounced(searchTerm: string) {
+    const searchId = ++currentSearchId
 
-    const controller = new AbortController()
-    pendingRequest = controller
-
-    counter++
-
-    if (searchTerm === '') {
+    if (searchTerm.length < 2) {
       dictionaryEntries = []
+      searching = false
       return
     }
 
-    let japanese = isJapanese(searchTerm)
+    const timestamp = Date.now()
+    lastRequestTimestamp = timestamp
+
+    if (pendingRequest) {
+      pendingRequest.abort()
+    }
+
+    // remove any trailing spaces from the search term
+    searchTerm = searchTerm.trim()
 
     searching = true
 
-    try {
-      const { data, error } = await supabase.rpc('search_entries', {
-        p_definition: japanese ? searchTerm : '',
-        p_kana: japanese ? '' : searchTerm,
-        p_kanji: japanese ? searchTerm : '',
-      })
+    pendingRequest = new AbortController()
 
-      console.log(data)
+    console.log({
+      p_kana: toKana(searchTerm),
+      p_kanji: searchTerm,
+      p_definition: searchTerm.toLowerCase(),
+    })
 
-      if (error) {
-        console.error('Error fetching dictionary entries', error)
-      } else {
-        dictionaryEntries = data
-        console.log(dictionaryEntries)
-      }
-    } catch (err) {
-      if ((err as Error).name === 'AbortError') {
-        console.log('Request aborted')
-      } else {
-        console.error('Error fetching dictionary entries', err)
-      }
-    } finally {
-      searching = false
-      pendingRequest = null
+    const { data: dictionaryData, error: dictionaryError } = await supabase.rpc(
+      'search_entries',
+      {
+        p_kana: toKana(searchTerm),
+        p_kanji: toKana(searchTerm),
+        p_definition: searchTerm.toLowerCase(),
+      },
+    )
+
+    if (dictionaryError) {
+      console.error(dictionaryError)
+      return
     }
-  }, 200)
 
-  async function fetchDictionary(searchTerm: string) {
-    fetchDictionaryDebounced(searchTerm)
+    if (searchId !== currentSearchId) {
+      return
+    }
+
+    searching = false
+
+    dictionaryEntries = reorderEntriesByFrequency(dictionaryData)
   }
+
+  function reorderEntriesByFrequency(entries: Entry[]) {
+    // The kanji key has a kana_common array that contains how common the kanji is. The kana key has a kana_common array that contains how common the kana is.
+    // We can use this to sort the entries by frequency.
+
+    //The order of the commonness is as follows:
+
+    /*
+    news1/2: appears in the "wordfreq" file compiled by Alexandre Girardi from the Mainichi Shimbun. (See the ftp archive for a copy.) Words in the first 12,000 in that file are marked "news1" and words in the second 12,000 are marked "news2".
+    ichi1/2: appears in the "Ichimango goi bunruishuu", Senmon Kyouiku Publishing, Tokyo, 1998. (The entries marked "ichi2" were demoted from ichi1 because they were observed to have low frequencies in the WWW and newspapers.)
+    spec1 and spec2: a small number of words use this marker when they are detected as being common, but are not included in other lists.
+    gai1/2: common loanwords, also based on the wordfreq file.
+    nfxx: this is an indicator of frequency-of-use ranking in the wordfreq file. "xx" is the number of the set of 500 words in which the entry can be found, with "01" assigned to the first 500, "02" to the second, and so on. Entries with news1, ichi1, spec1/2 and gai1 values are marked with a "(P)" in the EDICT and EDICT2 files.While the priority markings accurately reflect the status of entries with regard to the various sources, they must be seen as only providing a crude indication of how common a word or expression actually is in Japanese. The "(P)" markings in the EDICT and EDICT2 files appear to identify a useful subset of "common" words, but there are clearly some marked entries which are not very common, and there are clearly unmarked entries which are in common use, particularly in the spoken language.
+    */
+
+    const priorityOrder = {
+      news1: 1,
+      news2: 3,
+      ichi1: 2,
+      ichi2: 4,
+      spec1: 5,
+      spec2: 6,
+      gai1: 7,
+      gai2: 8,
+    }
+
+    function getPriority(entry: Entry) {
+      for (const kanji of entry.kanji) {
+        if (kanji.kanji_common) {
+          for (const common of kanji.kanji_common) {
+            if (priorityOrder[common as keyof typeof priorityOrder]) {
+              return priorityOrder[common as keyof typeof priorityOrder]
+            }
+          }
+        }
+      }
+      for (const kana of entry.kana) {
+        if (kana.kana_common) {
+          for (const common of kana.kana_common) {
+            if (priorityOrder[common as keyof typeof priorityOrder]) {
+              return priorityOrder[common as keyof typeof priorityOrder]
+            }
+          }
+        }
+      }
+      return Infinity
+    }
+    entries.sort((a, b) => getPriority(a) - getPriority(b));
+
+    // Check if there is a definition that perfectly matches the search term
+    const exactMatch = entries.find(entry => 
+      entry.senses.some(sense => sense.definition.some(def => def.value.toLowerCase() === dictionarySearchValue.toLowerCase()))
+    );
+
+    if (exactMatch) {
+      // Move the exact match to the top
+      entries = entries.filter(entry => entry !== exactMatch);
+      entries.unshift(exactMatch);
+    }
+
+    console.log(entries)
+
+    return entries
+  }
+
+  function formatDefinitions(definition: { value: string }[]) {
+    return definition.map((def) => def.value).join('; ')
+  }
+
+  function formatKanji(kanji: { value: string }[]) {
+    return kanji.map((k) => k.value).join(', ')
+  }
+
+  onMount(() => {
+    fetchDictionaryDebounced('hello')
+  })
 </script>
 
 <dialog id="dictionary" class="modal modal-bottom lg:modal-middle w-full">
@@ -92,10 +162,7 @@
           />
         </div>
       </div>
-      <button
-        class="btn rounded-l-none rounded-r-md mr-2"
-        on:click={() => fetchDictionary(dictionarySearchValue)}>Search</button
-      >
+      <button class="btn rounded-l-none rounded-r-md mr-2">Search</button>
       <form method="dialog">
         <button class="btn btn-md btn-circle btn-ghost">
           <svg
@@ -118,13 +185,12 @@
         <h2 class="font-bold text-2xl">Searching...</h2>
       </div>
     {:else if dictionaryEntries.length == 0}
-      {#if dictionarySearchValue.length > 0}
+      {#if dictionarySearchValue.length > 1}
         <div class="mt-2">
           <h2 class="font-bold text-2xl">No results found</h2>
           <p class="text-lg font-semibold">Try searching for something else</p>
         </div>
       {/if}
-      <div></div>
     {:else}
       <div class="mt-2">
         <h2 class="font-semibold text-md">
@@ -132,55 +198,95 @@
         </h2>
       </div>
       {#each dictionaryEntries as entry}
-        <div class="mt-2">
-          {#if entry.kanji}
-            <h2 class="font-bold text-2xl">
-              {entry.kanji}
+        <div
+          class="entry-card bg-base-100 rounded-lg shadow-md mb-4 overflow-hidden"
+        >
+          <div class="entry-header border-b border-base-300 bg-base-200 py-3">
+            <h2 class="entry-title">
+              <span class="kanji text-3xl font-bold ml-4">
+                {#if entry.kanji.length > 0}
+                  {entry.kanji[0].value}
+                  {#if entry.kanji.length > 1}
+                    <span class="text-xl"
+                      >{formatKanji(entry.kanji.slice(1))}</span
+                    >
+                  {/if}
+                {:else}
+                  {formatKanji(entry.kana)}
+                {/if}
+              </span>
             </h2>
-            <p>
-              {entry.kana}
-            </p>
-          {:else}
-            <h2 class="font-bold text-2xl">
-              {entry.kana}
-            </h2>
-          {/if}
-          {#each entry.senses as sense}
-            <li>
-              <p class="text-lg font-semibold">
-                {sense.definition}
-              </p>
-              {#if sense.info.length > 0}
-                <p class="text-sm text-gray-500">
-                  Info: {sense.info.join(', ')}
-                </p>
-              {/if}
-              {#if sense.misc.length > 0}
-                <p class="text-sm text-gray-500">
-                  Misc: {sense.misc.join(', ')}
-                </p>
-              {/if}
+            <span class="kana ml-4 text-xl text-base-content/70">
+              {formatKanji(entry.kana)}
+            </span>
+          </div>
+          <div class="entry-content p-4">
+            {#each entry.senses as sense, index (sense.id)}
+              <div class="sense mb-3">
+                <div
+                  class="sense-header flex items-center flex-wrap gap-2 mb-1"
+                >
+                  <span class="sense-number font-semibold">{index + 1}.</span>
+                  {#each sense.part_of_speech as pos}
+                    <span class="badge badge-primary">{pos.value}</span>
+                  {/each}
+                  {#each sense.misc as misc}
+                    <span class="badge badge-secondary">{misc.value}</span>
+                  {/each}
+                </div>
+                <ul class="definition-list pl-6 list-disc">
+                  <li>{formatDefinitions(sense.definition)}</li>
+                </ul>
+              </div>
               {#if sense.field.length > 0}
-                <p class="text-sm text-gray-500">
-                  Field: {sense.field.join(', ')}
-                </p>
+                <div class="sense-field mb-2">
+                  <span class="font-semibold">Field:</span>
+                  {#each sense.field as field}
+                    <span class="badge badge-info ml-2">{field.value}</span>
+                  {/each}
+                </div>
+              {/if}
+              {#if sense.antonym.length > 0}
+                <div class="sense-antonym mb-2">
+                  <span class="font-semibold">Antonym:</span>
+                  {#each sense.antonym as antonym}
+                    <span class="badge badge-info ml-2">{antonym.value}</span>
+                  {/each}
+                </div>
               {/if}
               {#if sense.dialect.length > 0}
-                <p class="text-sm text-gray-500">
-                  Dialect: {sense.dialect.join(', ')}
-                </p>
+                <div class="sense-dialect mb-2">
+                  <span class="font-semibold">Dialect:</span>
+                  {#each sense.dialect as dialect}
+                    <span class="badge badge-info ml-2">{dialect.value}</span>
+                  {/each}
+                </div>
               {/if}
-            </li>
-          {/each}
+              {#if sense.lang_source.length > 0}
+                <div class="sense-lang-source mb-2">
+                  <span class="font-semibold">Language Source:</span>
+                  {#each sense.lang_source as lang_source}
+                    <span class="badge badge-info ml-2"
+                      >{lang_source.value}</span
+                    >
+                  {/each}
+                </div>
+              {/if}
+              {#if sense.cross_reference.length > 0}
+                <div class="sense-cross-reference mb-2">
+                  <span class="font-semibold">Also see:</span>
+                  {#each sense.cross_reference as cross_reference}
+                    <span class="badge badge-info ml-2"
+                      >{cross_reference.value}</span
+                    >
+                  {/each}
+                </div>
+              {/if}
+              <div class="divider"></div>
+            {/each}
+          </div>
         </div>
-        <div class="divider"></div>
       {/each}
     {/if}
   </div>
 </dialog>
-
-<style>
-  .modal-box {
-    overflow-y: auto;
-  }
-</style>

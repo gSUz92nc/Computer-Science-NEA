@@ -10,24 +10,24 @@ const supabaseKey = SUPABASE_SERVICE_KEY
 const supabase = createClient<Database>(supabaseUrl, supabaseKey)
 
 const benchmark = async () => {
-  const results = []
+  const results: number[] = []
   const iterations = 10
 
   for (let i = 0; i < iterations; i++) {
     const start = performance.now()
 
-    const { data, error }: { data: Entry[], error: PostgrestSingleResponse<ParserError<"Unexpected input: )">[]> } = await supabase
-      .from('entry')
-      .select(
-        '*, kana ( *, kana_common (*), kana_tags(*), kana_applies_to_kanji(*)), kanji ( *, kanji_common (*), kanji_tags (*)), sense ( *, sense_info (*), antonym (*), cross_reference (*), sense_applies_to_kanji (*), dialect (*), sense_applies_to_kana (*), field (*), definition (*), misc (*), lang_source (*), part_of_speech (*) ))',
-      )
-      .eq("id", 1000490)
+    const { data, error } = await supabase.rpc("search_entries", {
+      p_kana: "",
+      p_kanji: "日本語",
+      p_definition: ""
+    })
+      
 
     const end = performance.now()
     results.push(end - start)
 
     // Save to file
-    Bun.write('outputJSON.json', JSON.stringify(data[0], null, 2) || [])
+    Bun.write('outputJSON.json', JSON.stringify(data?[0] : 0, null, 2) || [])
 
     console.log(JSON.stringify(data, null, 2))
     console.log(JSON.stringify(error, null, 2))
