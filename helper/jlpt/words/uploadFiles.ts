@@ -15,19 +15,17 @@ const file = Bun.file("./uploads.json");
 
 const uploads = await file.json();
 
-// Define the type for the objects in uploads.json
-//              word, word_id, jlpt_level
-type Upload =  [string, number, number]
-
-function batchArray(arr: [], n: number): Upload[][] {
-  const result: Upload[][] = [];
+// Batch array function, takes an array and a number n and returns an array of arrays with n elements
+function batchArray(arr: {id: number, jlpt_level: number}[], n: number): {id: number, jlpt_level: number}[][] {
+  const result: {id: number, jlpt_level: number}[][] = [];
   for (let i = 0; i < arr.length; i += n) {
     result.push(arr.slice(i, i + n));
   }
   return result;
 }
 
-function formatArray(arr) {
+// Format the array to match the database schema
+function formatArray(arr): {id: number, jlpt_level: number}[] {
   return arr.map((item) => {
     return {
       id: item[1],
@@ -37,15 +35,23 @@ function formatArray(arr) {
 }
 
 
-const batchedUploads = batchArray(formatArray(uploads), 1000)
+const batchedUploads = batchArray(formatArray(uploads), 100)
 
+// Remove duplicate uploads
+function removeDuplicateUploads(batchedUploads: {id: number, jlpt_level: number}[][]): {id: number, jlpt_level: number}[][] {
+  return batchedUploads.map((batch) => {
+    const unique = Array.from(new Map(batch.map(item => [item.id, item])).values());
+    return unique;
+  });
+}
 
-// Finished uploads!!!
-batchedUploads.forEach(async (temp) => {
-  console.log(temp)
-  const { error } = await supabase.from("jlpt_vocab").insert(temp);
+const uniqueUploads = removeDuplicateUploads(batchedUploads);
 
-  console.log(error)
-})
+// Finished uploads!
+for (const temp of uniqueUploads) {
+  console.log(temp);
+  const { error } = await supabase.from("jlpt_vocab").upsert(temp);
+  console.log(error);
+}
 
 

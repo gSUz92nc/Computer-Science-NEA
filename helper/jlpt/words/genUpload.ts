@@ -116,10 +116,10 @@ async function processKanjiArray(
 // Run for N5
 await processKanjiArray(n5array, 5);
 // Run for the rest
-// await processKanjiArray(n4array, 4);
-// await processKanjiArray(n3array, 3);
-// await processKanjiArray(n2array, 2);
-// await processKanjiArray(n1array, 1);
+await processKanjiArray(n4array, 4);
+await processKanjiArray(n3array, 3);
+await processKanjiArray(n2array, 2);
+await processKanjiArray(n1array, 1);
 
 // Save the empty results to a file for manual inspection
 console.log("Completed", completed.length);
