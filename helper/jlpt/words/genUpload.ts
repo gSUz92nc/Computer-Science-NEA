@@ -27,7 +27,7 @@ const n3array = parse(await n3csv).slice(1);
 const n2array = parse(await n2csv).slice(1);
 const n1array = parse(await n1csv).slice(1);
 
-let emptyResults: string[] = [];
+let emptyResults: { word: string; level: number }[] = [];
 let kanjiCount = 0;
 let completed: [string, number, number][] = [];
 
@@ -48,64 +48,82 @@ async function processKanjiArray(
       kanjiCount += kanjiElements.length;
 
       // Search for each kanji element seperately and check if there is one common word and only one common word
-      let commonWordId: number | null = null;
 
       for (const element of kanjiElements) {
-
         console.log(`Processing ${element} at index ${index++}`);
 
-        // Search for the kanji in the kanji and kana tables to find all possible entries 
-        const { data: kanjiData } = await supabase
+        // Search for the kanji in the kanji and kana tables to find all possible entries
+        const { data: kanjiData, error: kanjiError } = await supabase
           .from("kanji")
           .select("entry_id, value")
           .eq("value", element);
 
-        const { data: kanaData } = await supabase
+        const { data: kanaData, error: kanaError } = await supabase
           .from("kana")
           .select("entry_id, value")
           .eq("value", element);
 
-        console.log(kanjiData, kanaData);
+        if (kanjiError || kanaError) {
+          console.error(kanjiError || kanaError);
+          return;
+        }
 
         const combinedData = [...(kanjiData || []), ...(kanaData || [])];
 
+        // Remove duplicates
+        const uniqueCombinedData = combinedData.filter(
+          (v, i, a) => a.findIndex((t) => t.value === v.value) === i,
+        );
+
         // If there is no data, add the element to the empty results
-        if (combinedData.length === 0) {
-          emptyResults.push(element);
+        if (uniqueCombinedData.length === 0) {
+          emptyResults.push({ word: element, level: jlpt_level });
+          return;
         }
 
         // If there is only one common word, save the id
-        if (combinedData.length === 1) {
-          commonWordId = combinedData[0].entry_id;
-          if (commonWordId !== null) {
-            completed.push([kanji[0], commonWordId, jlpt_level]);
-          }
+        if (uniqueCombinedData.length === 1) {
+          completed.push([
+            kanji[0],
+            uniqueCombinedData[0].entry_id,
+            jlpt_level,
+          ]);
+          return;
         }
 
-        console.log("Combined: ", combinedData);
+        // If there are multiple common words, just pick the one with the lowest id
 
-        // 
+        const sortedData = combinedData.sort((a, b) => {
+          if (a.entry_id === null || b.entry_id === null) {
+            return 0;
+          }
+          return a.entry_id - b.entry_id;
+        });
 
-      }
+        console.log("Sorted Data:", sortedData);
 
-      if (commonWordId) {
-        return [kanji[0], commonWordId, jlpt_level];
+        for (const data of sortedData) {
+          if (!completed.some(([_, id]) => id === data.entry_id)) {
+            completed.push([kanji[0], data.entry_id, jlpt_level]);
+            return;
+          }
+        }
       }
     }),
   );
 }
 
 // Run for N5
-await processKanjiArray(n5array.slice(0,2), 5);
+await processKanjiArray(n5array, 5);
 // Run for the rest
 // await processKanjiArray(n4array, 4);
 // await processKanjiArray(n3array, 3);
 // await processKanjiArray(n2array, 2);
 // await processKanjiArray(n1array, 1);
 
-
 // Save the empty results to a file for manual inspection
-console.log(emptyResults.length);
+console.log("Completed", completed.length);
+console.log("Empty Results", emptyResults.length);
 await Bun.write("empty.json", JSON.stringify(emptyResults));
 
 await Bun.write(

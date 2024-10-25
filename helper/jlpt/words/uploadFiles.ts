@@ -27,19 +27,25 @@ function batchArray(arr: [], n: number): Upload[][] {
   return result;
 }
 
+function formatArray(arr) {
+  return arr.map((item) => {
+    return {
+      id: item[1],
+      jlpt_level: item[2],
+    };
+  });
+}
 
-const batchedUploads = batchArray(uploads, 1000)
 
-console.log(batchedUploads)
-console.log(batchedUploads.length)
-
-
-
+const batchedUploads = batchArray(formatArray(uploads), 1000)
 
 
 // Finished uploads!!!
-batchedUploads.forEach(async () => {
-  supabase.from("jlpt_words").insert()
+batchedUploads.forEach(async (temp) => {
+  console.log(temp)
+  const { error } = await supabase.from("jlpt_vocab").insert(temp);
+
+  console.log(error)
 })
 
 

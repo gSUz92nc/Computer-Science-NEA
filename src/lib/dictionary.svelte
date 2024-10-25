@@ -20,7 +20,7 @@
   async function fetchDictionaryDebounced(searchTerm: string) {
     const searchId = ++currentSearchId
 
-    if (searchTerm.length < 2) {
+    if (searchTerm.length < 1) {
       dictionaryEntries = []
       searching = false
       return

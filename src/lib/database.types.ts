@@ -157,24 +157,66 @@ export type Database = {
           },
         ]
       }
-      kana: {
+      jlpt_levels: {
         Row: {
-          entry_id: number | null
-          id: number
-          no_kanji: number | null
-          value: string | null
+          level: number
         }
         Insert: {
-          entry_id?: number | null
-          id: number
-          no_kanji?: number | null
-          value?: string | null
+          level?: number
         }
         Update: {
-          entry_id?: number | null
+          level?: number
+        }
+        Relationships: []
+      }
+      jlpt_vocab: {
+        Row: {
+          id: number
+          jlpt_level: number
+        }
+        Insert: {
+          id: number
+          jlpt_level: number
+        }
+        Update: {
           id?: number
-          no_kanji?: number | null
-          value?: string | null
+          jlpt_level?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "jlpt_vocab_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "entry"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "jlpt_vocab_jlpt_level_fkey"
+            columns: ["jlpt_level"]
+            isOneToOne: false
+            referencedRelation: "jlpt_levels"
+            referencedColumns: ["level"]
+          },
+        ]
+      }
+      kana: {
+        Row: {
+          entry_id: number
+          id: number
+          no_kanji: boolean | null
+          value: string
+        }
+        Insert: {
+          entry_id: number
+          id: number
+          no_kanji?: boolean | null
+          value: string
+        }
+        Update: {
+          entry_id?: number
+          id?: number
+          no_kanji?: boolean | null
+          value?: string
         }
         Relationships: [
           {
@@ -266,19 +308,19 @@ export type Database = {
       }
       kanji: {
         Row: {
-          entry_id: number | null
+          entry_id: number
           id: number
-          value: string | null
+          value: string
         }
         Insert: {
-          entry_id?: number | null
+          entry_id: number
           id: number
-          value?: string | null
+          value: string
         }
         Update: {
-          entry_id?: number | null
+          entry_id?: number
           id?: number
-          value?: string | null
+          value?: string
         }
         Relationships: [
           {
@@ -532,23 +574,7 @@ export type Database = {
       }
     }
     Views: {
-      entry_data: {
-        Row: {
-          entry_id: number | null
-          kana: Json | null
-          kanji: Json | null
-          senses: Json | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "kana_entry_id_fkey"
-            columns: ["entry_id"]
-            isOneToOne: false
-            referencedRelation: "entry"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
+      [_ in never]: never
     }
     Functions: {
       search_entries: {
