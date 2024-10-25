@@ -12,9 +12,9 @@
     "gen-types": "npx supabase gen types --lang=typescript --project-id \"yrykfurvxgrvavxgbvbr\" --schema public > ./src/lib/database.types.ts"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^3.2.5",
-    "@sveltejs/adapter-cloudflare": "^4.7.3",
-    "@sveltejs/kit": "^2.7.2",
+    "@sveltejs/adapter-auto": "^3.3.1",
+    "@sveltejs/adapter-cloudflare": "^4.7.4",
+    "@sveltejs/kit": "^2.7.3",
     "@sveltejs/vite-plugin-svelte": "^3.1.2",
     "@types/lodash": "^4.17.12",
     "autoprefixer": "^10.4.20",
@@ -26,20 +26,20 @@
     "tailwindcss": "^3.4.14",
     "tslib": "^2.8.0",
     "typescript": "^5.6.3",
-    "vite": "^5.4.9"
+    "vite": "^5.4.10"
   },
   "type": "module",
   "dependencies": {
     "@ai-sdk/anthropic": "0.0.50",
     "@supabase/ssr": "0.5.1",
-    "@supabase/supabase-js": "2.46.0-rc.2",
-    "@types/bun": "^1.1.11",
-    "ai": "^3.4.16",
+    "@supabase/supabase-js": "2.45.6",
+    "@types/bun": "^1.1.12",
+    "ai": "^3.4.20",
     "csv-simple-parser": "^1.0.3",
     "lodash": "^4.17.21",
     "prettier-plugin-svelte": "^3.2.7",
     "string-similarity-js": "^2.1.4",
-    "supabase": "^1.204.3",
+    "supabase": "^1.207.9",
     "wanakana": "^5.3.1"
   }
 }
