@@ -40,12 +40,6 @@
 
     pendingRequest = new AbortController()
 
-    console.log({
-      p_kana: toKana(searchTerm),
-      p_kanji: searchTerm,
-      p_definition: searchTerm.toLowerCase(),
-    })
-
     const { data: dictionaryData, error: dictionaryError } = await supabase.rpc(
       'search_entries',
       {
@@ -127,8 +121,6 @@
       entries = entries.filter(entry => entry !== exactMatch);
       entries.unshift(exactMatch);
     }
-
-    console.log(entries)
 
     return entries
   }
