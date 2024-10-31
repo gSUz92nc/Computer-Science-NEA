@@ -1,4 +1,4 @@
-<div class="flex h-screen justify-center">
+<div class="flex h-full justify-center">
   <div class="card w-full sm:mx-16 my-auto bg-base-200 h-[35rem]">
     <h1 class="text-2xl mt-4 ml-4">What do you want to study?</h1>
     <div class="flex flex-col h-full mt-2">
