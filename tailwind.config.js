@@ -18,13 +18,13 @@ export default {
   daisyui: {
     themes: [
       {
-        light: {
-          primary: '#cd3232',
-          secondary: '#e84a67',
-          accent: '#f25945',
-          neutral: '#2c2020',
-          'base-100': '#DDD0D0',
-        },
+        // light: {
+        //   primary: '#cd3232',
+        //   secondary: '#e84a67',
+        //   accent: '#f25945',
+        //   neutral: '#2c2020',
+        //   'base-100': '#DDD0D0',
+        // },
         dark: {
           primary: '#cd3232',
           secondary: '#b51734',
