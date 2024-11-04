@@ -1,0 +1,39 @@
+### How to use
+
+1. First, obtain the `kanji.json` file from the original source:
+   - Source: [davidluzgouveia/kanji-data](https://github.com/davidluzgouveia/kanji-data/blob/master/kanji.json)
+   - Place it in the same directory as the script
+
+2. Make sure you have the correct environment variables set up:
+```bash title="Environment Variables"
+SUPABASE_SERVICE_KEY=your_service_key_here
+```
+
+3. Run the script to process and upload the kanji data:
+```bash title="Upload kanji"
+bun run genUpload.ts
+```
+
+4. After running the script, two files will be generated:
+   - `kanji_upload_completed.json`: Contains successfully processed kanji entries
+   - `kanji_upload_errors.json`: Contains entries that couldn't be processed
+
+5. Review the error file and manually resolve any issues if necessary using the Supabase dashboard
+
+### What the script does
+
+- Reads kanji data from `kanji.json`
+- Matches each kanji with existing entries in the database
+- Updates the JLPT level information in the `jlpt_kanji` table
+- Logs successful uploads and any errors encountered
+
+### Data Source License
+
+Kanji Data: [MIT License](https://github.com/davidluzgouveia/kanji-data)
+
+### Prerequisites
+
+- Supabase project set up with appropriate tables
+- Environment variables configured
+- Bun runtime installed
+- Required dependencies (`@supabase/supabase-js`) installed
