@@ -7,7 +7,7 @@
   export let supabase: SupabaseClient
 
   let dictionaryEntries: any[] = []
-  let dictionarySearchValue = 'hello'
+  let dictionarySearchValue = ''
   let searching = false
 
   $: fetchDictionaryDebounced(dictionarySearchValue)
@@ -133,9 +133,6 @@
     return kanji.map((k) => k.value).join(', ')
   }
 
-  onMount(() => {
-    fetchDictionaryDebounced('hello')
-  })
 </script>
 
 <dialog id="dictionary" class="modal modal-bottom lg:modal-middle w-full">

@@ -93,6 +93,13 @@
 
   let currentQuestion: Question | null = null
   let dueItems: ReviewItem[] = []
+  
+  let level: number = 5
+  
+  function updateLevel(newLevel: number) {
+    level = newLevel
+    loadDueItems() // Reload items for the new level
+  }
 
   function showToast(message: string, type: 'success' | 'error') {
     // Clear any existing timeout
@@ -124,8 +131,7 @@
     const { data: allVocabData, error: vocabError } = await supabase
       .from('jlpt_vocab')
       .select('id')
-      .order('id', { ascending: undefined, foreignTable: undefined }) // Remove the order
-      .limit(100) // Limit to prevent loading too many at once
+      .eq('jlpt_level', level)
 
     if (vocabError) {
       alert(`Error loading vocabulary: ${vocabError.message}`)
@@ -166,53 +172,69 @@
       createQuestion()
     }
   }
+  
+  function loadLevel() {
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlLevel = urlParams.get('level')
+    if (urlLevel) {
+      level = parseInt(urlLevel)
+    }
+  }
 
   async function handleAnswer(selectedIndex: number) {
-      if (!currentQuestion || !dueItems[0]) return;
-  
-      const isCorrect = selectedIndex === currentQuestion.correct_index;
-      const item = dueItems[0];
-  
-      // Update knowledge level and next review date
-      const newLevel = isCorrect ? Math.min(item.knowledge_level + 1, 9) : 0;
-      const nextReview = new Date();
-      
-      // Add the configured delay in seconds
-      nextReview.setSeconds(nextReview.getSeconds() + REVIEW_DELAYS[newLevel]);
-  
-      // Show feedback toast
-      if (isCorrect) {
-        showToast('Correct! 🎉', 'success');
-      } else {
-        const correctAnswer = currentQuestion.options[currentQuestion.correct_index];
-        const correctText = getOptionText(correctAnswer, currentQuestion.mode);
-        showToast(`Incorrect. The answer was: ${correctText}`, 'error');
-      }
-  
-      // Update the review item in the database
-      const { error } = await supabase
-        .from('vocab_reviews')
-        .upsert({
-          entry_id: item.entry_id,
-          user_id: session.user.id,
-          knowledge_level: newLevel,
-          next_review: nextReview.toISOString(),
-          last_reviewed: new Date().toISOString(),
-        }, {
-          onConflict: 'entry_id,user_id'
-        });
-  
-      if (error) {
-        alert(`Error updating review: ${error.message}`);
-        return;
-      }
-  
-      // Wait a moment to show the feedback before moving to next question
-      setTimeout(() => {
-        dueItems.shift();
-        createQuestion();
-      }, isCorrect ? 1000 : 2000); // Give more time to read the correct answer when wrong
+    if (!currentQuestion || !dueItems[0]) return
+
+    const isCorrect = selectedIndex === currentQuestion.correct_index
+    const item = dueItems[0]
+
+    // Update knowledge level and next review date
+    const newLevel = isCorrect ? Math.min(item.knowledge_level + 1, 9) : 0
+    const nextReview = new Date()
+
+    // Add the configured delay in seconds
+    nextReview.setSeconds(
+      nextReview.getSeconds() +
+        REVIEW_DELAYS[newLevel as keyof typeof REVIEW_DELAYS],
+    )
+
+    // Show feedback toast
+    if (isCorrect) {
+      showToast('Correct! 🎉', 'success')
+    } else {
+      const correctAnswer =
+        currentQuestion.options[currentQuestion.correct_index]
+      const correctText = getOptionText(correctAnswer, currentQuestion.mode)
+      showToast(`Incorrect. The answer was: ${correctText}`, 'error')
     }
+
+    // Update the review item in the database
+    const { error } = await supabase.from('vocab_reviews').upsert(
+      {
+        entry_id: item.entry_id,
+        user_id: session?.user.id,
+        knowledge_level: newLevel,
+        next_review: nextReview.toISOString(),
+        last_reviewed: new Date().toISOString(),
+      },
+      {
+        onConflict: 'entry_id,user_id',
+      },
+    )
+
+    if (error) {
+      alert(`Error updating review: ${error.message}`)
+      return
+    }
+
+    // Wait a moment to show the feedback before moving to next question
+    setTimeout(
+      () => {
+        dueItems.shift()
+        createQuestion()
+      },
+      isCorrect ? 1000 : 2000,
+    ) // Give more time to read the correct answer when wrong
+  }
 
   async function createQuestion() {
     if (dueItems.length === 0) return
@@ -243,7 +265,7 @@
 
     // Get the full entries for the options
     const optionEntries = await Promise.all(
-      optionsData.map(async (option) => {
+      optionsData.map(async (option: { id: number }) => {
         const { data } = await supabase.rpc('get_entry_by_id', {
           p_entry_id: option.id,
         })
@@ -285,6 +307,7 @@
   }
 
   onMount(() => {
+    loadLevel()
     loadDueItems()
     // Set up keyboard listener
     keyboardListener = handleKeyPress
@@ -292,14 +315,66 @@
   })
 
   onDestroy(() => {
-      if (toastTimeout) clearTimeout(toastTimeout);
-      if (keyboardListener) {
-        window.removeEventListener('keypress', keyboardListener);
-      }
-    });
+    if (toastTimeout) clearTimeout(toastTimeout)
+    if (keyboardListener) {
+      window.removeEventListener('keypress', keyboardListener)
+    }
+  })
 </script>
 
+{#if toast}
+  <div class="w-screen h-screen absolute top-0 right-0">
+    <div class="toast fixed top-4 right-4 transform z-50">
+      <div
+        class="alert {toast.type === 'success'
+          ? 'alert-success'
+          : 'alert-error'}"
+      >
+        <span>{toast.message}</span>
+      </div>
+    </div>
+  </div>
+{/if}
 <div class="flex flex-col items-center p-4">
+    <div class="flex justify-center">
+      <ul class="menu menu-horizontal bg-base-200 mt-2 rounded-xl">
+        <li>
+          <a
+            href="/review/vocab?level=5"
+            class={level === 5 ? 'active' : ''}
+            on:click={() => updateLevel(5)}>N5</a
+          >
+        </li>
+        <li>
+          <a
+            href="/review/vocab?level=4"
+            class={level === 4 ? 'active' : ''}
+            on:click={() => updateLevel(4)}>N4</a
+          >
+        </li>
+        <li>
+          <a
+            href="/review/vocab?level=3"
+            class={level === 3 ? 'active' : ''}
+            on:click={() => updateLevel(3)}>N3</a
+          >
+        </li>
+        <li>
+          <a
+            href="/review/vocab?level=2"
+            class={level === 2 ? 'active' : ''}
+            on:click={() => updateLevel(2)}>N2</a
+          >
+        </li>
+        <li>
+          <a
+            href="/review/vocab?level=1"
+            class={level === 1 ? 'active' : ''}
+            on:click={() => updateLevel(1)}>N1</a
+          >
+        </li>
+      </ul>
+    </div>
   {#if currentQuestion}
     <div class="card w-96 bg-base-100 shadow-xl">
       <div class="card-body">
@@ -308,10 +383,7 @@
         </h2>
         <div class="grid grid-cols-1 gap-4">
           {#each currentQuestion.options as option, index}
-            <button
-              class="btn"
-              on:click={() => handleAnswer(index)}
-            >
+            <button class="btn" on:click={() => handleAnswer(index)}>
               {getOptionText(option, currentQuestion.mode)}
             </button>
           {/each}
@@ -330,13 +402,6 @@
     <div class="card w-96 bg-base-100 shadow-xl">
       <div class="card-body">
         <h2 class="text-xl font-semibold text-center">Loading...</h2>
-      </div>
-    </div>
-  {/if}
-  {#if toast}
-    <div class="toast">
-      <div class="alert {toast.type === 'success' ? 'alert-success' : 'alert-error'}">
-        <span>{toast.message}</span>
       </div>
     </div>
   {/if}
