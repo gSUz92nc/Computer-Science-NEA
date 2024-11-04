@@ -660,6 +660,38 @@ export type Database = {
           },
         ]
       }
+      vocab_reviews: {
+        Row: {
+          entry_id: number
+          knowledge_level: number | null
+          last_reviewed: string | null
+          next_review: string | null
+          user_id: string
+        }
+        Insert: {
+          entry_id: number
+          knowledge_level?: number | null
+          last_reviewed?: string | null
+          next_review?: string | null
+          user_id: string
+        }
+        Update: {
+          entry_id?: number
+          knowledge_level?: number | null
+          last_reviewed?: string | null
+          next_review?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vocab_reviews_entry_id_fkey"
+            columns: ["entry_id"]
+            isOneToOne: false
+            referencedRelation: "entry"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -674,6 +706,15 @@ export type Database = {
           kana: Json
           kanji: Json
           senses: Json
+        }[]
+      }
+      get_random_jlpt_vocab: {
+        Args: {
+          p_jlpt_level: number
+          p_entry_id: number
+        }
+        Returns: {
+          id: number
         }[]
       }
       search_entries: {
