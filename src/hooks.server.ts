@@ -61,7 +61,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   // Redirect to /auth if user is not authenticated and tries to access /lessons
   if (
     (await event.locals.safeGetSession()).session == null &&
-    event.url.pathname.startsWith("/lessons")
+    (event.url.pathname.startsWith("/lessons") || event.url.pathname.startsWith("/review"))
   ) {
     redirect(303, "/auth");
   }

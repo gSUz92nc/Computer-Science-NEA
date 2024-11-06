@@ -1,19 +1,19 @@
 ### How to use
 
-1. First generate the 'uploads.json' with the following command
+1. First, obtain and place the 'kanji.json' file in the directory
 
-```bash title="Gen files"
-bun run genUploads.ts
+```bash title="Source"
+# Get from: https://github.com/davidluzgouveia/kanji-data/blob/master/kanji.json
 ```
 
-2. Then upload the files to supabase with the following command
+2. Run the upload script with the following command
 
 ```bash title="Upload files"
-bun run uploadFiles.ts
+bun run genUpload.ts
 ```
 
-3. Finally, you'll be left with a 'empty.json' file which contains the entries that couldn't be resolved automatically. You can manually resolve them and then upload them using the supabase dashbaord
+3. Finally, you'll be left with a 'kanji_upload_errors.json' file which contains the entries that couldn't be processed automatically. You can manually resolve them using the Supabase dashboard
 
 Licenses:
 
-JLPT Decks: [MIT License](https://github.com/jamsinclair/open-anki-jlpt-decks/tree/main/src) (https://github.com/jamsinclair/open-anki-jlpt-decks/tree/main/src)
+Kanji Data: [MIT License](https://github.com/davidluzgouveia/kanji-data) (https://github.com/davidluzgouveia/kanji-data)

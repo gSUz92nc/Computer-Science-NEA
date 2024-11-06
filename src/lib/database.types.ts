@@ -157,6 +157,65 @@ export type Database = {
           },
         ]
       }
+      jlpt_kanji: {
+        Row: {
+          id: number
+          jlpt_level: number
+        }
+        Insert: {
+          id: number
+          jlpt_level: number
+        }
+        Update: {
+          id?: number
+          jlpt_level?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "jlpt_kanji_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "entry"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "jlpt_kanji_jlpt_level_fkey"
+            columns: ["jlpt_level"]
+            isOneToOne: false
+            referencedRelation: "jlpt_levels"
+            referencedColumns: ["level"]
+          },
+        ]
+      }
+      jlpt_kanji_lessons: {
+        Row: {
+          created_at: string
+          id: number
+          kanji_id: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          kanji_id: number
+          user_id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          kanji_id?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "jlpt_kanji_lessons_kanji_id_fkey"
+            columns: ["kanji_id"]
+            isOneToOne: false
+            referencedRelation: "jlpt_kanji"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       jlpt_levels: {
         Row: {
           level: number
@@ -196,6 +255,35 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "jlpt_levels"
             referencedColumns: ["level"]
+          },
+        ]
+      }
+      jlpt_vocab_lessons: {
+        Row: {
+          created_at: string
+          id: number
+          user_id: string
+          vocab_id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          user_id?: string
+          vocab_id: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          user_id?: string
+          vocab_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "jlpt_vocab_lessons_vocab_id_fkey"
+            columns: ["vocab_id"]
+            isOneToOne: false
+            referencedRelation: "jlpt_vocab"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -572,11 +660,63 @@ export type Database = {
           },
         ]
       }
+      vocab_reviews: {
+        Row: {
+          entry_id: number
+          knowledge_level: number | null
+          last_reviewed: string | null
+          next_review: string | null
+          user_id: string
+        }
+        Insert: {
+          entry_id: number
+          knowledge_level?: number | null
+          last_reviewed?: string | null
+          next_review?: string | null
+          user_id: string
+        }
+        Update: {
+          entry_id?: number
+          knowledge_level?: number | null
+          last_reviewed?: string | null
+          next_review?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vocab_reviews_entry_id_fkey"
+            columns: ["entry_id"]
+            isOneToOne: false
+            referencedRelation: "entry"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      get_entry_by_id: {
+        Args: {
+          p_entry_id: number
+        }
+        Returns: {
+          entry_id: number
+          kana: Json
+          kanji: Json
+          senses: Json
+        }[]
+      }
+      get_random_jlpt_vocab: {
+        Args: {
+          p_jlpt_level: number
+          p_entry_id: number
+        }
+        Returns: {
+          id: number
+        }[]
+      }
       search_entries: {
         Args: {
           p_kana: string
