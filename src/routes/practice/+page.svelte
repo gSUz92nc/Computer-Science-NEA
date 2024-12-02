@@ -7,6 +7,9 @@
   const scenario = 'You are a Highschool teacher and the user is a student'
 
   onMount(() => {
+    
+    const tip = document.getElementById('tipModal')
+    
     setMessages([
       {
         role: 'system',
@@ -42,7 +45,7 @@
   <div class="flex-1 navbar bg-base-100">
     <div class="btn btn-ghost text-xl">Practice</div>
   </div>
-  <dialog id="my_modal_1" class="modal">
+  <dialog id="tipModal" class="modal">
     <div class="modal-box">
       <h3 class="text-lg font-bold">Hello!</h3>
       <p class="py-4">Press ESC key or click the button below to close</p>
@@ -63,6 +66,7 @@
           <div class="chat-bubble whitespace-pre-line">
             {message.content}
             {#if message.role === 'assistant'}
+                <button on:click={tip.showModal()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -80,6 +84,7 @@
                   d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"
                 />
               </svg>
+                </button>
             {/if}
           </div>
         </div>
