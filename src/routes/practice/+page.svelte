@@ -5,10 +5,12 @@
   const { input, handleSubmit, messages, setMessages } = useChat()
 
   const scenario = 'You are a Highschool teacher and the user is a student'
+  
+  let tip: HTMLDialogElement
 
   onMount(() => {
     
-    const tip = document.getElementById('tipModal')
+    tip = document.getElementById('tipModal') as HTMLDialogElement
     
     setMessages([
       {
@@ -66,7 +68,7 @@
           <div class="chat-bubble whitespace-pre-line">
             {message.content}
             {#if message.role === 'assistant'}
-                <button on:click={tip.showModal()}>
+                <button on:click={() => tip.showModal()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
