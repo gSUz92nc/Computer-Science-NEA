@@ -11,7 +11,7 @@ export const POST = (async ({ request: req }) => {
   const { messages } = await req.json()
 
   // Get a language model
-  const model = anthropic('claude-3-haiku-20240307') //'claude-3-5-sonnet-20240620')
+  const model = anthropic('claude-3-5-sonnet-20241022') //'claude-3-5-sonnet-20241022')
 
   // Call the language model with the prompt
   const result = await streamText({
