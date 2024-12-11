@@ -128,7 +128,12 @@
     const urlParams = new URLSearchParams(window.location.search)
     const urlLevel = urlParams.get('level')
     if (urlLevel) {
-      level = parseInt(urlLevel)
+      let parsedLevel = parseInt(urlLevel)
+      if (isNaN(parsedLevel)) {
+        level = 5
+      } else {
+        level = Math.min(Math.max(1, parsedLevel), 5)
+      }
     }
   }
 
