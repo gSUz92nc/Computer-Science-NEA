@@ -138,28 +138,32 @@
   async function loadDueItems() {
     const now = new Date().toISOString()
 
-    const { data: allVocabData, error: vocabError } = await supabase
-      .from('jlpt_vocab')
-      .select('id')
-      .eq('jlpt_level', level)
+    const [
+      { data: allVocabData, error: vocabError },
+      { data: reviewData, error: reviewError }
+    ] = await Promise.all([
+      supabase
+        .from('jlpt_vocab')
+        .select('id')
+        .eq('jlpt_level', level),
+      supabase
+        .from('vocab_reviews')
+        .select('*')
+        .eq('user_id', session?.user.id)
+        .lte('next_review', now)
+    ])
 
     if (vocabError) {
       alert(`Error loading vocabulary: ${vocabError.message}`)
       return
     }
 
-    const shuffledVocab = [...allVocabData].sort(() => Math.random() - 0.5)
-
-    const { data: reviewData, error: reviewError } = await supabase
-      .from('vocab_reviews')
-      .select('*')
-      .eq('user_id', session?.user.id)
-      .lte('next_review', now)
-
     if (reviewError) {
-      alert(`Error loading reviews: ${reviewError.message}`)
+      alert(`Error loading reviews: ${reviewError.message}`) 
       return
     }
+
+    const shuffledVocab = [...allVocabData].sort(() => Math.random() - 0.5)
 
     const reviewMap = new Map(
       reviewData?.map((review) => [review.entry_id, review]) || [],
