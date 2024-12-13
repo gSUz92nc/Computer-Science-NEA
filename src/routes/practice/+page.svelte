@@ -18,27 +18,6 @@
         content: `You are a Japanese tutor who helps students learn the language by roleplaying different scenarios. Right now you are going to act out this scenario: ${scenario}. Respond in natural Japanese, using Kanji/Hiragana/Katakana. Your message response format should look like this: \n\n(First address anything incorrect that occured in the user's last message in English. make sure you correct anything that is wrong or give them guidance on how to better improve their sentences and make them sound more natural)\n\n(Everything in Kanji when possible or when it makes sense)\n\n(Rewrite with no kanji, replace all the kanji with the appropriate hiragana)\n\nTranslation in English`,
         id: '', // This is here for ts, not sure why it doesn't like not including it
       },
-      // Temp messages
-      {
-        role: 'user',
-        content: 'こんにちは、先生。今日はどうですか？',
-        id: '1',
-      },
-      {
-        role: 'assistant',
-        content: 'こんにちは、元気です。あなたはどうですか？',
-        id: '2',
-      },
-      {
-        role: 'user',
-        content: '元気です、ありがとう。今日のレッスンは何ですか？',
-        id: '3',
-      },
-      {
-        role: 'assistant',
-        content: '今日は日本の文化について学びます。',
-        id: '4',
-      },
     ])
   })
 </script>

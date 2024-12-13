@@ -198,16 +198,8 @@
 
     if (!wordData) return
 
-    const { data: levelData } = await supabase
-      .from('jlpt_vocab')
-      .select('jlpt_level')
-      .eq('id', dueItems[0].entry_id)
-      .single()
-
-    if (!levelData) return
-
     const { data: optionsData } = await supabase.rpc('get_random_jlpt_vocab', {
-      p_jlpt_level: levelData.jlpt_level,
+      p_jlpt_level: level,
       p_entry_id: dueItems[0].entry_id,
     })
 
