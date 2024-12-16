@@ -2,12 +2,35 @@
   import { onMount } from 'svelte'
   import { useChat } from '@ai-sdk/svelte'
 
-  const { input, handleSubmit, messages, setMessages } = useChat()
+  const mainChat = useChat()
+  const explanationChat = useChat()
+
+  const { input, handleSubmit, messages, setMessages } = mainChat
+  let selectedMessage = ''
 
   const scenario = 'You are a Highschool teacher and the user is a student'
 
-  let selectedMessage: string | null = null;
   let tip: HTMLDialogElement
+
+  async function getExplanation(message: string) {
+    selectedMessage = message
+    tip = document.getElementById('tipModal') as HTMLDialogElement
+
+    await explanationChat.setMessages([
+      {
+        role: 'system',
+        content: 'You are a Japanese tutor. Provide a detailed grammar explanation and translation for the following Japanese text.',
+        id: ''
+      },
+      {
+        role: 'user', 
+        content: message,
+        id: ''
+      }
+    ])
+
+    tip.showModal()
+  }
 
   onMount(() => {
     tip = document.getElementById('tipModal') as HTMLDialogElement
@@ -16,31 +39,10 @@
       {
         role: 'system',
         content: `You are a Japanese tutor who helps students learn the language by roleplaying different scenarios. Right now you are going to act out this scenario: ${scenario}. Respond in natural Japanese, using Kanji/Hiragana/Katakana. Your message response format should look like this: \n\n(First address anything incorrect that occured in the user's last message in English. make sure you correct anything that is wrong or give them guidance on how to better improve their sentences and make them sound more natural)\n\n(Everything in Kanji when possible or when it makes sense)\n\n(Rewrite with no kanji, replace all the kanji with the appropriate hiragana)\n\nTranslation in English`,
-        id: '',
+        id: ''
       },
     ])
   })
-
-  const showTranslation = async (content: string) => {
-    selectedMessage = content;
-    const response = await fetch('/api/explain', {
-      method: 'POST',
-      body: JSON.stringify({ message: content }),
-    });
-    const explanation = await response.json();
-    tip.querySelector('.modal-content').innerHTML = `
-      <h3 class="text-lg font-bold">Translation & Grammar</h3>
-      <div class="py-4">
-        <p class="font-bold">Original:</p>
-        <p>${content}</p>
-        <p class="font-bold mt-4">Translation:</p>
-        <p>${explanation.translation}</p>
-        <p class="font-bold mt-4">Grammar Notes:</p>
-        <p>${explanation.grammar}</p>
-      </div>
-    `;
-    tip.showModal();
-  }
 </script>
 
 <div class="flex flex-col h-screen">
@@ -49,9 +51,13 @@
   </div>
   <dialog id="tipModal" class="modal">
     <div class="modal-box">
-      <div class="modal-content">
-        <h3 class="text-lg font-bold">Hello!</h3>
-        <p class="py-4">Press ESC key or click the button below to close</p>
+      <h3 class="text-lg font-bold">Grammar Explanation</h3>
+      <div class="py-4">
+        {#each $explanationChat.messages as message}
+          {#if message.role === 'assistant'}
+            <p class="whitespace-pre-line">{message.content}</p>
+          {/if}
+        {/each}
       </div>
       <div class="modal-action">
         <form method="dialog">
@@ -66,29 +72,14 @@
         <div
           class={`chat ${message.role === 'user' ? 'chat-end' : 'chat-start'}`}
         >
-          <div class="chat-bubble whitespace-pre-line cursor-pointer" on:click={() => showTranslation(message.content)}>
+          <div 
+            class="chat-bubble whitespace-pre-line"
+            role="button"
+            tabindex="0"
+            on:click={() => message.role === 'assistant' && getExplanation(message.content)}
+            on:keydown={(e) => e.key === 'Enter' && message.role === 'assistant' && getExplanation(message.content)}
+          >
             {message.content}
-            {#if message.role === 'assistant'}
-              <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-box-arrow-up-right"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"
-                  />
-                </svg>
-              </button>
-            {/if}
           </div>
         </div>
       {/if}
