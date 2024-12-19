@@ -126,17 +126,23 @@
     const urlLevel = urlParams.get('level')
     if (urlLevel) {
       let parsedLevel = parseInt(urlLevel)
-      if (isNaN(parsedLevel)) {
-        level = 5
-      } else {
+      if (!isNaN(parsedLevel)) {
         level = Math.min(Math.max(1, parsedLevel), 5)
       }
     }
-    level = 5;
+    // Update URL to reflect current level
+    const newUrl = new URL(window.location.href)
+    newUrl.searchParams.set('level', level.toString())
+    window.history.replaceState({}, '', newUrl.toString())
+    loadDueItems()
   }
 
   function updateLevel(newLevel: number) {
     level = newLevel
+    // Update URL to reflect new level
+    const newUrl = new URL(window.location.href)
+    newUrl.searchParams.set('level', newLevel.toString())
+    window.history.pushState({}, '', newUrl.toString())
     loadDueItems()
   }
 
@@ -290,7 +296,6 @@
   // Lifecycle hooks
   onMount(() => {
     loadLevel()
-    loadDueItems()
     keyboardListener = handleKeyPress
     window.addEventListener('keypress', keyboardListener)
   })
@@ -321,37 +326,37 @@
       <ul class="menu menu-horizontal bg-base-200 mt-2 rounded-xl">
         <li>
           <a
-            href="/review/vocab?level=5"
+            href="/review?level=5"
             class={level === 5 ? 'active' : ''}
-            on:click={() => updateLevel(5)}>N5</a
+            on:click|preventDefault={() => updateLevel(5)}>N5</a
           >
         </li>
         <li>
           <a
-            href="/review/vocab?level=4"
+            href="/review?level=4"
             class={level === 4 ? 'active' : ''}
-            on:click={() => updateLevel(4)}>N4</a
+            on:click|preventDefault={() => updateLevel(4)}>N4</a
           >
         </li>
         <li>
           <a
-            href="/review/vocab?level=3"
+            href="/review?level=3"
             class={level === 3 ? 'active' : ''}
-            on:click={() => updateLevel(3)}>N3</a
+            on:click|preventDefault={() => updateLevel(3)}>N3</a
           >
         </li>
         <li>
           <a
-            href="/review/vocab?level=2"
+            href="/review?level=2"
             class={level === 2 ? 'active' : ''}
-            on:click={() => updateLevel(2)}>N2</a
+            on:click|preventDefault={() => updateLevel(2)}>N2</a
           >
         </li>
         <li>
           <a
-            href="/review/vocab?level=1"
+            href="/review?level=1"
             class={level === 1 ? 'active' : ''}
-            on:click={() => updateLevel(1)}>N1</a
+            on:click|preventDefault={() => updateLevel(1)}>N1</a
           >
         </li>
       </ul>
