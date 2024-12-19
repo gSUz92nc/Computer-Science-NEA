@@ -3,15 +3,9 @@
   import { useChat } from '@ai-sdk/svelte'
 
   const { input, handleSubmit, messages, setMessages } = useChat()
-
-  const scenario = 'You are a Highschool teacher and the user is a student'
   
   let tip: HTMLDialogElement
 
-  onMount(() => {
-    
-    tip = document.getElementById('tipModal') as HTMLDialogElement
-    
   type Scenario = {
     scenarioTitle: string
     scenarioPrompt: string
@@ -54,15 +48,10 @@
     }
 
     setMessages([
-      {
-        id: 'System',
-        role: 'system',
-        content: `You are a Japanese tutor who helps students learn the language by roleplaying different scenarios. Right now you are going to act out this scenario: ${scenario}. Respond in natural Japanese, using Kanji/Hiragana/Katakana. Your message response format should look like this: \n\n(First address anything incorrect that occured in the user's last message in English. make sure you correct anything that is wrong or give them guidance on how to better improve their sentences and make them sound more natural)\n\n(Everything in Kanji when possible or when it makes sense)\n\n(Rewrite with no kanji, replace all the kanji with the appropriate hiragana)\n\nTranslation in English`,
-        id: '', // This is here for ts, not sure why it doesn't like not including it
-      },
-    ])
-  })
-        content: `You are going to help users practice their Japanese. You will roleplay different scenarios with them. They have selected the scenario: ${scenario?.scenarioTitle} at level N${selectedLevel}. Before you respond to them in Japanese you should critque their responses and provide feedback. If there is nothing you should start your conversation with "Looks good!\n...*Continue the conversation in Japanese*"`,
+  {
+    id: 'System',
+    role: 'system',
+    content: `You are going to help users practice their Japanese. You will roleplay different scenarios with them. They have selected the scenario: ${scenario?.scenarioTitle} at level N${selectedLevel}. Before you respond to them in Japanese you should critque their responses and provide feedback. If there is nothing you should start your conversation with "Looks good!\n...*Continue the conversation in Japanese*"`,
       },
       {
         id: 'Message',
@@ -146,6 +135,16 @@
     <div class="btn btn-ghost text-xl">Practice</div>
   </div>
   <dialog id="tipModal" class="modal">
+    <div class="modal-box">
+      <h3 class="text-lg font-bold">Grammar Explanation</h3>
+      <p class="py-4">Press ESC key or click the button below to close</p>
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 {#if showScenarioSelector}
   <dialog class="modal modal-open modal-bottom sm:modal-middle">
     <div class="modal-box">
@@ -251,4 +250,5 @@
     />
     <button type="submit" class="btn join-item">Send</button>
   </form>
+</div>
 </div>
