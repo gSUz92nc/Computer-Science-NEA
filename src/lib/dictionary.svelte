@@ -3,20 +3,20 @@
   import { toKana } from 'wanakana'
   import type { SupabaseClient } from '@supabase/supabase-js'
   import type { Entry } from '$lib/types'
-  import { onMount } from 'svelte'
   export let supabase: SupabaseClient
 
   let dictionaryEntries: any[] = []
   let dictionarySearchValue = ''
   let searching = false
 
+  // Run the fetchDictionaryDebounced function when the dictionarySearchValue changes
   $: fetchDictionaryDebounced(dictionarySearchValue)
 
   let currentSearchId = 0
 
-  let lastRequestTimestamp = 0
   let pendingRequest: AbortController | null = null
 
+  // Fetch the dictionary entries from the database using the search term making sure to debounce the requests so we don't make too many requests
   async function fetchDictionaryDebounced(searchTerm: string) {
     const searchId = ++currentSearchId
 
@@ -26,9 +26,7 @@
       return
     }
 
-    const timestamp = Date.now()
-    lastRequestTimestamp = timestamp
-
+    // If there is a pending request, abort it
     if (pendingRequest) {
       pendingRequest.abort()
     }
@@ -38,8 +36,10 @@
 
     searching = true
 
+    // Create a new AbortController for the new request
     pendingRequest = new AbortController()
 
+    // Call the database function to search for the entries
     const { data: dictionaryData, error: dictionaryError } = await supabase.rpc(
       'search_entries',
       {
@@ -49,18 +49,20 @@
       },
     )
 
+    // If there was an error, log it to the console
     if (dictionaryError) {
       console.error(dictionaryError)
       return
     }
 
+    // If the searchId has changed, then we don't want to update the dictionaryEntries
     if (searchId !== currentSearchId) {
       return
     }
 
-    searching = false
-
+    // Set the dictionaryEntries to the data from the database and set searching to false
     dictionaryEntries = reorderEntriesByFrequency(dictionaryData)
+    searching = false
   }
 
   function reorderEntriesByFrequency(entries: Entry[]) {
@@ -109,30 +111,36 @@
       }
       return Infinity
     }
-    entries.sort((a, b) => getPriority(a) - getPriority(b));
+    entries.sort((a, b) => getPriority(a) - getPriority(b))
 
     // Check if there is a definition that perfectly matches the search term
-    const exactMatch = entries.find(entry => 
-      entry.senses.some(sense => sense.definition.some(def => def.value.toLowerCase() === dictionarySearchValue.toLowerCase()))
-    );
+    const exactMatch = entries.find((entry) =>
+      entry.senses.some((sense) =>
+        sense.definition.some(
+          (def) =>
+            def.value.toLowerCase() === dictionarySearchValue.toLowerCase(),
+        ),
+      ),
+    )
 
     if (exactMatch) {
       // Move the exact match to the top
-      entries = entries.filter(entry => entry !== exactMatch);
-      entries.unshift(exactMatch);
+      entries = entries.filter((entry) => entry !== exactMatch)
+      entries.unshift(exactMatch)
     }
 
     return entries
   }
 
+  // Format the definitions into a string
   function formatDefinitions(definition: { value: string }[]) {
     return definition.map((def) => def.value).join('; ')
   }
 
+  // Format the kanji into a string
   function formatKanji(kanji: { value: string }[]) {
     return kanji.map((k) => k.value).join(', ')
   }
-
 </script>
 
 <dialog id="dictionary" class="modal modal-bottom lg:modal-middle w-full">

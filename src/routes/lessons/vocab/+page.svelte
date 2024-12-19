@@ -3,9 +3,13 @@
 
   export let data
   let { supabase, session } = data
-
   let level: number = 5
+  let progress: number = 0
+  let showAbout: boolean = false
+  let wordsNotSeen: { id: number; jlpt_level: number }[] = []
+  let currentWord: Entry | null = null
 
+  // Interfaces
   interface Entry {
     entry_id: number
     kana: Kana[]
@@ -60,52 +64,8 @@
     Eng = 'eng',
   }
 
-  // Update the level of the user and load the words for that level
-  function updateLevel(newLevel: number) {
-    level = newLevel
-    loadForLevel()
-  }
-
-  let progress: number = 0
-
-  // Calculate the progress of the user, by taking the number of words they've seen and dividing it by the total number of words
-  function calculateProgress(numOfWordsSeen: number, totalWords: number) {
-    progress = numOfWordsSeen == 0 ? 0 : (numOfWordsSeen / totalWords) * 100
-
-    if (progress === 100) {
-      currentWord = null
-    }
-  }
-
-  let showAbout: boolean = false
-
-  // Loads whether the about section should be shown or not from local storage
-  function loadShowAbout() {
-    const about = localStorage.getItem('showAbout')
-    if (about) {
-      showAbout = JSON.parse(about)
-    } else {
-      showAbout = true
-      saveShowAbout()
-    }
-  }
-
-  // Saves whether the about section should be shown or not to local storage
-  function saveShowAbout() {
-    localStorage.setItem('showAbout', JSON.stringify(showAbout))
-  }
-
-  // Toggles whether the about section should be shown or not
-  function toggleShowAbout() {
-    showAbout = !showAbout
-    saveShowAbout()
-  }
-
-  let wordsNotSeen: { id: number; jlpt_level: number }[] = []
-
-  // Load the words for the level from the database and filter out the words that the user has already seen
+  // Core loading functions
   async function loadForLevel() {
-    // Get all the words for the level
     const [
       { data: vocabData, error: vocabError },
       { data: lessonData, error: lessonError },
@@ -137,7 +97,6 @@
     if (lessonData && vocabData) {
       calculateProgress(lessonData.length, vocabData.length)
 
-      // Filter out the words that the user has already seen
       console.log('Lesson Data', lessonData)
       const wordsSeen = lessonData.map((lesson) => lesson.vocab_id.id)
       console.log('Words seen:', wordsSeen)
@@ -148,9 +107,6 @@
     }
   }
 
-  let currentWord: Entry | null = null
-
-  // Load the current word that the user is learning
   async function loadWord() {
     if (wordsNotSeen.length === 0) {
       return
@@ -168,13 +124,51 @@
     }
   }
 
-  // Check the url params to see if a level has been specified
   function loadLevel() {
     const urlParams = new URLSearchParams(window.location.search)
     const urlLevel = urlParams.get('level')
     if (urlLevel) {
-      level = parseInt(urlLevel)
+      let parsedLevel = parseInt(urlLevel)
+      if (isNaN(parsedLevel)) {
+        level = 5
+      } else {
+        level = Math.min(Math.max(1, parsedLevel), 5)
+      }
     }
+  }
+
+  // About section functions
+  function loadShowAbout() {
+    const about = localStorage.getItem('showAbout')
+    if (about) {
+      showAbout = JSON.parse(about)
+    } else {
+      showAbout = true
+      saveShowAbout()
+    }
+  }
+
+  function saveShowAbout() {
+    localStorage.setItem('showAbout', JSON.stringify(showAbout))
+  }
+
+  function toggleShowAbout() {
+    showAbout = !showAbout
+    saveShowAbout()
+  }
+
+  // Progress and navigation functions
+  function calculateProgress(numOfWordsSeen: number, totalWords: number) {
+    progress = numOfWordsSeen == 0 ? 0 : (numOfWordsSeen / totalWords) * 100
+
+    if (progress === 100) {
+      currentWord = null
+    }
+  }
+
+  function updateLevel(newLevel: number) {
+    level = newLevel
+    loadForLevel()
   }
 
   function nextWord() {

@@ -1,18 +1,26 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
-  export let data
-  let { supabase, session } = data
-
-  let level: number = 5
-
-  interface Entry {
-    entry_id: number
-    kana: Kana[]
-    kanji: Kanji[]
-    senses: Sense[]
+  // Common interfaces used throughout
+  interface Common {
+    id: number
+    value: string
   }
-  
+
+  interface Definition {
+    id: number
+    lang: string
+    type: null
+    value: string
+  }
+
+  interface Kanji {
+    id: number
+    tags: Common[]
+    value: string
+    common: any[]
+  }
+
   interface Kana {
     id: number
     tags: any[]
@@ -21,19 +29,7 @@
     no_kanji: boolean
     applies_to_kanji: any[]
   }
-  
-  interface Kanji {
-    id: number
-    tags: Common[]
-    value: string
-    common: any[]
-  }
-  
-  interface Common {
-    id: number
-    value: string
-  }
-  
+
   interface Sense {
     id: number
     info: any[]
@@ -48,53 +44,32 @@
     cross_reference: any[]
     applies_to_kanji: any[]
   }
-  
-  interface Definition {
-    id: number
-    lang: string
-    type: null
-    value: string
+
+  interface Entry {
+    entry_id: number
+    kana: Kana[]
+    kanji: Kanji[]
+    senses: Sense[]
   }
 
-  // Update the level of the user and load the kanji for that level
-  function updateLevel(newLevel: number) {
-    level = newLevel
-    loadForLevel()
-  }
+  export let data
+  let { supabase, session } = data
 
+  // State variables
+  let level: number = 5
   let progress: number = 0
-
-  // Calculate the progress of the user
-  function calculateProgress(numOfKanjiSeen: number, totalKanji: number) {
-    progress = numOfKanjiSeen == 0 ? 0 : (numOfKanjiSeen / totalKanji) * 100
-
-    if (progress === 100) {
-      currentKanji = null
-    }
-  }
-
   let showAbout: boolean = false
+  let kanjiNotSeen: { id: number; jlpt_level: number }[] = []
+  let currentKanji: Entry | null = null
 
-  function loadShowAbout() {
-    const about = localStorage.getItem('showAboutKanji')
-    if (about) {
-      showAbout = JSON.parse(about)
-    } else {
-      showAbout = true
-      saveShowAbout()
+  // Core loading functions
+  function loadLevel() {
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlLevel = urlParams.get('level')
+    if (urlLevel) {
+      level = parseInt(urlLevel)
     }
   }
-
-  function saveShowAbout() {
-    localStorage.setItem('showAboutKanji', JSON.stringify(showAbout))
-  }
-
-  function toggleShowAbout() {
-    showAbout = !showAbout
-    saveShowAbout()
-  }
-
-  let kanjiNotSeen: { id: number; jlpt_level: number }[] = []
 
   async function loadForLevel() {
     const [
@@ -135,8 +110,6 @@
     }
   }
 
-  let currentKanji: Entry | null = null
-
   async function loadKanji() {
     if (kanjiNotSeen.length === 0) {
       return
@@ -154,12 +127,38 @@
     }
   }
 
-  function loadLevel() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const urlLevel = urlParams.get('level')
-    if (urlLevel) {
-      level = parseInt(urlLevel)
+  // About section functions
+  function loadShowAbout() {
+    const about = localStorage.getItem('showAboutKanji')
+    if (about) {
+      showAbout = JSON.parse(about)
+    } else {
+      showAbout = true
+      saveShowAbout()
     }
+  }
+
+  function saveShowAbout() {
+    localStorage.setItem('showAboutKanji', JSON.stringify(showAbout))
+  }
+
+  function toggleShowAbout() {
+    showAbout = !showAbout
+    saveShowAbout()
+  }
+
+  // Progress and navigation functions
+  function calculateProgress(numOfKanjiSeen: number, totalKanji: number) {
+    progress = numOfKanjiSeen == 0 ? 0 : (numOfKanjiSeen / totalKanji) * 100
+
+    if (progress === 100) {
+      currentKanji = null
+    }
+  }
+
+  function updateLevel(newLevel: number) {
+    level = newLevel
+    loadForLevel()
   }
 
   function nextKanji() {
