@@ -4,29 +4,38 @@
 
   let email = ''
   let password = ''
+  let loading = false
 
-  // Login user
   async function login() {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    try {
+      loading = true
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
 
-    if (error) {
-      alert(error.message)
-    } else {
-      window.location.href = '/'
+      if (error) {
+        alert(error.message)
+      } else {
+        window.location.href = '/'
+      }
+    } finally {
+      loading = false
     }
   }
 
-  // Sign up user
   async function signUp() {
-    const { error } = await supabase.auth.signUp({ email, password })
+    try {
+      loading = true
+      const { error } = await supabase.auth.signUp({ email, password })
 
-    if (error) {
-      alert(error.message)
-    } else {
-      alert('Please check your email for a verification link.')
+      if (error) {
+        alert(error.message)
+      } else {
+        alert('Account created successfully! You can now login.')
+      }
+    } finally {
+      loading = false
     }
   }
 </script>
